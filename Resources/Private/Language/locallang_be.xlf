@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="wizards.tx_personiojobs_list.title">
+				<source>Personio: Job list</source>
+			</trans-unit>
+			<trans-unit id="wizards.tx_personiojobs_list.description">
+				<source>Inserts a list with all available jobs.</source>
+			</trans-unit>
+
+			<trans-unit id="wizards.tx_personiojobs_show.title">
+				<source>Personio: Job detail</source>
+			</trans-unit>
+			<trans-unit id="wizards.tx_personiojobs_show.description">
+				<source>Shows the detail view of a single job.</source>
+			</trans-unit>
+
+			<trans-unit id="flexforms.show.settings.listPid">
+				<source>List page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.detailPid">
+				<source>Detail page</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

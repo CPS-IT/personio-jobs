@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="plugins.list">
+				<source>Personio: Job list</source>
+			</trans-unit>
+			<trans-unit id="plugins.show">
+				<source>Personio: Job detail</source>
+			</trans-unit>
+
+			<trans-unit id="tx_personiojobs_domain_model_job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.personio_id">
+				<source>Personio job ID</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
+				<source>Job descriptions</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.recruiting_category">
+				<source>Recruiting category</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.create_date">
+				<source>Create date</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.content_hash">
+				<source>Content hash</source>
+			</trans-unit>
+
+			<trans-unit id="tx_personiojobs_domain_model_job_description">
+				<source>Job description</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.header">
+				<source>Header</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.bodytext">
+				<source>Bodytext</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.job">
+				<source>Related job</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

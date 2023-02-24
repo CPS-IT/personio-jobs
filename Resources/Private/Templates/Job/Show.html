@@ -1,0 +1,43 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<div class="job-detail">
+    <h2 class="job-detail-header">{job.name}</h2>
+
+    <ul class="job-detail-meta">
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.category\')}',
+            value: job.recruitingCategory
+        }" />
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.createDate\')}',
+            value: '{job.createDate -> f:format.date()}'
+        }" />
+    </ul>
+
+    <f:for each="{job.jobDescriptions}" as="jobDescription">
+        <section class="job-detail-description">
+            <f:if condition="{jobDescription.header}">
+                <h3>{jobDescription.header}</h3>
+            </f:if>
+
+            <f:if condition="{jobDescription.bodytext}">
+                <f:format.html>{jobDescription.bodytext}</f:format.html>
+            </f:if>
+        </section>
+    </f:for>
+
+    <f:if condition="{applyUrl}">
+        <p class="job-detail-apply">
+            <f:link.external uri="{applyUrl}">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.apply')}</f:link.external>
+        </p>
+    </f:if>
+
+    <f:if condition="{settings.listPid}">
+        <p class="job-detail-back-link">
+            <f:link.page pageUid="{settings.listPid}">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.list')}</f:link.page>
+        </p>
+    </f:if>
+</div>
+
+</html>

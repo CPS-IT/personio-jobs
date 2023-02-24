@@ -1,0 +1,16 @@
+plugin.tx_personiojobs {
+  view {
+    templateRootPaths {
+      0 = EXT:personio_jobs/Resources/Private/Templates
+      10 = {$plugin.tx_personiojobs.view.templateRootPath}
+    }
+    partialRootPaths {
+      0 = EXT:personio_jobs/Resources/Private/Partials
+      10 = {$plugin.tx_personiojobs.view.partialRootPath}
+    }
+    layoutRootPaths {
+      0 = EXT:personio_jobs/Resources/Private/Layouts
+      10 = {$plugin.tx_personiojobs.view.layoutRootPath}
+    }
+  }
+}

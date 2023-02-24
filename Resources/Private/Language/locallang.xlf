@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="list.header">
+				<source>Jobs</source>
+			</trans-unit>
+
+			<trans-unit id="meta.category">
+				<source>Category</source>
+			</trans-unit>
+			<trans-unit id="meta.createDate">
+				<source>Created on</source>
+			</trans-unit>
+
+			<trans-unit id="link.detail">
+				<source>View job</source>
+			</trans-unit>
+			<trans-unit id="link.list">
+				<source>Back to list</source>
+			</trans-unit>
+			<trans-unit id="link.apply">
+				<source>Apply now</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

@@ -1,0 +1,4 @@
+/.Build
+/var
+/.php-cs-fixer.cache
+/composer.lock
