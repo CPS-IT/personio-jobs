@@ -46,7 +46,7 @@ final class Tca
         ExtensionUtility::registerPlugin(
             Extension::KEY,
             $name,
-            'LLL:EXT:personio_jobs/Resources/Private/Language/locallag_db:plugins.' . lcfirst($name),
+            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name),
             $icon,
         );
 
