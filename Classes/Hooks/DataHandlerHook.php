@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Hooks;
 
+use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
@@ -38,6 +39,7 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 final class DataHandlerHook
 {
     public function __construct(
+        private readonly CacheManager $cacheManager,
         private readonly JobRepository $jobRepository,
         private readonly PersistenceManagerInterface $persistenceManager,
     ) {
@@ -78,6 +80,8 @@ final class DataHandlerHook
         // Update job if hash changed
         if ($originalHash !== $updatedHash) {
             $this->persistenceManager->update($job);
+            $this->cacheManager->flushTag($job);
+            $this->cacheManager->flushTag();
         }
     }
 

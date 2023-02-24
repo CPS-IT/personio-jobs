@@ -67,9 +67,6 @@ final class Extension
             [
                 JobController::class => 'show',
             ],
-            [
-                JobController::class => 'show',
-            ],
         );
     }
 
