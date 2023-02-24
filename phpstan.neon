@@ -1,4 +1,5 @@
 includes:
+	- phpstan-baseline.neon
 	- .Build/vendor/cuyz/valinor/qa/PHPStan/valinor-phpstan-configuration.php
 	- .Build/vendor/phpstan/phpstan/conf/bleedingEdge.neon
 parameters:

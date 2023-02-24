@@ -16,6 +16,8 @@ services:
       $pageCache: '@cache.pages'
 
   CPSIT\Typo3PersonioJobs\Command\ImportJobsCommand:
+    arguments:
+      $connection: '@connection.jobs'
     tags:
       - name: 'console.command'
         command: 'personio:import-jobs'
@@ -32,3 +34,9 @@ services:
     factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
     arguments:
       - 'pages'
+
+  connection.jobs:
+    class: 'TYPO3\CMS\Core\Database\Connection'
+    factory: ['@TYPO3\CMS\Core\Database\ConnectionPool', 'getConnectionForTable']
+    arguments:
+      - !php/const CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME

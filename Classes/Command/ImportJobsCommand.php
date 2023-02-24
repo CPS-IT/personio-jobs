@@ -29,7 +29,9 @@ use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
+use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
 use CPSIT\Typo3PersonioJobs\Service\PersonioService;
+use Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -37,6 +39,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
+use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 /**
@@ -63,6 +66,7 @@ final class ImportJobsCommand extends Command
         private readonly JobRepository $jobRepository,
         private readonly PersistenceManagerInterface $persistenceManager,
         private readonly CacheManager $cacheManager,
+        private readonly Connection $connection,
     ) {
         parent::__construct('personio:import-jobs');
         $this->storagePid = $extensionConfiguration->getStoragePid();
@@ -131,13 +135,8 @@ final class ImportJobsCommand extends Command
             $this->removeJob($orphanedJob);
         }
 
-        if (!$this->dryRun) {
-            // Persist all jobs
-            $this->persistenceManager->persistAll();
-
-            // Flush page cache tags
-            $this->flushCacheTags();
-        }
+        // Persist all changes and flush caches
+        $this->persistChanges();
 
         // Show result
         $this->printResult($output);
@@ -219,22 +218,48 @@ final class ImportJobsCommand extends Command
         $this->addResult($job, ImportOperation::Removed);
     }
 
+    private function persistChanges(): void
+    {
+        // Early return on dry-run
+        if ($this->dryRun) {
+            return;
+        }
+
+        $this->persistenceManager->persistAll();
+
+        foreach ($this->getModifiedJobs() as $job) {
+            $this->updateSlug($job);
+        }
+
+        $this->flushCacheTags();
+    }
+
+    private function updateSlug(Job $job): void
+    {
+        // Fetch job record
+        $record = $this->connection->select(['*'], Job::TABLE_NAME, ['uid' => $job->getUid()])->fetchAssociative();
+
+        // Early return if record cannot be fetched
+        if ($record === false) {
+            return;
+        }
+
+        // Generate slug for updated record
+        $slug = SlugHelper::generateSlug(Job::TABLE_NAME, $record);
+
+        // Update record
+        $this->connection->update(Job::TABLE_NAME, ['slug' => $slug], ['uid' => $job->getUid()]);
+    }
+
     private function flushCacheTags(): void
     {
         $flushGeneralCache = false;
-        $operations = [
-            ImportOperation::Added,
-            ImportOperation::Removed,
-            ImportOperation::Updated,
-        ];
 
         // Flush specific job caches (used in list and detail view)
-        foreach ($operations as $operation) {
-            foreach ($this->result[$operation->value] ?? [] as $job) {
-                $this->cacheManager->flushTag($job);
+        foreach ($this->getModifiedJobs() as $job) {
+            $this->cacheManager->flushTag($job);
 
-                $flushGeneralCache = true;
-            }
+            $flushGeneralCache = true;
         }
 
         // Flush general job cache (used in list view)
@@ -250,6 +275,24 @@ final class ImportJobsCommand extends Command
         }
 
         $this->result[$operation->value][] = $job;
+    }
+
+    /**
+     * @return Generator<Job>
+     */
+    private function getModifiedJobs(): Generator
+    {
+        $operations = [
+            ImportOperation::Added,
+            ImportOperation::Removed,
+            ImportOperation::Updated,
+        ];
+
+        foreach ($operations as $operation) {
+            foreach ($this->result[$operation->value] ?? [] as $job) {
+                yield $job;
+            }
+        }
     }
 
     private function printResult(OutputInterface $output): void

@@ -36,7 +36,7 @@ return [
             'endtime' => 'endtime',
         ],
         'iconfile' => 'EXT:personio_jobs/Resources/Public/Icons/tx_personiojobs_domain_model_job.svg',
-        'searchFields' => 'personio_id, name, recruiting_category',
+        'searchFields' => 'personio_id, name, recruiting_category, slug',
     ],
     'columns' => [
         'hidden' => [
@@ -99,6 +99,26 @@ return [
                 'eval' => 'trim,required',
             ],
         ],
+        'slug' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.slug',
+            'config' => [
+                'type' => 'slug',
+                'generatorOptions' => [
+                    'fields' => [
+                        'name',
+                        'personio_id',
+                    ],
+                    'fieldSeparator' => '-',
+                    'replacements' => [
+                        '/' => '-',
+                    ],
+                ],
+                'fallbackCharacter' => '-',
+                'eval' => 'unique',
+                'default' => '',
+            ],
+        ],
         'job_descriptions' => [
             'exclude' => true,
             'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.job_descriptions',
@@ -153,6 +173,7 @@ return [
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
                     personio_id,
                     name,
+                    slug,
                     job_descriptions,
                     recruiting_category,
                     keywords,

@@ -19,6 +19,9 @@
 			<trans-unit id="tx_personiojobs_domain_model_job.name">
 				<source>Name</source>
 			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.slug">
+				<source>URL path segment</source>
+			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
 				<source>Job descriptions</source>
 			</trans-unit>
