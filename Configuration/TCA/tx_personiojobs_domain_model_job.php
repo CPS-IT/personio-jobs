@@ -119,6 +119,36 @@ return [
                 'default' => '',
             ],
         ],
+        'subcompany' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.subcompany',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
+        'office' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.office',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
+        'department' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.department',
+            'config' => [
+                'type' => 'input',
+                'size' => 30,
+                'eval' => 'trim',
+                'max' => 255,
+            ],
+        ],
         'job_descriptions' => [
             'exclude' => true,
             'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.job_descriptions',
@@ -174,6 +204,9 @@ return [
                     personio_id,
                     name,
                     slug,
+                    subcompany,
+                    office,
+                    department,
                     job_descriptions,
                     recruiting_category,
                     keywords,

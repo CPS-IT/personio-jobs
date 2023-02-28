@@ -22,6 +22,15 @@
 			<trans-unit id="tx_personiojobs_domain_model_job.slug">
 				<source>URL path segment</source>
 			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.subcompany">
+				<source>Subcompany</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.office">
+				<source>Office</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.department">
+				<source>Department</source>
+			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
 				<source>Job descriptions</source>
 			</trans-unit>

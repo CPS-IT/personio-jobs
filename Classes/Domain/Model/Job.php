@@ -40,6 +40,9 @@ class Job extends AbstractEntity implements JsonSerializable
 
     protected int $personioId = 0;
     protected string $name = '';
+    protected string $subcompany = '';
+    protected string $office = '';
+    protected string $department = '';
 
     /**
      * @Extbase\ORM\Cascade("remove")
@@ -57,13 +60,16 @@ class Job extends AbstractEntity implements JsonSerializable
     }
 
     /**
-     * @param array{id: int, name: string, jobDescriptions: array{jobDescription: list<JobDescription>}, recruitingCategory: string|null, keywords: string|null, createDate: \DateTime} $apiResponse
+     * @param array{id: int, name: string, subcompany: string|null, office: string|null, department: string|null, jobDescriptions: array{jobDescription: list<JobDescription>}, recruitingCategory: string|null, keywords: string|null, createDate: \DateTime} $apiResponse
      */
     public static function fromApiResponse(array $apiResponse): self
     {
         $job = new self();
         $job->personioId = $apiResponse['id'];
         $job->name = $apiResponse['name'];
+        $job->subcompany = (string)$apiResponse['subcompany'];
+        $job->office = (string)$apiResponse['office'];
+        $job->department = (string)$apiResponse['department'];
 
         foreach ($apiResponse['jobDescriptions']['jobDescription'] as $jobDescription) {
             $jobDescription->setJob($job);
@@ -110,6 +116,42 @@ class Job extends AbstractEntity implements JsonSerializable
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getSubcompany(): string
+    {
+        return $this->subcompany;
+    }
+
+    public function setSubcompany(string $subcompany): self
+    {
+        $this->subcompany = $subcompany;
+
+        return $this;
+    }
+
+    public function getOffice(): string
+    {
+        return $this->office;
+    }
+
+    public function setOffice(string $office): self
+    {
+        $this->office = $office;
+
+        return $this;
+    }
+
+    public function getDepartment(): string
+    {
+        return $this->department;
+    }
+
+    public function setDepartment(string $department): self
+    {
+        $this->department = $department;
 
         return $this;
     }
@@ -202,6 +244,9 @@ class Job extends AbstractEntity implements JsonSerializable
         return [
             'personioId' => $this->personioId,
             'name' => $this->name,
+            'subcompany' => $this->subcompany,
+            'office' => $this->office,
+            'department' => $this->department,
             'jobDescriptions' => $this->jobDescriptions->toArray(),
             'recruitingCategory' => $this->recruitingCategory,
             'keywords' => $this->keywords,
