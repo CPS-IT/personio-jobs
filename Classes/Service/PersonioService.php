@@ -64,11 +64,7 @@ final class PersonioService
     {
         $response = $this->requestFactory->request((string)$this->apiUrl->withPath('/xml'));
         $array = XmlToArray::convert((string)$response->getBody());
-        $source = Source::array($array['position'] ?? [])->map([
-            '*.createdAt' => 'createDate',
-            '*.jobDescriptions.jobDescription.*.name' => 'header',
-            '*.jobDescriptions.jobDescription.*.value' => 'bodytext',
-        ]);
+        $source = Source::array($array['position'] ?? []);
 
         try {
             return $this->mapper->map('list<' . Job::class . '>', $source);

@@ -36,6 +36,28 @@ use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
  */
 final class Tca
 {
+    /**
+     * @param list<string|\BackedEnum> $itemValues
+     * @return list<array{string, string}>
+     */
+    public static function mapItems(string $tableName, string $fieldName, array $itemValues): array
+    {
+        $items = [];
+
+        foreach ($itemValues as $itemValue) {
+            if ($itemValue instanceof \BackedEnum) {
+                $itemValue = (string)$itemValue->value;
+            }
+
+            $items[] = [
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
+                $itemValue,
+            ];
+        }
+
+        return $items;
+    }
+
     public static function addPlugin(
         string $name,
         string $icon = null,

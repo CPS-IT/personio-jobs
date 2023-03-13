@@ -40,14 +40,13 @@ class JobDescription extends AbstractEntity implements JsonSerializable
     protected string $bodytext = '';
     protected ?Job $job = null;
 
-    /**
-     * @param array{header: string, bodytext: string} $apiResponse
-     */
-    public static function fromApiResponse(array $apiResponse): self
-    {
+    public static function fromApiResponse(
+        string $name,
+        string $value,
+    ): self {
         $jobDescription = new self();
-        $jobDescription->header = trim($apiResponse['header']);
-        $jobDescription->bodytext = trim($apiResponse['bodytext']);
+        $jobDescription->header = trim($name);
+        $jobDescription->bodytext = trim($value);
 
         return $jobDescription;
     }

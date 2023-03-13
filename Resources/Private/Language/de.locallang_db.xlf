@@ -12,6 +12,15 @@
 				<target>Personio: Job-Einzelansicht</target>
 			</trans-unit>
 
+			<trans-unit id="tabs.job">
+				<source>Job</source>
+				<target>Job</target>
+			</trans-unit>
+			<trans-unit id="tabs.description">
+				<source>Description</source>
+				<target>Beschreibung</target>
+			</trans-unit>
+
 			<trans-unit id="tx_personiojobs_domain_model_job">
 				<source>Job</source>
 				<target>Job</target>
@@ -28,37 +37,137 @@
 				<source>URL path segment</source>
 				<target>URL-Pfadsegment</target>
 			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.content_hash">
+				<source>Content hash</source>
+				<target>Hash</target>
+			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.subcompany">
 				<source>Subcompany</source>
 				<target>Gesellschaft</target>
 			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.office">
 				<source>Office</source>
-				<target>Büro</target>
+				<target>Standort</target>
 			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.department">
 				<source>Department</source>
 				<target>Abteilung</target>
 			</trans-unit>
-			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
-				<source>Job descriptions</source>
-				<target>Job-Beschreibungen</target>
-			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.recruiting_category">
 				<source>Recruiting category</source>
-				<target>Bereich</target>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type">
+				<source>Employment type</source>
+				<target>Anstellungsart</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.freelance">
+				<source>Freelance</source>
+				<target>Freelancer</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.intern">
+				<source>Internship</source>
+				<target>Praktikum</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.permanent">
+				<source>Permanent</source>
+				<target>Festanstellung</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.trainee">
+				<source>Trainee</source>
+				<target>Trainee</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.working_student">
+				<source>Working student</source>
+				<target>Werkstudent</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority">
+				<source>Seniority</source>
+				<target>Dienstalter</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.entry-level">
+				<source>Entry level</source>
+				<target>Berufseinsteiger</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.executive">
+				<source>Executive</source>
+				<target>Führungskraft</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.experienced">
+				<source>Experienced</source>
+				<target>Mit Berufserfahrung</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.student">
+				<source>Student</source>
+				<target>Student</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule">
+				<source>Schedule</source>
+				<target>Arbeitszeit</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.full-time">
+				<source>Full time</source>
+				<target>Vollzeit</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.full-or-part-time">
+				<source>Full- or part time</source>
+				<target>Voll- oder Teilzeit</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.part-time">
+				<source>Part time</source>
+				<target>Teilzeit</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience">
+				<source>Work experience</source>
+				<target>Berufserfahrung</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.lt-1">
+				<source>Less than 1 year</source>
+				<target>Weniger als 1 Jahr</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.1-2">
+				<source>1-2 years</source>
+				<target>1-2 Jahre</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.2-5">
+				<source>2-5 years</source>
+				<target>2-5 years</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.5-7">
+				<source>5-7 years</source>
+				<target>5-7 years</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.7-10">
+				<source>7-10 years</source>
+				<target>7-10 years</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.10-15">
+				<source>10-15 years</source>
+				<target>10-15 years</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.gt-15">
+				<source>More than 15 years</source>
+				<target>Mehr als 15 Jahre</target>
 			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.keywords">
 				<source>Keywords</source>
 				<target>Schlagworte</target>
 			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.occupation">
+				<source>Occupation</source>
+				<target>Beschäftigung</target>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.occupation_category">
+				<source>Occupation category</source>
+				<target>Berufsart</target>
+			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.create_date">
 				<source>Create date</source>
 				<target>Erstellungsdatum</target>
 			</trans-unit>
-			<trans-unit id="tx_personiojobs_domain_model_job.content_hash">
-				<source>Content hash</source>
-				<target>Hash</target>
+			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
+				<source>Job descriptions</source>
+				<target>Job-Beschreibungen</target>
 			</trans-unit>
 
 			<trans-unit id="tx_personiojobs_domain_model_job_description">

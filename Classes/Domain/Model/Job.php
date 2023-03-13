@@ -23,6 +23,10 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Domain\Model;
 
+use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
+use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
+use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
+use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
 use JsonSerializable;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
@@ -39,18 +43,24 @@ class Job extends AbstractEntity implements JsonSerializable
     final public const TABLE_NAME = 'tx_personiojobs_domain_model_job';
 
     protected int $personioId = 0;
-    protected string $name = '';
     protected string $subcompany = '';
     protected string $office = '';
     protected string $department = '';
+    protected string $recruitingCategory = '';
+    protected string $name = '';
 
     /**
      * @Extbase\ORM\Cascade("remove")
      * @var ObjectStorage<JobDescription>
      */
     protected ObjectStorage $jobDescriptions;
-    protected string $recruitingCategory = '';
+    protected string $employmentType = '';
+    protected string $seniority = '';
+    protected string $schedule = '';
+    protected string $yearsOfExperience = '';
     protected string $keywords = '';
+    protected string $occupation = '';
+    protected string $occupationCategory = '';
     protected ?\DateTime $createDate = null;
     protected string $contentHash = '';
 
@@ -60,25 +70,46 @@ class Job extends AbstractEntity implements JsonSerializable
     }
 
     /**
-     * @param array{id: int, name: string, subcompany: string|null, office: string|null, department: string|null, jobDescriptions: array{jobDescription: list<JobDescription>}, recruitingCategory: string|null, keywords: string|null, createDate: \DateTime} $apiResponse
+     * @param array{jobDescription: list<JobDescription>} $jobDescriptions
      */
-    public static function fromApiResponse(array $apiResponse): self
-    {
+    public static function fromApiResponse(
+        int $id,
+        ?string $subcompany,
+        ?string $office,
+        ?string $department,
+        ?string $recruitingCategory,
+        string $name,
+        array $jobDescriptions,
+        EmploymentType $employmentType,
+        Seniority $seniority,
+        Schedule $schedule,
+        YearsOfExperience $yearsOfExperience,
+        ?string $keywords,
+        ?string $occupation,
+        ?string $occupationCategory,
+        \DateTime $createdAt,
+    ): self {
         $job = new self();
-        $job->personioId = $apiResponse['id'];
-        $job->name = $apiResponse['name'];
-        $job->subcompany = (string)$apiResponse['subcompany'];
-        $job->office = (string)$apiResponse['office'];
-        $job->department = (string)$apiResponse['department'];
+        $job->personioId = $id;
+        $job->subcompany = (string)$subcompany;
+        $job->office = (string)$office;
+        $job->department = (string)$department;
+        $job->recruitingCategory = (string)$recruitingCategory;
+        $job->name = $name;
 
-        foreach ($apiResponse['jobDescriptions']['jobDescription'] as $jobDescription) {
+        foreach ($jobDescriptions['jobDescription'] as $jobDescription) {
             $jobDescription->setJob($job);
             $job->addJobDescription($jobDescription);
         }
 
-        $job->recruitingCategory = (string)$apiResponse['recruitingCategory'];
-        $job->keywords = (string)$apiResponse['keywords'];
-        $job->createDate = $apiResponse['createDate'];
+        $job->employmentType = $employmentType->value;
+        $job->seniority = $seniority->value;
+        $job->schedule = $schedule->value;
+        $job->yearsOfExperience = $yearsOfExperience->value;
+        $job->keywords = (string)$keywords;
+        $job->occupation = (string)$occupation;
+        $job->occupationCategory = (string)$occupationCategory;
+        $job->createDate = $createdAt;
         $job->contentHash = $job->calculateHash();
 
         return $job;
@@ -104,18 +135,6 @@ class Job extends AbstractEntity implements JsonSerializable
     public function setPersonioId(int $personioId): self
     {
         $this->personioId = $personioId;
-
-        return $this;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
 
         return $this;
     }
@@ -156,6 +175,30 @@ class Job extends AbstractEntity implements JsonSerializable
         return $this;
     }
 
+    public function getRecruitingCategory(): string
+    {
+        return $this->recruitingCategory;
+    }
+
+    public function setRecruitingCategory(string $recruitingCategory): self
+    {
+        $this->recruitingCategory = $recruitingCategory;
+
+        return $this;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
     /**
      * @return ObjectStorage<JobDescription>
      */
@@ -188,14 +231,50 @@ class Job extends AbstractEntity implements JsonSerializable
         return $this;
     }
 
-    public function getRecruitingCategory(): string
+    public function getEmploymentType(): string
     {
-        return $this->recruitingCategory;
+        return $this->employmentType;
     }
 
-    public function setRecruitingCategory(string $recruitingCategory): self
+    public function setEmploymentType(string $employmentType): self
     {
-        $this->recruitingCategory = $recruitingCategory;
+        $this->employmentType = $employmentType;
+
+        return $this;
+    }
+
+    public function getSeniority(): string
+    {
+        return $this->seniority;
+    }
+
+    public function setSeniority(string $seniority): self
+    {
+        $this->seniority = $seniority;
+
+        return $this;
+    }
+
+    public function getSchedule(): string
+    {
+        return $this->schedule;
+    }
+
+    public function setSchedule(string $schedule): self
+    {
+        $this->schedule = $schedule;
+
+        return $this;
+    }
+
+    public function getYearsOfExperience(): string
+    {
+        return $this->yearsOfExperience;
+    }
+
+    public function setYearsOfExperience(string $yearsOfExperience): self
+    {
+        $this->yearsOfExperience = $yearsOfExperience;
 
         return $this;
     }
@@ -208,6 +287,30 @@ class Job extends AbstractEntity implements JsonSerializable
     public function setKeywords(string $keywords): self
     {
         $this->keywords = $keywords;
+
+        return $this;
+    }
+
+    public function getOccupation(): string
+    {
+        return $this->occupation;
+    }
+
+    public function setOccupation(string $occupation): self
+    {
+        $this->occupation = $occupation;
+
+        return $this;
+    }
+
+    public function getOccupationCategory(): string
+    {
+        return $this->occupationCategory;
+    }
+
+    public function setOccupationCategory(string $occupationCategory): self
+    {
+        $this->occupationCategory = $occupationCategory;
 
         return $this;
     }
@@ -243,13 +346,19 @@ class Job extends AbstractEntity implements JsonSerializable
     {
         return [
             'personioId' => $this->personioId,
-            'name' => $this->name,
             'subcompany' => $this->subcompany,
             'office' => $this->office,
             'department' => $this->department,
-            'jobDescriptions' => $this->jobDescriptions->toArray(),
             'recruitingCategory' => $this->recruitingCategory,
+            'name' => $this->name,
+            'jobDescriptions' => $this->jobDescriptions->toArray(),
+            'employmentType' => $this->employmentType,
+            'seniority' => $this->seniority,
+            'schedule' => $this->schedule,
+            'yearsOfExperience' => $this->yearsOfExperience,
             'keywords' => $this->keywords,
+            'occupation' => $this->occupation,
+            'occupationCategory' => $this->occupationCategory,
             'createDate' => $this->createDate?->getTimestamp(),
         ];
     }
