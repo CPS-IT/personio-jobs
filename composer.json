@@ -29,12 +29,16 @@
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.5",
+		"brotkrueml/schema": "^2.7",
 		"ergebnis/composer-normalize": "^2.29",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan": "^1.10",
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"ssch/typo3-rector": "^1.1",
 		"typo3/coding-standards": "^0.7.1"
+	},
+	"suggest": {
+		"brotkrueml/schema": "Include JSON schema on job detail pages (^2.7)"
 	},
 	"autoload": {
 		"psr-4": {
