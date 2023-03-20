@@ -43,13 +43,13 @@ use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 /**
- * ImportJobsCommand
+ * ImportCommand
  *
  * @author Juliane Wundermann <j.wundermann@familie-redlich.de>
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class ImportJobsCommand extends Command
+final class ImportCommand extends Command
 {
     private readonly int $storagePid;
     private SymfonyStyle $io;
@@ -68,7 +68,7 @@ final class ImportJobsCommand extends Command
         private readonly CacheManager $cacheManager,
         private readonly Connection $connection,
     ) {
-        parent::__construct('personio:import-jobs');
+        parent::__construct('personio-jobs:import');
         $this->storagePid = $extensionConfiguration->getStoragePid();
     }
 
@@ -80,7 +80,13 @@ final class ImportJobsCommand extends Command
             'force',
             'f',
             InputOption::VALUE_NONE,
-            'Enforce import for unchanged jobs as well',
+            'Enforce re-import of unchanged jobs',
+        );
+        $this->addOption(
+            'no-delete',
+            null,
+            InputOption::VALUE_NONE,
+            'Do not delete orphaned jobs',
         );
         $this->addOption(
             'no-update',
@@ -106,6 +112,7 @@ final class ImportJobsCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $force = (bool)$input->getOption('force');
+        $noDelete = (bool)$input->getOption('no-delete');
         $noUpdate = (bool)$input->getOption('no-update');
 
         // Validate parameters
@@ -117,7 +124,7 @@ final class ImportJobsCommand extends Command
 
         // Fetch jobs from Personio API
         $jobs = $this->personioService->getJobs();
-        $orphans = $this->jobRepository->findOrphans($jobs);
+        $orphans = $noDelete ? [] : $this->jobRepository->findOrphans($jobs);
 
         // Process imported jobs
         foreach ($jobs as $job) {

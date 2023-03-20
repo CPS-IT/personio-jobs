@@ -15,12 +15,12 @@ services:
     arguments:
       $pageCache: '@cache.pages'
 
-  CPSIT\Typo3PersonioJobs\Command\ImportJobsCommand:
+  CPSIT\Typo3PersonioJobs\Command\ImportCommand:
     arguments:
       $connection: '@connection.jobs'
     tags:
       - name: 'console.command'
-        command: 'personio:import-jobs'
+        command: 'personio-jobs:import'
         description: 'Import jobs from Personio XML feed'
 
   CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration:
