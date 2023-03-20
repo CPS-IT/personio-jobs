@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en">
+		<header/>
+		<body>
+			<trans-unit id="plugins.list">
+				<source>Personio: Job list</source>
+			</trans-unit>
+			<trans-unit id="plugins.show">
+				<source>Personio: Job detail</source>
+			</trans-unit>
+
+			<trans-unit id="tabs.job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tabs.description">
+				<source>Description</source>
+			</trans-unit>
+
+			<trans-unit id="tx_personiojobs_domain_model_job">
+				<source>Job</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.personio_id">
+				<source>Personio job ID</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.slug">
+				<source>URL path segment</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.content_hash">
+				<source>Content hash</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.subcompany">
+				<source>Subcompany</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.office">
+				<source>Office</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.department">
+				<source>Department</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.recruiting_category">
+				<source>Recruiting category</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type">
+				<source>Employment type</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.freelance">
+				<source>Freelance</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.intern">
+				<source>Internship</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.permanent">
+				<source>Permanent</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.trainee">
+				<source>Trainee</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.working_student">
+				<source>Working student</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority">
+				<source>Seniority</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.entry-level">
+				<source>Entry level</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.executive">
+				<source>Executive</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.experienced">
+				<source>Experienced</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.seniority.student">
+				<source>Student</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule">
+				<source>Schedule</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.full-time">
+				<source>Full time</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.full-or-part-time">
+				<source>Full- or part time</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.schedule.part-time">
+				<source>Part time</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience">
+				<source>Work experience</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.lt-1">
+				<source>Less than 1 year</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.1-2">
+				<source>1-2 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.2-5">
+				<source>2-5 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.5-7">
+				<source>5-7 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.7-10">
+				<source>7-10 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.10-15">
+				<source>10-15 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.gt-15">
+				<source>More than 15 years</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.keywords">
+				<source>Keywords</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.occupation">
+				<source>Occupation</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.occupation_category">
+				<source>Occupation category</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.create_date">
+				<source>Create date</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
+				<source>Job descriptions</source>
+			</trans-unit>
+
+			<trans-unit id="tx_personiojobs_domain_model_job_description">
+				<source>Job description</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.header">
+				<source>Header</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.bodytext">
+				<source>Bodytext</source>
+			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job_description.job">
+				<source>Related job</source>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

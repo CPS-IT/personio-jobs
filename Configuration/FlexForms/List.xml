@@ -1,0 +1,19 @@
+<extra>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.detailPid>
+                <TCEforms>
+                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.detailPid</label>
+                    <config>
+                        <type>group</type>
+                        <allowed>pages</allowed>
+                        <minitems>1</minitems>
+                        <maxitems>1</maxitems>
+                        <size>1</size>
+                    </config>
+                </TCEforms>
+            </settings.detailPid>
+        </el>
+    </ROOT>
+</extra>

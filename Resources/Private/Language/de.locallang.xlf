@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+	<file source-language="en" target-language="de">
+		<header/>
+		<body>
+			<trans-unit id="list.header">
+				<source>Jobs</source>
+				<target>Stellenangebote</target>
+			</trans-unit>
+
+			<trans-unit id="meta.category">
+				<source>Category</source>
+				<target>Kategorie</target>
+			</trans-unit>
+			<trans-unit id="meta.createDate">
+				<source>Created on</source>
+				<target>Eingestellt am</target>
+			</trans-unit>
+
+			<trans-unit id="link.detail">
+				<source>View job</source>
+				<target>Stelle ansehen</target>
+			</trans-unit>
+			<trans-unit id="link.list">
+				<source>Back to list</source>
+				<target>Zurück zur Übersicht</target>
+			</trans-unit>
+			<trans-unit id="link.apply">
+				<source>Apply now</source>
+				<target>Jetzt bewerben</target>
+			</trans-unit>
+		</body>
+	</file>
+</xliff>

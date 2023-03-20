@@ -1,0 +1,20 @@
+mod.wizards.newContentElement.wizardItems.plugins.elements {
+  tx_personiojobs_list {
+    iconIdentifier = content-listgroup
+    title = LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:wizards.tx_personiojobs_list.title
+    description = LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:wizards.tx_personiojobs_list.description
+    tt_content_defValues {
+      CType = list
+      list_type = personiojobs_list
+    }
+  }
+  tx_personiojobs_show {
+    iconIdentifier = content-briefcase
+    title = LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:wizards.tx_personiojobs_show.title
+    description = LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:wizards.tx_personiojobs_show.description
+    tt_content_defValues {
+      CType = list
+      list_type = personiojobs_show
+    }
+  }
+}

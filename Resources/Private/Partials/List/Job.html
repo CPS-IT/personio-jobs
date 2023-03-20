@@ -1,0 +1,27 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+{f:uri.action(action: 'show', pageUid: settings.detailPid, arguments: '{job: job}') -> f:variable(name: 'detailUri')}
+
+<li class="job-list-item">
+    <p class="job-list-item-header">
+        <a href="{detailUri}">{job.name}</a>
+    </p>
+
+    <ul class="job-list-item-meta">
+        <f:render partial="List/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.category\')}',
+            value: job.recruitingCategory
+        }" />
+        <f:render partial="List/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.createDate\')}',
+            value: '{job.createDate -> f:format.date()}'
+        }" />
+    </ul>
+
+    <p class="job-list-item-read-more">
+        <a href="{detailUri}">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.detail')}</a>
+    </p>
+</li>
+
+</html>
