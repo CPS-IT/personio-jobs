@@ -38,6 +38,7 @@ return [
         'DS_Store',
         'CODE_OF_CONDUCT.md',
         'composer.lock',
+        'CONTRIBUTING.md',
         'editorconfig',
         'gitattributes',
         'gitignore',
