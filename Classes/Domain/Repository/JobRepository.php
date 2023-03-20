@@ -37,9 +37,14 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class JobRepository extends Repository
 {
-    public function findOneByPersonioId(int $personioId): ?Job
+    public function findOneByPersonioId(int $personioId, int $storagePid = null): ?Job
     {
         $query = $this->createQuery();
+
+        if ($storagePid !== null) {
+            $query->getQuerySettings()->setStoragePageIds([$storagePid]);
+        }
+
         $query->matching($query->equals('personioId', $personioId));
         $query->setLimit(1);
 
