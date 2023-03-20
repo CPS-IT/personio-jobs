@@ -1,5 +1,2 @@
 # cat=basic; type=string; label=URL to Personio job page:e.g. https://my-company.jobs.personio.de
 apiUrl =
-
-# cat=basic; type=int+; label=Storage pid: UID of the page under which the job pages are persisted
-storagePid = 0

@@ -76,13 +76,14 @@ The extension provides two plugins:
 #### `personio-jobs:import`
 
 ```bash
-typo3 personio-jobs:import [--force] [--no-delete] [--no-update] [--dry-run]
+typo3 personio-jobs:import <storage-pid> [options]
 ```
 
 The following command parameters are available:
 
 | Command parameter       | Description                                              | Required | Default |
 |-------------------------|----------------------------------------------------------|----------|---------|
+| **`storage-pid`**       | Storage pid of imported jobs                             | ✅        | –       |
 | **`-f`**, **`--force`** | Enforce re-import of unchanged jobs                      | –        | no      |
 | **`--no-delete`**       | Do not delete orphaned jobs                              | –        | no      |
 | **`--no-update`**       | Do not update imported jobs that have been changed       | –        | no      |
@@ -119,7 +120,6 @@ The following extension configuration options are available:
 | Configuration key | Description                                                          | Required | Default |
 |-------------------|----------------------------------------------------------------------|----------|---------|
 | **`apiUrl`**      | URL to Personio job page, e.g. `https://my-company.jobs.personio.de` | ✅        | –       |
-| **`storagePid`**  | UID of the page under which the job pages are persisted              | ✅        | `0`     |
 
 ### Routing configuration
 
