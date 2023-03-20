@@ -70,6 +70,7 @@ final class Tca
             $name,
             'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name),
             $icon,
+            'personio',
         );
 
         if ($flexForm !== null) {

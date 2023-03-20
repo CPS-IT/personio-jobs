@@ -10,6 +10,10 @@
 				<source>Personio: Job detail</source>
 			</trans-unit>
 
+			<trans-unit id="groups.personio">
+				<source>Personio</source>
+			</trans-unit>
+
 			<trans-unit id="tabs.job">
 				<source>Job</source>
 			</trans-unit>

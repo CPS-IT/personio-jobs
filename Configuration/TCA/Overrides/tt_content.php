@@ -21,6 +21,13 @@ defined('TYPO3') or die();
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+\TYPO3\CMS\Core\Utility\ExtensionManagementUtility::addTcaSelectItemGroup(
+    'tt_content',
+    'list_type',
+    'personio',
+    'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:groups.personio',
+);
+
 \CPSIT\Typo3PersonioJobs\Configuration\Tca::addPlugin(
     'List',
     'tx-personio-jobs-plugin-list',
