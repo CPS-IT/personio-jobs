@@ -66,12 +66,10 @@ Once installed, make sure to include the TypoScript setup at
 
 The extension provides two plugins:
 
-* **`Personio: Job list`** lists all imported jobs as unordered list. Each list
-  item shows the job title, office and schedule and links to the job's detail
-  view.
-* **`Personio: Job detail`** shows a single job, including several job properties
-  and all imported job descriptions. In addition, it renders a button to apply
-  for the job.
+| Icon                                                           | Description                                                                                                                                                                |
+|----------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| ![List plugin icon](Resources/Public/Icons/plugins.list.svg)   | **Personio: Job list**<br>Lists all imported jobs as unordered list. Each list item shows the job title, office and schedule and links to the job's detail view.           |
+| ![Detail plugin icon](Resources/Public/Icons/plugins.show.svg) | **Personio: Job detail**<br>Shows a single job, including several job properties and all imported job descriptions. In addition, it renders a button to apply for the job. |
 
 ### Command-line usage
 
