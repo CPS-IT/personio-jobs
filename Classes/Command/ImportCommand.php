@@ -25,7 +25,6 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Command;
 
 use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
-use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
@@ -35,6 +34,7 @@ use Generator;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
+use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -51,7 +51,6 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
  */
 final class ImportCommand extends Command
 {
-    private readonly int $storagePid;
     private SymfonyStyle $io;
     private bool $dryRun = false;
 
@@ -61,7 +60,6 @@ final class ImportCommand extends Command
     private array $result = [];
 
     public function __construct(
-        ExtensionConfiguration $extensionConfiguration,
         private readonly PersonioService $personioService,
         private readonly JobRepository $jobRepository,
         private readonly PersistenceManagerInterface $persistenceManager,
@@ -69,13 +67,17 @@ final class ImportCommand extends Command
         private readonly Connection $connection,
     ) {
         parent::__construct('personio-jobs:import');
-        $this->storagePid = $extensionConfiguration->getStoragePid();
     }
 
     protected function configure(): void
     {
         $this->setDescription('Imports a Personio job feed and stores them in the local database');
 
+        $this->addArgument(
+            'storage-pid',
+            InputArgument::REQUIRED,
+            'Storage pid of imported jobs',
+        );
         $this->addOption(
             'force',
             'f',
@@ -111,6 +113,8 @@ final class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        /* @phpstan-ignore-next-line */
+        $storagePid = (int)$input->getArgument('storage-pid');
         $force = (bool)$input->getOption('force');
         $noDelete = (bool)$input->getOption('no-delete');
         $noUpdate = (bool)$input->getOption('no-update');
@@ -124,14 +128,14 @@ final class ImportCommand extends Command
 
         // Fetch jobs from Personio API
         $jobs = $this->personioService->getJobs();
-        $orphans = $noDelete ? [] : $this->jobRepository->findOrphans($jobs);
+        $orphans = $noDelete ? [] : $this->jobRepository->findOrphans($jobs, $storagePid);
 
         // Process imported jobs
         foreach ($jobs as $job) {
-            $job->setPid($this->storagePid);
+            $job->setPid($storagePid);
 
             foreach ($job->getJobDescriptions() as $jobDescription) {
-                $jobDescription->setPid($this->storagePid);
+                $jobDescription->setPid($storagePid);
             }
 
             $this->addOrUpdateJob($job, $force, !$noUpdate);
