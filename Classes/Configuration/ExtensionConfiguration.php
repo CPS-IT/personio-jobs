@@ -59,19 +59,4 @@ final class ExtensionConfiguration
 
         return new Uri($apiUrl);
     }
-
-    public function getStoragePid(): int
-    {
-        try {
-            $jobPid = $this->configuration->get(Extension::KEY, 'storagePid');
-        } catch (Exception) {
-            return 0;
-        }
-
-        if (!is_numeric($jobPid) || $jobPid <= 0) {
-            return 0;
-        }
-
-        return (int)$jobPid;
-    }
 }

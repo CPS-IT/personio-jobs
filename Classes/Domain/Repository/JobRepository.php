@@ -23,10 +23,7 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Domain\Repository;
 
-use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
-use TYPO3\CMS\Extbase\Persistence\Generic\QuerySettingsInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -40,15 +37,6 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class JobRepository extends Repository
 {
-    public function initializeObject(): void
-    {
-        $extensionConfiguration = GeneralUtility::makeInstance(ExtensionConfiguration::class);
-        $querySettings = GeneralUtility::makeInstance(QuerySettingsInterface::class);
-        $querySettings->setStoragePageIds([$extensionConfiguration->getStoragePid()]);
-
-        $this->defaultQuerySettings = $querySettings;
-    }
-
     public function findOneByPersonioId(int $personioId): ?Job
     {
         $query = $this->createQuery();
@@ -71,9 +59,13 @@ class JobRepository extends Repository
      * @param list<Job> $existingJobs
      * @return QueryResultInterface<Job>
      */
-    public function findOrphans(array $existingJobs): QueryResultInterface
+    public function findOrphans(array $existingJobs, int $storagePid = null): QueryResultInterface
     {
         $query = $this->createQuery();
+
+        if ($storagePid !== null) {
+            $query->getQuerySettings()->setStoragePageIds([$storagePid]);
+        }
 
         if ($existingJobs !== []) {
             $query->matching(

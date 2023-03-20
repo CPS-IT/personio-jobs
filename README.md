@@ -7,7 +7,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/75952c5451dea0632fc0/maintainability)](https://codeclimate.com/github/CPS-IT/personio-jobs/maintainability)
 [![CGL](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml)
 [![Release](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml)
-[![License](http://poser.pugx.org/CPS-IT/personio-jobs/license)](LICENSE.md)\
+[![License](http://poser.pugx.org/cpsit/typo3-personio-jobs/license)](LICENSE.md)\
 [![Version](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/version/shields)](https://extensions.typo3.org/extension/personio_jobs)
 [![Downloads](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/downloads/shields)](https://extensions.typo3.org/extension/personio_jobs)
 [![Supported TYPO3 versions](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/typo3/shields)](https://extensions.typo3.org/extension/personio_jobs)
@@ -76,13 +76,14 @@ The extension provides two plugins:
 #### `personio-jobs:import`
 
 ```bash
-typo3 personio-jobs:import [--force] [--no-delete] [--no-update] [--dry-run]
+typo3 personio-jobs:import <storage-pid> [options]
 ```
 
 The following command parameters are available:
 
 | Command parameter       | Description                                              | Required | Default |
 |-------------------------|----------------------------------------------------------|----------|---------|
+| **`storage-pid`**       | Storage pid of imported jobs                             | ✅        | –       |
 | **`-f`**, **`--force`** | Enforce re-import of unchanged jobs                      | –        | no      |
 | **`--no-delete`**       | Do not delete orphaned jobs                              | –        | no      |
 | **`--no-update`**       | Do not update imported jobs that have been changed       | –        | no      |
@@ -119,7 +120,6 @@ The following extension configuration options are available:
 | Configuration key | Description                                                          | Required | Default |
 |-------------------|----------------------------------------------------------------------|----------|---------|
 | **`apiUrl`**      | URL to Personio job page, e.g. `https://my-company.jobs.personio.de` | ✅        | –       |
-| **`storagePid`**  | UID of the page under which the job pages are persisted              | ✅        | `0`     |
 
 ### Routing configuration
 
