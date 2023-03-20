@@ -121,6 +121,38 @@ The following extension configuration options are available:
 | **`apiUrl`**      | URL to Personio job page, e.g. `https://my-company.jobs.personio.de` | ✅        | –       |
 | **`storagePid`**  | UID of the page under which the job pages are persisted              | ✅        | `0`     |
 
+### Routing configuration
+
+On each import, a slug is generated. The slug can be used for an advanced routing
+configuration of job detail pages.
+
+Example:
+
+```yaml
+# config/sites/<identifier>/config.yaml
+
+routeEnhancers:
+  PersonioJobDetail:
+    type: Extbase
+    limitToPages:
+      # Replace with the actual detail page id
+      - 10
+    extension: PersonioJobs
+    plugin: Show
+    routes:
+      -
+        routePath: '/job/{job_title}'
+        _controller: 'Job::show'
+        _arguments:
+          job_title: job
+    defaultController: 'Job::show'
+    aspects:
+      job_title:
+        type: PersistedAliasMapper
+        tableName: tx_personiojobs_domain_model_job
+        routeFieldName: slug
+```
+
 ## 🧑‍💻 Contributing
 
 Please have a look at [`CONTRIBUTING.md`](CONTRIBUTING.md).
