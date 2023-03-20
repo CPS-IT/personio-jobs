@@ -1,6 +1,6 @@
 <?php
 
-defined('TYPO3') or die();
+declare(strict_types=1);
 
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
@@ -21,14 +21,13 @@ defined('TYPO3') or die();
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-\CPSIT\Typo3PersonioJobs\Configuration\Tca::addPlugin(
-    'List',
-    'tx-personio-jobs-plugin-list',
-    'FILE:EXT:personio_jobs/Configuration/FlexForms/List.xml',
-);
-
-\CPSIT\Typo3PersonioJobs\Configuration\Tca::addPlugin(
-    'Show',
-    'tx-personio-jobs-plugin-show',
-    'FILE:EXT:personio_jobs/Configuration/FlexForms/Show.xml',
-);
+return [
+    'tx-personio-jobs-plugin-list' => [
+        'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        'source' => 'EXT:personio_jobs/Resources/Public/Icons/plugins.list.svg',
+    ],
+    'tx-personio-jobs-plugin-show' => [
+        'provider' => \TYPO3\CMS\Core\Imaging\IconProvider\SvgIconProvider::class,
+        'source' => 'EXT:personio_jobs/Resources/Public/Icons/plugins.show.svg',
+    ],
+];
