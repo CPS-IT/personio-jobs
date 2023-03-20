@@ -70,7 +70,7 @@
 			"@lint:php:fix",
 			"@lint:typoscript"
 		],
-		"lint:composer": "@lint:composer --dry-run",
+		"lint:composer": "@lint:composer:fix --dry-run",
 		"lint:composer:fix": "@composer normalize --no-check-lock",
 		"lint:editorconfig": "ec --fix",
 		"lint:editorconfig:fix": "@lint:editorconfig --fix",
