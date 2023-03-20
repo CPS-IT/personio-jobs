@@ -31,6 +31,7 @@
 		"armin/editorconfig-cli": "^1.5",
 		"brotkrueml/schema": "^2.7",
 		"ergebnis/composer-normalize": "^2.29",
+		"helmich/typo3-typoscript-lint": "^3.0",
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan": "^1.10",
 		"saschaegerer/phpstan-typo3": "^1.8",
@@ -66,7 +67,8 @@
 		"lint": [
 			"@lint:composer:fix",
 			"@lint:editorconfig:fix",
-			"@lint:php:fix"
+			"@lint:php:fix",
+			"@lint:typoscript"
 		],
 		"lint:composer": "@lint:composer --dry-run",
 		"lint:composer:fix": "@composer normalize --no-check-lock",
@@ -74,6 +76,7 @@
 		"lint:editorconfig:fix": "@lint:editorconfig --fix",
 		"lint:php": "@lint:php:fix --dry-run",
 		"lint:php:fix": "php-cs-fixer fix",
+		"lint:typoscript": "typoscript-lint -c typoscript-lint.yml",
 		"migration": [
 			"@migration:rector"
 		],
