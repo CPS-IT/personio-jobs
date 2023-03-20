@@ -38,6 +38,7 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -223,6 +224,14 @@ class JobController extends ActionController
             $description .= $rawJobDescription . ' ';
         }
 
-        return strip_tags($this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE'), '<p>');
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/12.0/Breaking-96520-EnforceNon-emptyConfigurationInCObjparseFunc.html
+            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, null, '< lib.parseFunc_RTE');
+        } else {
+            /* @phpstan-ignore-next-line */
+            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE');
+        }
+
+        return strip_tags($parsedDescription, '<p>');
     }
 }
