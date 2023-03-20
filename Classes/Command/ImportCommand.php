@@ -138,7 +138,7 @@ final class ImportCommand extends Command
                 $jobDescription->setPid($storagePid);
             }
 
-            $this->addOrUpdateJob($job, $force, !$noUpdate);
+            $this->addOrUpdateJob($job, $storagePid, $force, !$noUpdate);
         }
 
         // Remove orphaned jobs
@@ -163,9 +163,9 @@ final class ImportCommand extends Command
         return self::SUCCESS;
     }
 
-    private function addOrUpdateJob(Job $job, bool $force = false, bool $update = true): void
+    private function addOrUpdateJob(Job $job, int $storagePid, bool $force = false, bool $update = true): void
     {
-        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId());
+        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid);
 
         // Add non-existing job
         if ($existingJob === null) {
