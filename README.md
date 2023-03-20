@@ -159,7 +159,7 @@ Please have a look at [`CONTRIBUTING.md`](CONTRIBUTING.md).
 
 ## 💎 Credits
 
-The Personio logo as part of the extension icon is a trademark of
+The Personio logo as part of all distributed icons is a trademark of
 [Personio SE & Co. KG][4].
 
 ## ⭐ License
