@@ -7,11 +7,47 @@
 				<source>Jobs</source>
 			</trans-unit>
 
-			<trans-unit id="meta.category">
+			<trans-unit id="meta.subcompany">
+				<source>Subcompany</source>
+			</trans-unit>
+			<trans-unit id="meta.office">
+				<source>Office</source>
+			</trans-unit>
+			<trans-unit id="meta.department">
+				<source>Department</source>
+			</trans-unit>
+			<trans-unit id="meta.recruitingCategory">
 				<source>Category</source>
 			</trans-unit>
-			<trans-unit id="meta.createDate">
-				<source>Created on</source>
+			<trans-unit id="meta.employmentType">
+				<source>Employment type</source>
+			</trans-unit>
+			<trans-unit id="meta.employmentType.freelance">
+				<source>Freelance</source>
+			</trans-unit>
+			<trans-unit id="meta.employmentType.intern">
+				<source>Internship</source>
+			</trans-unit>
+			<trans-unit id="meta.employmentType.permanent">
+				<source>Permanent</source>
+			</trans-unit>
+			<trans-unit id="meta.employmentType.trainee">
+				<source>Trainee</source>
+			</trans-unit>
+			<trans-unit id="meta.employmentType.working_student">
+				<source>Working student</source>
+			</trans-unit>
+			<trans-unit id="meta.schedule">
+				<source>Schedule</source>
+			</trans-unit>
+			<trans-unit id="meta.schedule.full-time">
+				<source>Full time</source>
+			</trans-unit>
+			<trans-unit id="meta.schedule.full-or-part-time">
+				<source>Full- or part time</source>
+			</trans-unit>
+			<trans-unit id="meta.schedule.part-time">
+				<source>Part time</source>
 			</trans-unit>
 
 			<trans-unit id="link.detail">

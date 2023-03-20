@@ -1,24 +1,46 @@
 <html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
       data-namespace-typo3-fluid="true">
 
-<div class="job-detail">
-    <h2 class="job-detail-header">{job.name}</h2>
+<f:layout name="Detail" />
 
-    <ul class="job-detail-meta">
+<f:section name="content">
+    <h1 class="h1">{job.name}</h1>
+
+    <div class="mt-4">
+        <span class="badge text-bg-light rounded-pill">#{job.personioId}</span>
+    </div>
+
+    <ul class="list-group list-group-horizontal mt-4">
         <f:render partial="Detail/Meta" arguments="{
-            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.category\')}',
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.subcompany\')}',
+            value: job.subcompany
+        }" />
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.office\')}',
+            value: job.office
+        }" />
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.department\')}',
+            value: job.department
+        }" />
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.recruitingCategory\')}',
             value: job.recruitingCategory
         }" />
         <f:render partial="Detail/Meta" arguments="{
-            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.createDate\')}',
-            value: '{job.createDate -> f:format.date()}'
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.employmentType\')}',
+            value: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.employmentType.{job.employmentType}\')}'
+        }" />
+        <f:render partial="Detail/Meta" arguments="{
+            title: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.schedule\')}',
+            value: '{f:translate(key: \'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:meta.schedule.{job.schedule}\')}'
         }" />
     </ul>
 
     <f:for each="{job.jobDescriptions}" as="jobDescription">
-        <section class="job-detail-description">
+        <section class="job-detail-description mt-4">
             <f:if condition="{jobDescription.header}">
-                <h3>{jobDescription.header}</h3>
+                <h2 class="h2">{jobDescription.header}</h2>
             </f:if>
 
             <f:if condition="{jobDescription.bodytext}">
@@ -28,16 +50,16 @@
     </f:for>
 
     <f:if condition="{applyUrl}">
-        <p class="job-detail-apply">
-            <f:link.external uri="{applyUrl}">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.apply')}</f:link.external>
-        </p>
+        <div class="job-detail-apply mt-4">
+            <f:link.external uri="{applyUrl}" class="btn btn-primary">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.apply')}</f:link.external>
+        </div>
     </f:if>
 
     <f:if condition="{settings.listPid}">
-        <p class="job-detail-back-link">
-            <f:link.page pageUid="{settings.listPid}">{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.list')}</f:link.page>
-        </p>
+        <div class="job-detail-back-link mt-4">
+            <f:link.page pageUid="{settings.listPid}">&laquo; {f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:link.list')}</f:link.page>
+        </div>
     </f:if>
-</div>
+</f:section>
 
 </html>
