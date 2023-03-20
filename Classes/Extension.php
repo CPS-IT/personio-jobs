@@ -25,7 +25,9 @@ namespace CPSIT\Typo3PersonioJobs;
 
 use CPSIT\Typo3PersonioJobs\Controller\JobController;
 use CPSIT\Typo3PersonioJobs\Hooks\DataHandlerHook;
+use TYPO3\CMS\Core\Core\Environment;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
 
 /**
@@ -78,5 +80,23 @@ final class Extension
         ExtensionManagementUtility::addPageTSConfig(
             '@import "EXT:personio_jobs/Configuration/TSconfig/Page.tsconfig"',
         );
+    }
+
+    /**
+     * Load additional libraries provided by PHAR file (only to be used in non-Composer-mode).
+     *
+     * FOR USE IN ext_localconf.php AND NON-COMPOSER-MODE ONLY.
+     */
+    public static function loadVendorLibraries(): void
+    {
+        // Vendor libraries are already available in Composer mode
+        if (Environment::isComposerMode()) {
+            return;
+        }
+
+        $vendorPharFile = GeneralUtility::getFileAbsFileName('EXT:personio_jobs/Resources/Private/Libs/vendors.phar');
+        if (file_exists($vendorPharFile)) {
+            require_once 'phar://' . $vendorPharFile . '/vendor/autoload.php';
+        }
     }
 }

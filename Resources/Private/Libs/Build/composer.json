@@ -1,0 +1,18 @@
+{
+	"name": "cpsit/typo3-personio-jobs-libs",
+	"description": "Additional libraries to support non-composer mode of EXT:solver",
+	"license": "GPL-2.0-or-later",
+	"authors": [
+		{
+			"name": "Elias Häußler",
+			"email": "e.haeussler@familie-redlich.de",
+			"homepage": "https://www.cps-it.de",
+			"role": "Developer"
+		}
+	],
+	"require": {
+		"php": "~8.1.0",
+		"cuyz/valinor": "^1.3",
+		"mtownsend/xml-to-array": "^2.0"
+	}
+}
