@@ -4,10 +4,10 @@
 
 # TYPO3 extension `personio_jobs`
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/xxx/maintainability)](https://codeclimate.com/github/CPS-IT/typo3-personio-jobs/maintainability)
-[![CGL](https://github.com/CPS-IT/typo3-personio-jobs/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/typo3-personio-jobs/actions/workflows/cgl.yaml)
-[![Release](https://github.com/CPS-IT/typo3-personio-jobs/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/typo3-personio-jobs/actions/workflows/release.yaml)
-[![License](http://poser.pugx.org/CPS-IT/typo3-personio-jobs/license)](LICENSE.md)\
+[![Maintainability](https://api.codeclimate.com/v1/badges/xxx/maintainability)](https://codeclimate.com/github/CPS-IT/personio-jobs/maintainability)
+[![CGL](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml)
+[![Release](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml)
+[![License](http://poser.pugx.org/CPS-IT/personio-jobs/license)](LICENSE.md)\
 [![Version](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/version/shields)](https://extensions.typo3.org/extension/personio_jobs)
 [![Downloads](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/downloads/shields)](https://extensions.typo3.org/extension/personio_jobs)
 [![Supported TYPO3 versions](https://shields.io/endpoint?url=https://typo3-badges.dev/badge/personio_jobs/typo3/shields)](https://extensions.typo3.org/extension/personio_jobs)
@@ -15,8 +15,8 @@
 
 📦&nbsp;[Packagist](https://packagist.org/packages/cpsit/typo3-personio-jobs) |
 🐥&nbsp;[TYPO3 extension repository](https://extensions.typo3.org/extension/personio_jobs) |
-💾&nbsp;[Repository](https://github.com/CPS-IT/typo3-personio-jobs) |
-🐛&nbsp;[Issue tracker](https://github.com/CPS-IT/typo3-personio-jobs/issues)
+💾&nbsp;[Repository](https://github.com/CPS-IT/personio-jobs) |
+🐛&nbsp;[Issue tracker](https://github.com/CPS-IT/personio-jobs/issues)
 
 </div>
 

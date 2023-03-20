@@ -7,8 +7,8 @@ appreciated. In order to maintain a high code quality, please follow all steps b
 
 ```bash
 # Clone repository
-git clone https://github.com/CPS-IT/typo3-personio-jobs.git
-cd typo3-personio-jobs
+git clone https://github.com/CPS-IT/personio-jobs.git
+cd personio-jobs
 
 # Install dependencies
 composer install
