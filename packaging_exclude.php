@@ -39,6 +39,7 @@ return [
         'CODE_OF_CONDUCT.md',
         'composer.lock',
         'CONTRIBUTING.md',
+        'crowdin.yaml',
         'editorconfig',
         'gitattributes',
         'gitignore',
