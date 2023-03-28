@@ -7054,25 +7054,26 @@
         },
         {
             "name": "saschaegerer/phpstan-typo3",
-            "version": "1.8.2",
+            "version": "1.8.3",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sascha-egerer/phpstan-typo3.git",
-                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71"
+                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/a5121d6e610ced02445a8ac7deb91cd31bb02b71",
-                "reference": "a5121d6e610ced02445a8ac7deb91cd31bb02b71",
+                "url": "https://api.github.com/repos/sascha-egerer/phpstan-typo3/zipball/4f3a47b57d25ba50063d2288c558bd26934cbab9",
+                "reference": "4f3a47b57d25ba50063d2288c558bd26934cbab9",
                 "shasum": ""
             },
             "require": {
                 "bnf/phpstan-psr-container": "^1.0",
+                "composer/semver": "^3.3",
                 "nikic/php-parser": "^4.15.1",
                 "php": "^7.2 || ^8.0",
                 "phpstan/phpstan": "^1.8.9",
-                "typo3/cms-core": "^10.4 || ^11.5 || ^12.0",
-                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.0"
+                "typo3/cms-core": "^10.4 || ^11.5 || ^12.2",
+                "typo3/cms-extbase": "^10.4 || ^11.5 || ^12.2"
             },
             "require-dev": {
                 "consistence-community/coding-standard": "^3.10.1",
@@ -7107,7 +7108,7 @@
             "description": "TYPO3 CMS class reflection extension for PHPStan",
             "support": {
                 "issues": "https://github.com/sascha-egerer/phpstan-typo3/issues",
-                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.2"
+                "source": "https://github.com/sascha-egerer/phpstan-typo3/tree/1.8.3"
             },
             "funding": [
                 {
@@ -7119,7 +7120,7 @@
                     "type": "liberapay"
                 }
             ],
-            "time": "2022-11-06T09:11:41+00:00"
+            "time": "2023-03-19T20:25:37+00:00"
         },
         {
             "name": "sebastian/diff",

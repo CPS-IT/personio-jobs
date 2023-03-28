@@ -120,6 +120,9 @@ class Job extends AbstractEntity implements JsonSerializable
         $this->jobDescriptions = new ObjectStorage();
     }
 
+    /**
+     * @param int<1, max> $uid
+     */
     public function setUid(int $uid): self
     {
         $this->uid = $uid;
