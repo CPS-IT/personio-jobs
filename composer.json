@@ -23,9 +23,9 @@
 		"mtownsend/xml-to-array": "^2.0",
 		"psr/http-message": "^1.0",
 		"symfony/console": "^5.4 || ^6.0",
-		"typo3/cms-core": "^11.5 || ^12.2",
-		"typo3/cms-extbase": "^11.5 || ^12.2",
-		"typo3/cms-frontend": "^11.5 || ^12.2"
+		"typo3/cms-core": "^11.5 || ^12.3",
+		"typo3/cms-extbase": "^11.5 || ^12.3",
+		"typo3/cms-frontend": "^11.5 || ^12.3"
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.5",
