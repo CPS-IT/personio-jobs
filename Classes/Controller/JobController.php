@@ -232,6 +232,6 @@ class JobController extends ActionController
             $parsedDescription = $this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE');
         }
 
-        return strip_tags($parsedDescription, '<p>');
+        return $parsedDescription;
     }
 }
