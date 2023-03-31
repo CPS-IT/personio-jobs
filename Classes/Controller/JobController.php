@@ -24,26 +24,17 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Controller;
 
 use Brotkrueml\Schema\Manager\SchemaManager;
-use Brotkrueml\Schema\Model\Type\JobPosting;
-use Brotkrueml\Schema\Model\Type\Occupation;
-use Brotkrueml\Schema\Model\Type\Organization;
-use Brotkrueml\Schema\Model\Type\Place;
-use Brotkrueml\Schema\Type\TypeFactory;
 use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
-use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
+use CPSIT\Typo3PersonioJobs\Domain\Factory\SchemaFactory;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
-use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
-use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
+use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider;
+use CPSIT\Typo3PersonioJobs\Service\PersonioService;
 use Psr\Http\Message\ResponseInterface;
-use TYPO3\CMS\Core\Http\Uri;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
-use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
  * JobController
@@ -53,17 +44,14 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 class JobController extends ActionController
 {
-    protected readonly Uri $apiUrl;
-
     public function __construct(
         protected readonly JobRepository $jobRepository,
         protected readonly MetaTagManagerRegistry $metaTagManagerRegistry,
         protected readonly JobPageTitleProvider $pageTitleProvider,
         protected readonly CacheManager $cacheManager,
-        protected readonly ContentObjectRenderer $contentObjectRenderer,
-        ExtensionConfiguration $extensionConfiguration,
+        protected readonly PersonioService $personioService,
+        protected readonly SchemaFactory $schemaFactory,
     ) {
-        $this->apiUrl = $extensionConfiguration->getApiUrl();
     }
 
     public function listAction(): ResponseInterface
@@ -83,27 +71,12 @@ class JobController extends ActionController
 
         $this->overwritePageTitle($job);
         $this->addMetaTags($job);
-        $this->addJsonSchema($job);
+        $this->addSchema($job);
 
         $this->view->assign('job', $job);
-        $this->view->assign('applyUrl', $this->buildApplyUrl($job));
+        $this->view->assign('applyUrl', (string)$this->personioService->getApplyUrl($job));
 
         return $this->htmlResponse();
-    }
-
-    protected function buildApplyUrl(Job $job): string
-    {
-        $language = $this->request->getAttribute('language')?->getTwoLetterIsoCode();
-        $applyUrl = $this->apiUrl
-            ->withPath(sprintf('/job/%d', $job->getPersonioId()))
-            ->withFragment('apply')
-        ;
-
-        if ($language !== null) {
-            $applyUrl = $applyUrl->withQuery(sprintf('?language=%s', $language));
-        }
-
-        return (string)$applyUrl;
     }
 
     protected function overwritePageTitle(Job $job): void
@@ -151,87 +124,16 @@ class JobController extends ActionController
         return mb_strimwidth($description, 0, $maxLength, '…');
     }
 
-    protected function addJsonSchema(Job $job): void
+    protected function addSchema(Job $job): void
     {
-        // Early return if schema extension is not installed
-        if (!ExtensionManagementUtility::isLoaded('schema')) {
+        try {
+            $jobPosting = $this->schemaFactory->createJobPosting($job);
+        } catch (ExtensionNotLoadedException) {
+            // Early return if schema extension is not installed
             return;
         }
 
-        /** @var Organization $organizationType */
-        $organizationType = TypeFactory::createType('Organization');
-        $organizationType
-            ->setProperty('name', $job->getSubcompany())
-            ->setProperty('address', $job->getOffice())
-        ;
-
-        /** @var Place $placeType */
-        $placeType = TypeFactory::createType('Place');
-        $placeType->setProperty('address', $job->getOffice());
-
-        /** @var Occupation $occupationType */
-        $occupationType = TypeFactory::createType('Occupation');
-        $occupationType->setProperty('occupationalCategory', $job->getOccupationCategory());
-
-        /** @var JobPosting $jobType */
-        $jobType = TypeFactory::createType('JobPosting');
-        $jobType
-            ->setProperty('datePosted', ($job->getCreateDate() ?? new \DateTime())->format('Y-m-d'))
-            ->setProperty('employmentType', $this->decorateEmploymentType($job))
-            ->setProperty('hiringOrganization', $organizationType)
-            ->setProperty('jobLocation', $placeType)
-            ->setProperty('relevantOccupation', $occupationType)
-            ->setProperty('title', $job->getName())
-            ->setProperty('description', $this->decorateDescription($job))
-            ->setProperty('url', (string)$this->request->getUri())
-        ;
-
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType($jobType);
-    }
-
-    /**
-     * @return string|list<string>
-     * @see https://developers.google.com/search/docs/appearance/structured-data/job-posting#job-posting-definition
-     */
-    protected function decorateEmploymentType(Job $job): string|array
-    {
-        $employmentType = EmploymentType::tryFrom($job->getEmploymentType());
-        $schedule = Schedule::tryFrom($job->getSchedule());
-
-        if ($employmentType === null && $schedule === null) {
-            return 'OTHER';
-        }
-
-        if ($employmentType === EmploymentType::Intern) {
-            return 'INTERN';
-        }
-
-        return match ($schedule) {
-            Schedule::FullTime => 'FULL_TIME',
-            Schedule::PartTime => 'PART_TIME',
-            Schedule::FullOrPartTime => ['FULL_TIME', 'PART_TIME'],
-            null => 'OTHER',
-        };
-    }
-
-    protected function decorateDescription(Job $job): string
-    {
-        $description = '';
-
-        foreach ($job->getJobDescriptions() as $jobDescription) {
-            $rawJobDescription = $jobDescription->getBodytext();
-            $description .= $rawJobDescription . ' ';
-        }
-
-        if ((new Typo3Version())->getMajorVersion() >= 12) {
-            // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/12.0/Breaking-96520-EnforceNon-emptyConfigurationInCObjparseFunc.html
-            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, null, '< lib.parseFunc_RTE');
-        } else {
-            /* @phpstan-ignore-next-line */
-            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE');
-        }
-
-        return $parsedDescription;
+        $schemaManager->addType($jobPosting);
     }
 }
