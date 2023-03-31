@@ -27,6 +27,7 @@ use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
+use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use CuyZ\Valinor\Mapper\MappingError;
 use CuyZ\Valinor\Mapper\Source\Source;
 use CuyZ\Valinor\Mapper\Tree\Message\Messages;
@@ -73,6 +74,24 @@ final class PersonioService
 
             throw MalformedApiResponseException::forMappingErrors($errors);
         }
+    }
+
+    public function getJobUrl(Job $job): Uri
+    {
+        $serverRequest = FrontendUtility::getServerRequest();
+        $language = $serverRequest->getAttribute('language')?->getTwoLetterIsoCode();
+        $jobUrl = $this->apiUrl->withPath(sprintf('/job/%d', $job->getPersonioId()));
+
+        if ($language !== null) {
+            $jobUrl = $jobUrl->withQuery(sprintf('?language=%s', $language));
+        }
+
+        return $jobUrl;
+    }
+
+    public function getApplyUrl(Job $job): Uri
+    {
+        return $this->getJobUrl($job)->withFragment('apply');
     }
 
     private function createMapper(): TreeMapper
