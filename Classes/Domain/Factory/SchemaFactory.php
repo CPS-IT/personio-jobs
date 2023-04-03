@@ -47,12 +47,12 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-class SchemaFactory
+final class SchemaFactory
 {
     public function __construct(
-        protected readonly PersonioService $personioService,
-        protected readonly ContentObjectRenderer $contentObjectRenderer,
-        protected readonly EventDispatcherInterface $eventDispatcher,
+        private readonly PersonioService $personioService,
+        private readonly ContentObjectRenderer $contentObjectRenderer,
+        private readonly EventDispatcherInterface $eventDispatcher,
     ) {
     }
 
@@ -88,7 +88,7 @@ class SchemaFactory
         return $jobPosting;
     }
 
-    protected function createOrganization(Job $job): Organization
+    private function createOrganization(Job $job): Organization
     {
         /** @var Organization $organization */
         $organization = TypeFactory::createType('Organization')
@@ -99,7 +99,7 @@ class SchemaFactory
         return $organization;
     }
 
-    protected function createPlace(Job $job): Place
+    private function createPlace(Job $job): Place
     {
         /** @var Place $place */
         $place = TypeFactory::createType('Place')
@@ -113,7 +113,7 @@ class SchemaFactory
      * @return value-of<EmploymentTypeSchema>|list<value-of<EmploymentTypeSchema>>
      * @see https://developers.google.com/search/docs/appearance/structured-data/job-posting#job-posting-definition
      */
-    protected function decorateEmploymentType(Job $job): string|array
+    private function decorateEmploymentType(Job $job): string|array
     {
         $employmentType = EmploymentType::tryFrom($job->getEmploymentType());
         $schedule = Schedule::tryFrom($job->getSchedule());
@@ -134,7 +134,7 @@ class SchemaFactory
         };
     }
 
-    protected function decorateDescription(Job $job): string
+    private function decorateDescription(Job $job): string
     {
         $description = '';
 
