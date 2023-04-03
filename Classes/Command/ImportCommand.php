@@ -28,9 +28,11 @@ use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
+use CPSIT\Typo3PersonioJobs\Event\AfterJobsImportedEvent;
 use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
 use CPSIT\Typo3PersonioJobs\Service\PersonioService;
 use Generator;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -65,6 +67,7 @@ final class ImportCommand extends Command
         private readonly PersistenceManagerInterface $persistenceManager,
         private readonly CacheManager $cacheManager,
         private readonly Connection $connection,
+        private readonly EventDispatcherInterface $eventDispatcher,
     ) {
         parent::__construct('personio-jobs:import');
     }
@@ -241,6 +244,8 @@ final class ImportCommand extends Command
         foreach ($this->getModifiedJobs() as $job) {
             $this->updateSlug($job);
         }
+
+        $this->eventDispatcher->dispatch(new AfterJobsImportedEvent($this->result));
 
         $this->flushCacheTags();
     }
