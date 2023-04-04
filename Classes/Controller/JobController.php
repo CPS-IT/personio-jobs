@@ -26,6 +26,7 @@ namespace CPSIT\Typo3PersonioJobs\Controller;
 use Brotkrueml\Schema\Manager\SchemaManager;
 use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
 use CPSIT\Typo3PersonioJobs\Domain\Factory\SchemaFactory;
+use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ListDemand;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
@@ -58,7 +59,8 @@ class JobController extends ActionController
     {
         $this->cacheManager->addTag();
 
-        $jobs = $this->jobRepository->findAll();
+        $demand = ListDemand::fromArray($this->settings);
+        $jobs = $this->jobRepository->findByDemand($demand);
 
         $this->view->assign('jobs', $jobs);
 
