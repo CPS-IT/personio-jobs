@@ -14,6 +14,52 @@
                     </config>
                 </TCEforms>
             </settings.detailPid>
+            <settings.sorting>
+                <TCEforms>
+                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting</label>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items>
+                            <numIndex index="0">
+                                <numIndex index="0"></numIndex>
+                                <numIndex index="1"></numIndex>
+                            </numIndex>
+                            <numIndex index="1">
+                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.sorting</numIndex>
+                                <numIndex index="1">sorting</numIndex>
+                            </numIndex>
+                            <numIndex index="2">
+                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.name</numIndex>
+                                <numIndex index="1">name</numIndex>
+                            </numIndex>
+                            <numIndex index="3">
+                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.create_date</numIndex>
+                                <numIndex index="1">create_date</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.sorting>
+            <settings.sortingDirection>
+                <TCEforms>
+                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection</label>
+                    <config>
+                        <type>select</type>
+                        <renderType>selectSingle</renderType>
+                        <items>
+                            <numIndex index="0">
+                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.asc</numIndex>
+                                <numIndex index="1">asc</numIndex>
+                            </numIndex>
+                            <numIndex index="1">
+                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.desc</numIndex>
+                                <numIndex index="1">desc</numIndex>
+                            </numIndex>
+                        </items>
+                    </config>
+                </TCEforms>
+            </settings.sortingDirection>
         </el>
     </ROOT>
 </extra>
