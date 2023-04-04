@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Domain\Repository;
 
+use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\Demand;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
@@ -37,6 +38,17 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  */
 class JobRepository extends Repository
 {
+    /**
+     * @return QueryResultInterface<Job>
+     */
+    public function findByDemand(Demand $demand): QueryResultInterface
+    {
+        $query = $this->createQuery();
+        $demand->apply($query);
+
+        return $query->execute();
+    }
+
     public function findOneByPersonioId(int $personioId, int $storagePid = null): ?Job
     {
         $query = $this->createQuery();

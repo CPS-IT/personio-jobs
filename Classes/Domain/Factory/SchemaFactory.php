@@ -31,10 +31,12 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Schema\EmploymentType as EmploymentTypeSchema;
+use CPSIT\Typo3PersonioJobs\Event\EnrichJobPostingSchemaEvent;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioService;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use DateTime;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -45,11 +47,12 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-class SchemaFactory
+final class SchemaFactory
 {
     public function __construct(
-        protected readonly PersonioService $personioService,
-        protected readonly ContentObjectRenderer $contentObjectRenderer,
+        private readonly PersonioService $personioService,
+        private readonly ContentObjectRenderer $contentObjectRenderer,
+        private readonly EventDispatcherInterface $eventDispatcher,
     ) {
     }
 
@@ -80,10 +83,12 @@ class SchemaFactory
             ->setProperty('sameAs', (string)$this->personioService->getJobUrl($job))
         ;
 
+        $this->eventDispatcher->dispatch(new EnrichJobPostingSchemaEvent($job, $jobPosting));
+
         return $jobPosting;
     }
 
-    protected function createOrganization(Job $job): Organization
+    private function createOrganization(Job $job): Organization
     {
         /** @var Organization $organization */
         $organization = TypeFactory::createType('Organization')
@@ -94,7 +99,7 @@ class SchemaFactory
         return $organization;
     }
 
-    protected function createPlace(Job $job): Place
+    private function createPlace(Job $job): Place
     {
         /** @var Place $place */
         $place = TypeFactory::createType('Place')
@@ -108,7 +113,7 @@ class SchemaFactory
      * @return value-of<EmploymentTypeSchema>|list<value-of<EmploymentTypeSchema>>
      * @see https://developers.google.com/search/docs/appearance/structured-data/job-posting#job-posting-definition
      */
-    protected function decorateEmploymentType(Job $job): string|array
+    private function decorateEmploymentType(Job $job): string|array
     {
         $employmentType = EmploymentType::tryFrom($job->getEmploymentType());
         $schedule = Schedule::tryFrom($job->getSchedule());
@@ -129,7 +134,7 @@ class SchemaFactory
         };
     }
 
-    protected function decorateDescription(Job $job): string
+    private function decorateDescription(Job $job): string
     {
         $description = '';
 

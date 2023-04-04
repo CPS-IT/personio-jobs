@@ -23,6 +23,27 @@
 			<trans-unit id="flexforms.list.settings.detailPid">
 				<source>Detail page</source>
 			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sorting">
+				<source>Sort by</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sorting.sorting">
+				<source>Sorting</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sorting.name">
+				<source>Name</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sorting.create_date">
+				<source>Create date</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sortingDirection">
+				<source>Sorting direction</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sortingDirection.asc">
+				<source>ascending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.sortingDirection.desc">
+				<source>descending</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>

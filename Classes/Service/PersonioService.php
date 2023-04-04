@@ -26,6 +26,7 @@ namespace CPSIT\Typo3PersonioJobs\Service;
 use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
+use CPSIT\Typo3PersonioJobs\Event\AfterJobsMappedEvent;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use CuyZ\Valinor\Mapper\MappingError;
@@ -35,6 +36,7 @@ use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
 use DateTimeInterface;
 use Mtownsend\XmlToArray\XmlToArray;
+use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
 
@@ -51,6 +53,7 @@ final class PersonioService
 
     public function __construct(
         private readonly RequestFactory $requestFactory,
+        private readonly EventDispatcherInterface $eventDispatcher,
         ExtensionConfiguration $extensionConfiguration,
     ) {
         $this->apiUrl = $extensionConfiguration->getApiUrl();
@@ -63,12 +66,17 @@ final class PersonioService
      */
     public function getJobs(): array
     {
-        $response = $this->requestFactory->request((string)$this->apiUrl->withPath('/xml'));
+        $requestUri = $this->apiUrl->withPath('/xml');
+        $response = $this->requestFactory->request((string)$requestUri);
         $array = XmlToArray::convert((string)$response->getBody());
         $source = Source::array($array['position'] ?? []);
 
         try {
-            return $this->mapper->map('list<' . Job::class . '>', $source);
+            $jobs = $this->mapper->map('list<' . Job::class . '>', $source);
+
+            $this->eventDispatcher->dispatch(new AfterJobsMappedEvent($requestUri, $jobs));
+
+            return $jobs;
         } catch (MappingError $error) {
             $errors = Messages::flattenFromNode($error->node())->errors();
 

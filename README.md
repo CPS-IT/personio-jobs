@@ -153,6 +153,29 @@ routeEnhancers:
         routeFieldName: slug
 ```
 
+## ⏰ Events
+
+PSR-14 events can be used to modify jobs and job schemas. The following events
+are available:
+
+* [`AfterJobsImportedEvent`](Classes/Event/AfterJobsImportedEvent.php)
+* [`AfterJobsMappedEvent`](Classes/Event/AfterJobsMappedEvent.php)
+* [`EnrichJobPostingSchemaEvent`](Classes/Event/EnrichJobPostingSchemaEvent.php)
+
+## 🚧 Migration
+
+### 0.3.x → 0.4.x
+
+#### Finalize `SchemaFactory`
+
+[`SchemaFactory`](Classes/Domain/Factory/SchemaFactory.php) is now final and cannot
+be extended anymore.
+
+* Remove classes extending from `SchemaFactory`.
+* Replace customizations of the `SchemaFactory` by an event listener for the
+  [`EnrichJobPostingSchemaEvent`](Classes/Event/EnrichJobPostingSchemaEvent.php)
+  PSR-14 event.
+
 ## 🧑‍💻 Contributing
 
 Please have a look at [`CONTRIBUTING.md`](CONTRIBUTING.md).
