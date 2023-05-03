@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="he">
+    <header/>
+    <body>
+      <trans-unit id="wizards.tx_personiojobs_list.title">
+        <source>Personio: Job list</source>
+        <target state="needs-translation">Personio: Job list</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_list.description">
+        <source>Inserts a list with all available jobs.</source>
+        <target state="needs-translation">Inserts a list with all available jobs.</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_show.title">
+        <source>Personio: Job detail</source>
+        <target state="needs-translation">Personio: Job detail</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_show.description">
+        <source>Shows the detail view of a single job.</source>
+        <target state="needs-translation">Shows the detail view of a single job.</target>
+      </trans-unit>
+      <trans-unit id="flexforms.tab.settings">
+        <source>Settings</source>
+        <target state="needs-translation">Settings</target>
+      </trans-unit>
+      <trans-unit id="flexforms.tab.filter">
+        <source>Filter</source>
+        <target state="needs-translation">Filter</target>
+      </trans-unit>
+      <trans-unit id="flexforms.show.settings.listPid">
+        <source>List page</source>
+        <target state="needs-translation">List page</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.detailPid">
+        <source>Detail page</source>
+        <target state="needs-translation">Detail page</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting">
+        <source>Sort by</source>
+        <target state="needs-translation">Sort by</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.sorting">
+        <source>Sorting</source>
+        <target state="needs-translation">Sorting</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.name">
+        <source>Name</source>
+        <target state="needs-translation">Name</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.create_date">
+        <source>Create date</source>
+        <target state="needs-translation">Create date</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection">
+        <source>Sorting direction</source>
+        <target state="needs-translation">Sorting direction</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection.asc">
+        <source>ascending</source>
+        <target state="needs-translation">ascending</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection.desc">
+        <source>descending</source>
+        <target state="needs-translation">descending</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyInclude">
+        <source>Subcompany (include)</source>
+        <target state="needs-translation">Subcompany (include)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyInclude.description">
+        <source>Multiple values can be separated by comma.</source>
+        <target state="needs-translation">Multiple values can be separated by comma.</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyExclude">
+        <source>Subcompany (exclude)</source>
+        <target state="needs-translation">Subcompany (exclude)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyExclude.description">
+        <source>Multiple values can be separated by comma.</source>
+        <target state="needs-translation">Multiple values can be separated by comma.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
