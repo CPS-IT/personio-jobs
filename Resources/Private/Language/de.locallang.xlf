@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="list.header" approved="yes">
+        <source>Jobs</source>
+        <target state="final">Stellenangebote</target>
+      </trans-unit>
+      <trans-unit id="meta.subcompany" approved="yes">
+        <source>Subcompany</source>
+        <target state="final">Gesellschaft</target>
+      </trans-unit>
+      <trans-unit id="meta.office" approved="yes">
+        <source>Office</source>
+        <target state="final">Standort</target>
+      </trans-unit>
+      <trans-unit id="meta.department" approved="yes">
+        <source>Department</source>
+        <target state="final">Abteilung</target>
+      </trans-unit>
+      <trans-unit id="meta.recruitingCategory" approved="yes">
+        <source>Category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType" approved="yes">
+        <source>Employment type</source>
+        <target state="final">Anstellungsart</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.freelance" approved="yes">
+        <source>Freelance</source>
+        <target state="final">Freelancer</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.intern" approved="yes">
+        <source>Internship</source>
+        <target state="final">Praktikum</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.permanent" approved="yes">
+        <source>Permanent</source>
+        <target state="final">Festanstellung</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.trainee" approved="yes">
+        <source>Trainee</source>
+        <target state="final">Trainee</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.working_student" approved="yes">
+        <source>Working student</source>
+        <target state="final">Werkstudent</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule" approved="yes">
+        <source>Schedule</source>
+        <target state="final">Arbeitszeit</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-time" approved="yes">
+        <source>Full time</source>
+        <target state="final">Vollzeit</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-or-part-time" approved="yes">
+        <source>Full- or part time</source>
+        <target state="final">Voll- oder Teilzeit</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.part-time" approved="yes">
+        <source>Part time</source>
+        <target state="final">Teilzeit</target>
+      </trans-unit>
+      <trans-unit id="link.detail" approved="yes">
+        <source>View job</source>
+        <target state="final">Stelle ansehen</target>
+      </trans-unit>
+      <trans-unit id="link.list" approved="yes">
+        <source>Back to list</source>
+        <target state="final">Zurück zur Übersicht</target>
+      </trans-unit>
+      <trans-unit id="link.apply" approved="yes">
+        <source>Apply now</source>
+        <target state="final">Jetzt bewerben</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
