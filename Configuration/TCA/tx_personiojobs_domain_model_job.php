@@ -117,6 +117,7 @@ return [
                 ],
                 'fallbackCharacter' => '-',
                 'eval' => 'unique',
+                'size' => 50,
                 'default' => '',
             ],
         ],
