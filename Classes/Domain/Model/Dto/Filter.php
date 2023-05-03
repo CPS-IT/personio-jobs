@@ -35,8 +35,8 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  * @license GPL-2.0-or-later
  *
  * @phpstan-type FilterSettings array{
- *     subcompany_include?: string,
- *     subcompany_exclude?: string,
+ *     subcompanyInclude?: string,
+ *     subcompanyExclude?: string,
  * }
  */
 class Filter
@@ -63,8 +63,8 @@ class Filter
     public static function fromArray(array $settings): static
     {
         $filter = new static();
-        $filter->subcompanyInclude = GeneralUtility::trimExplode(',', $settings['subcompany_include'] ?? '', true);
-        $filter->subcompanyExclude = GeneralUtility::trimExplode(',', $settings['subcompany_exclude'] ?? '', true);
+        $filter->subcompanyInclude = GeneralUtility::trimExplode(',', $settings['subcompanyInclude'] ?? '', true);
+        $filter->subcompanyExclude = GeneralUtility::trimExplode(',', $settings['subcompanyExclude'] ?? '', true);
 
         return $filter;
     }
