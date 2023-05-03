@@ -17,6 +17,13 @@
 				<source>Shows the detail view of a single job.</source>
 			</trans-unit>
 
+			<trans-unit id="flexforms.tab.settings">
+				<source>Settings</source>
+			</trans-unit>
+			<trans-unit id="flexforms.tab.filter">
+				<source>Filter</source>
+			</trans-unit>
+
 			<trans-unit id="flexforms.show.settings.listPid">
 				<source>List page</source>
 			</trans-unit>
@@ -43,6 +50,18 @@
 			</trans-unit>
 			<trans-unit id="flexforms.list.settings.sortingDirection.desc">
 				<source>descending</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.filter.subcompany_include">
+				<source>Subcompany (include)</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.filter.subcompany_include.description">
+				<source>Multiple values can be separated by comma.</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.filter.subcompany_exclude">
+				<source>Subcompany (exclude)</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.filter.subcompany_exclude.description">
+				<source>Multiple values can be separated by comma.</source>
 			</trans-unit>
 		</body>
 	</file>
