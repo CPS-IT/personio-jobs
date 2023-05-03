@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="pl">
+    <header/>
+    <body>
+      <trans-unit id="plugins.list">
+        <source>Personio: Job list</source>
+        <target state="needs-translation">Personio: Job list</target>
+      </trans-unit>
+      <trans-unit id="plugins.show">
+        <source>Personio: Job detail</source>
+        <target state="needs-translation">Personio: Job detail</target>
+      </trans-unit>
+      <trans-unit id="groups.personio">
+        <source>Personio</source>
+        <target state="needs-translation">Personio</target>
+      </trans-unit>
+      <trans-unit id="tabs.job">
+        <source>Job</source>
+        <target state="needs-translation">Job</target>
+      </trans-unit>
+      <trans-unit id="tabs.description">
+        <source>Description</source>
+        <target state="needs-translation">Description</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job">
+        <source>Job</source>
+        <target state="needs-translation">Job</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.personio_id">
+        <source>Personio job ID</source>
+        <target state="needs-translation">Personio job ID</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.name">
+        <source>Name</source>
+        <target state="needs-translation">Name</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.slug">
+        <source>URL path segment</source>
+        <target state="needs-translation">URL path segment</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.content_hash">
+        <source>Content hash</source>
+        <target state="needs-translation">Content hash</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.subcompany">
+        <source>Subcompany</source>
+        <target state="needs-translation">Subcompany</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.office">
+        <source>Office</source>
+        <target state="needs-translation">Office</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.department">
+        <source>Department</source>
+        <target state="needs-translation">Department</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.recruiting_category">
+        <source>Recruiting category</source>
+        <target state="needs-translation">Recruiting category</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type">
+        <source>Employment type</source>
+        <target state="needs-translation">Employment type</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.freelance">
+        <source>Freelance</source>
+        <target state="needs-translation">Freelance</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.intern">
+        <source>Internship</source>
+        <target state="needs-translation">Internship</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.permanent">
+        <source>Permanent</source>
+        <target state="needs-translation">Permanent</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.trainee">
+        <source>Trainee</source>
+        <target state="needs-translation">Trainee</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.working_student">
+        <source>Working student</source>
+        <target state="needs-translation">Working student</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority">
+        <source>Seniority</source>
+        <target state="needs-translation">Seniority</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.entry-level">
+        <source>Entry level</source>
+        <target state="needs-translation">Entry level</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.executive">
+        <source>Executive</source>
+        <target state="needs-translation">Executive</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.experienced">
+        <source>Experienced</source>
+        <target state="needs-translation">Experienced</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.student">
+        <source>Student</source>
+        <target state="needs-translation">Student</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule">
+        <source>Schedule</source>
+        <target state="needs-translation">Schedule</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.full-time">
+        <source>Full time</source>
+        <target state="needs-translation">Full time</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.full-or-part-time">
+        <source>Full- or part time</source>
+        <target state="needs-translation">Full- or part time</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.part-time">
+        <source>Part time</source>
+        <target state="needs-translation">Part time</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience">
+        <source>Work experience</source>
+        <target state="needs-translation">Work experience</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.lt-1">
+        <source>Less than 1 year</source>
+        <target state="needs-translation">Less than 1 year</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.1-2">
+        <source>1-2 years</source>
+        <target state="needs-translation">1-2 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.2-5">
+        <source>2-5 years</source>
+        <target state="needs-translation">2-5 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.5-7">
+        <source>5-7 years</source>
+        <target state="needs-translation">5-7 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.7-10">
+        <source>7-10 years</source>
+        <target state="needs-translation">7-10 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.10-15">
+        <source>10-15 years</source>
+        <target state="needs-translation">10-15 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.gt-15">
+        <source>More than 15 years</source>
+        <target state="needs-translation">More than 15 years</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.keywords">
+        <source>Keywords</source>
+        <target state="needs-translation">Keywords</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.occupation">
+        <source>Occupation</source>
+        <target state="needs-translation">Occupation</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.occupation_category">
+        <source>Occupation category</source>
+        <target state="needs-translation">Occupation category</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.create_date">
+        <source>Create date</source>
+        <target state="needs-translation">Create date</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.job_descriptions">
+        <source>Job descriptions</source>
+        <target state="needs-translation">Job descriptions</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description">
+        <source>Job description</source>
+        <target state="needs-translation">Job description</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.header">
+        <source>Header</source>
+        <target state="needs-translation">Header</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.bodytext">
+        <source>Bodytext</source>
+        <target state="needs-translation">Bodytext</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.job">
+        <source>Related job</source>
+        <target state="needs-translation">Related job</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
