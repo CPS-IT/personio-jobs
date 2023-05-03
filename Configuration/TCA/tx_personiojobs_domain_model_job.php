@@ -105,6 +105,7 @@ return [
             'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.slug',
             'config' => [
                 'type' => 'slug',
+                'size' => 50,
                 'generatorOptions' => [
                     'fields' => [
                         'name',

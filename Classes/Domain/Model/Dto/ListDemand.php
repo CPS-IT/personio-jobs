@@ -31,24 +31,31 @@ use TYPO3\CMS\Extbase\Persistence\QueryInterface;
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
+ *
+ * @phpstan-import-type FilterSettings from Filter
  */
 class ListDemand implements Demand
 {
-    protected string $sorting = '';
-    protected SortingDirection $sortingDirection = SortingDirection::Ascending;
+    protected string $sorting;
+    protected SortingDirection $sortingDirection;
+    protected Filter $filter;
 
     final protected function __construct()
     {
+        $this->sorting = '';
+        $this->sortingDirection = SortingDirection::Ascending;
+        $this->filter = Filter::fromArray([]);
     }
 
     /**
-     * @param array{sorting?: string, sortingDirection?: value-of<SortingDirection>} $settings
+     * @param array{sorting?: string, sortingDirection?: value-of<SortingDirection>, filter?: FilterSettings} $settings
      */
     public static function fromArray(array $settings): static
     {
         $demand = new static();
         $demand->sorting = $settings['sorting'] ?? '';
         $demand->sortingDirection = SortingDirection::fromCaseInsensitive($settings['sortingDirection'] ?? 'asc');
+        $demand->filter = Filter::fromArray($settings['filter'] ?? []);
 
         return $demand;
     }
@@ -60,6 +67,17 @@ class ListDemand implements Demand
                 $this->sorting => $this->sortingDirection->value,
             ]);
         }
+
+        $originalConstraint = $query->getConstraint();
+        $filterConstraint = $this->filter->buildConstraint($query);
+
+        if ($originalConstraint === null) {
+            $query->matching($filterConstraint);
+        } else {
+            $query->matching(
+                $query->logicalAnd($originalConstraint, $filterConstraint),
+            );
+        }
     }
 
     public function getSorting(): string
@@ -67,7 +85,7 @@ class ListDemand implements Demand
         return $this->sorting;
     }
 
-    public function setSorting(string $sorting): self
+    public function setSorting(string $sorting): static
     {
         $this->sorting = trim($sorting);
         return $this;
@@ -78,9 +96,20 @@ class ListDemand implements Demand
         return $this->sortingDirection;
     }
 
-    public function setSortingDirection(SortingDirection $sortingDirection): self
+    public function setSortingDirection(SortingDirection $sortingDirection): static
     {
         $this->sortingDirection = $sortingDirection;
+        return $this;
+    }
+
+    public function getFilter(): Filter
+    {
+        return $this->filter;
+    }
+
+    public function setFilter(Filter $filter): static
+    {
+        $this->filter = $filter;
         return $this;
     }
 }

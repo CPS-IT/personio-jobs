@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "07ee1e6905aefc1ae64f9c3b487e2d81",
+    "content-hash": "c0ca7c8974f059e03fb9048bf51c4c44",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1374,26 +1374,24 @@
         },
         {
             "name": "masterminds/html5",
-            "version": "2.7.6",
+            "version": "2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Masterminds/html5-php.git",
-                "reference": "897eb517a343a2281f11bc5556d6548db7d93947"
+                "reference": "3c5d5a56d56f48a1ca08a0670f0f80c1dad368f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/897eb517a343a2281f11bc5556d6548db7d93947",
-                "reference": "897eb517a343a2281f11bc5556d6548db7d93947",
+                "url": "https://api.github.com/repos/Masterminds/html5-php/zipball/3c5d5a56d56f48a1ca08a0670f0f80c1dad368f3",
+                "reference": "3c5d5a56d56f48a1ca08a0670f0f80c1dad368f3",
                 "shasum": ""
             },
             "require": {
-                "ext-ctype": "*",
                 "ext-dom": "*",
-                "ext-libxml": "*",
                 "php": ">=5.3.0"
             },
             "require-dev": {
-                "phpunit/phpunit": "^4.8.35 || ^5.7.21 || ^6 || ^7"
+                "phpunit/phpunit": "^4.8.35 || ^5.7.21 || ^6 || ^7 || ^8"
             },
             "type": "library",
             "extra": {
@@ -1437,9 +1435,9 @@
             ],
             "support": {
                 "issues": "https://github.com/Masterminds/html5-php/issues",
-                "source": "https://github.com/Masterminds/html5-php/tree/2.7.6"
+                "source": "https://github.com/Masterminds/html5-php/tree/2.8.0"
             },
-            "time": "2022-08-18T16:18:26+00:00"
+            "time": "2023-04-26T07:27:39+00:00"
         },
         {
             "name": "mtownsend/xml-to-array",
@@ -1968,16 +1966,16 @@
         },
         {
             "name": "psr/http-message",
-            "version": "1.1",
+            "version": "2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/php-fig/http-message.git",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba"
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/http-message/zipball/cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
-                "reference": "cb6ce4845ce34a8ad9e68117c10ee90a29919eba",
+                "url": "https://api.github.com/repos/php-fig/http-message/zipball/402d35bcb92c70c026d1a6a9883f06b2ead23d71",
+                "reference": "402d35bcb92c70c026d1a6a9883f06b2ead23d71",
                 "shasum": ""
             },
             "require": {
@@ -1986,7 +1984,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.1.x-dev"
+                    "dev-master": "2.0.x-dev"
                 }
             },
             "autoload": {
@@ -2001,7 +1999,7 @@
             "authors": [
                 {
                     "name": "PHP-FIG",
-                    "homepage": "http://www.php-fig.org/"
+                    "homepage": "https://www.php-fig.org/"
                 }
             ],
             "description": "Common interface for HTTP messages",
@@ -2015,9 +2013,9 @@
                 "response"
             ],
             "support": {
-                "source": "https://github.com/php-fig/http-message/tree/1.1"
+                "source": "https://github.com/php-fig/http-message/tree/2.0"
             },
-            "time": "2023-04-04T09:50:52+00:00"
+            "time": "2023-04-04T09:54:51+00:00"
         },
         {
             "name": "psr/http-server-handler",
@@ -2611,16 +2609,16 @@
         },
         {
             "name": "symfony/console",
-            "version": "v6.2.8",
+            "version": "v6.2.10",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/console.git",
-                "reference": "3582d68a64a86ec25240aaa521ec8bc2342b369b"
+                "reference": "12288d9f4500f84a4d02254d4aa968b15488476f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/console/zipball/3582d68a64a86ec25240aaa521ec8bc2342b369b",
-                "reference": "3582d68a64a86ec25240aaa521ec8bc2342b369b",
+                "url": "https://api.github.com/repos/symfony/console/zipball/12288d9f4500f84a4d02254d4aa968b15488476f",
+                "reference": "12288d9f4500f84a4d02254d4aa968b15488476f",
                 "shasum": ""
             },
             "require": {
@@ -2687,7 +2685,7 @@
                 "terminal"
             ],
             "support": {
-                "source": "https://github.com/symfony/console/tree/v6.2.8"
+                "source": "https://github.com/symfony/console/tree/v6.2.10"
             },
             "funding": [
                 {
@@ -2703,7 +2701,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-03-29T21:42:15+00:00"
+            "time": "2023-04-28T13:37:43+00:00"
         },
         {
             "name": "symfony/dependency-injection",
@@ -5701,24 +5699,24 @@
         },
         {
             "name": "brotkrueml/schema",
-            "version": "v2.7.1",
+            "version": "v2.7.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brotkrueml/schema.git",
-                "reference": "7bbf5b63395b428f2adab269b80ba9f1794cb2ae"
+                "reference": "dd13fe6614bbaf1d16d5251a90d61f9349a0b195"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/7bbf5b63395b428f2adab269b80ba9f1794cb2ae",
-                "reference": "7bbf5b63395b428f2adab269b80ba9f1794cb2ae",
+                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/dd13fe6614bbaf1d16d5251a90d61f9349a0b195",
+                "reference": "dd13fe6614bbaf1d16d5251a90d61f9349a0b195",
                 "shasum": ""
             },
             "require": {
                 "ext-json": "*",
                 "php": ">=7.4",
                 "symfony/polyfill-php80": "^1.17",
-                "typo3/cms-core": "^10.4.11 || ^11.5 || ^12.2",
-                "typo3/cms-frontend": "^10.4.11 || ^11.5 || ^12.2"
+                "typo3/cms-core": "^10.4.11 || ^11.5 || ^12.4",
+                "typo3/cms-frontend": "^10.4.11 || ^11.5 || ^12.4"
             },
             "conflict": {
                 "brotkrueml/sdbreadcrumb": "*"
@@ -5729,18 +5727,17 @@
                 "ext-sqlite3": "*",
                 "infection/infection": "^0.26",
                 "php-coveralls/php-coveralls": "^2.5",
-                "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan": "1.9.17",
+                "phpstan/extension-installer": "^1.3",
+                "phpstan/phpstan": "1.10.14",
                 "phpunit/phpunit": "^9.6",
-                "rector/rector": "0.15.13",
+                "rector/rector": "0.15.25",
                 "saschaegerer/phpstan-typo3": "^1.8",
-                "sbuerk/typo3-cmscomposerinstallers-testingframework-bridge": "^0.1.2",
                 "symfony/yaml": "^5.4 || ^6.2",
                 "symplify/phpstan-rules": "^11.2",
-                "tomasvotruba/cognitive-complexity": "^0.0.5",
-                "typo3/cms-adminpanel": "^10.4.11 || ^11.5 || ^12.2",
-                "typo3/cms-lowlevel": "^10.4.11 || ^11.5 || ^12.2",
-                "typo3/testing-framework": "7.x-dev"
+                "tomasvotruba/cognitive-complexity": "^0.1.1",
+                "typo3/cms-adminpanel": "^10.4.11 || ^11.5 || ^12.4",
+                "typo3/cms-lowlevel": "^10.4.11 || ^11.5 || ^12.4",
+                "typo3/testing-framework": "^7.0"
             },
             "suggest": {
                 "brotkrueml/schema-auto": "Provides additional terms related to auto",
@@ -5788,12 +5785,12 @@
                 "structured data"
             ],
             "support": {
+                "chat": "https://typo3.slack.com/app_redirect?channel=CV36M73D5",
                 "docs": "https://docs.typo3.org/p/brotkrueml/schema/main/en-us/",
-                "forum": "https://github.com/brotkrueml/schema/discussions",
                 "issues": "https://github.com/brotkrueml/schema/issues",
                 "source": "https://github.com/brotkrueml/schema"
             },
-            "time": "2023-02-24T10:11:59+00:00"
+            "time": "2023-04-26T18:21:33+00:00"
         },
         {
             "name": "composer/pcre",

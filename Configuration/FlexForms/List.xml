@@ -1,65 +1,102 @@
-<extra>
-    <ROOT>
-        <type>array</type>
-        <el>
-            <settings.detailPid>
+<T3DataStructure>
+    <sheets>
+        <sDEF>
+            <ROOT>
                 <TCEforms>
-                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.detailPid</label>
-                    <config>
-                        <type>group</type>
-                        <allowed>pages</allowed>
-                        <minitems>1</minitems>
-                        <maxitems>1</maxitems>
-                        <size>1</size>
-                    </config>
+                    <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.settings</sheetTitle>
                 </TCEforms>
-            </settings.detailPid>
-            <settings.sorting>
+                <type>array</type>
+                <el>
+                    <settings.detailPid>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.detailPid</label>
+                            <config>
+                                <type>group</type>
+                                <allowed>pages</allowed>
+                                <minitems>1</minitems>
+                                <maxitems>1</maxitems>
+                                <size>1</size>
+                            </config>
+                        </TCEforms>
+                    </settings.detailPid>
+                    <settings.sorting>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0"></numIndex>
+                                        <numIndex index="1"></numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.sorting</numIndex>
+                                        <numIndex index="1">sorting</numIndex>
+                                    </numIndex>
+                                    <numIndex index="2">
+                                        <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.name</numIndex>
+                                        <numIndex index="1">name</numIndex>
+                                    </numIndex>
+                                    <numIndex index="3">
+                                        <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.create_date</numIndex>
+                                        <numIndex index="1">create_date</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.sorting>
+                    <settings.sortingDirection>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection</label>
+                            <config>
+                                <type>select</type>
+                                <renderType>selectSingle</renderType>
+                                <items>
+                                    <numIndex index="0">
+                                        <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.asc</numIndex>
+                                        <numIndex index="1">asc</numIndex>
+                                    </numIndex>
+                                    <numIndex index="1">
+                                        <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.desc</numIndex>
+                                        <numIndex index="1">desc</numIndex>
+                                    </numIndex>
+                                </items>
+                            </config>
+                        </TCEforms>
+                    </settings.sortingDirection>
+                </el>
+            </ROOT>
+        </sDEF>
+        <filter>
+            <ROOT>
                 <TCEforms>
-                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting</label>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items>
-                            <numIndex index="0">
-                                <numIndex index="0"></numIndex>
-                                <numIndex index="1"></numIndex>
-                            </numIndex>
-                            <numIndex index="1">
-                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.sorting</numIndex>
-                                <numIndex index="1">sorting</numIndex>
-                            </numIndex>
-                            <numIndex index="2">
-                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.name</numIndex>
-                                <numIndex index="1">name</numIndex>
-                            </numIndex>
-                            <numIndex index="3">
-                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.create_date</numIndex>
-                                <numIndex index="1">create_date</numIndex>
-                            </numIndex>
-                        </items>
-                    </config>
+                    <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.filter</sheetTitle>
                 </TCEforms>
-            </settings.sorting>
-            <settings.sortingDirection>
-                <TCEforms>
-                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection</label>
-                    <config>
-                        <type>select</type>
-                        <renderType>selectSingle</renderType>
-                        <items>
-                            <numIndex index="0">
-                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.asc</numIndex>
-                                <numIndex index="1">asc</numIndex>
-                            </numIndex>
-                            <numIndex index="1">
-                                <numIndex index="0">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.desc</numIndex>
-                                <numIndex index="1">desc</numIndex>
-                            </numIndex>
-                        </items>
-                    </config>
-                </TCEforms>
-            </settings.sortingDirection>
-        </el>
-    </ROOT>
-</extra>
+                <type>array</type>
+                <el>
+                    <settings.filter.subcompanyInclude>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude</label>
+                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude.description</description>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.filter.subcompanyInclude>
+                    <settings.filter.subcompanyExclude>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude</label>
+                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude.description</description>
+                            <config>
+                                <type>input</type>
+                                <eval>trim</eval>
+                            </config>
+                        </TCEforms>
+                    </settings.filter.subcompanyExclude>
+                </el>
+            </ROOT>
+        </filter>
+    </sheets>
+</T3DataStructure>
