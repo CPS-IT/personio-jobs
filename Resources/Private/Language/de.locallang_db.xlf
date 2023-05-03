@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="plugins.list" approved="yes">
+        <source>Personio: Job list</source>
+        <target state="final">Personio: Job-Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="plugins.show" approved="yes">
+        <source>Personio: Job detail</source>
+        <target state="final">Personio: Job-Einzelansicht</target>
+      </trans-unit>
+      <trans-unit id="groups.personio" approved="yes">
+        <source>Personio</source>
+        <target state="final">Personio</target>
+      </trans-unit>
+      <trans-unit id="tabs.job" approved="yes">
+        <source>Job</source>
+        <target state="final">Job</target>
+      </trans-unit>
+      <trans-unit id="tabs.description" approved="yes">
+        <source>Description</source>
+        <target state="final">Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job" approved="yes">
+        <source>Job</source>
+        <target state="final">Job</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.personio_id" approved="yes">
+        <source>Personio job ID</source>
+        <target state="final">Personio Job-ID</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.name" approved="yes">
+        <source>Name</source>
+        <target state="final">Name</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.slug" approved="yes">
+        <source>URL path segment</source>
+        <target state="final">URL-Pfadsegment</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.content_hash" approved="yes">
+        <source>Content hash</source>
+        <target state="final">Hash</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.subcompany" approved="yes">
+        <source>Subcompany</source>
+        <target state="final">Gesellschaft</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.office" approved="yes">
+        <source>Office</source>
+        <target state="final">Standort</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.department" approved="yes">
+        <source>Department</source>
+        <target state="final">Abteilung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.recruiting_category" approved="yes">
+        <source>Recruiting category</source>
+        <target state="final">Kategorie</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type" approved="yes">
+        <source>Employment type</source>
+        <target state="final">Anstellungsart</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.freelance" approved="yes">
+        <source>Freelance</source>
+        <target state="final">Freelancer</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.intern" approved="yes">
+        <source>Internship</source>
+        <target state="final">Praktikum</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.permanent" approved="yes">
+        <source>Permanent</source>
+        <target state="final">Festanstellung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.trainee" approved="yes">
+        <source>Trainee</source>
+        <target state="final">Trainee</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.employment_type.working_student" approved="yes">
+        <source>Working student</source>
+        <target state="final">Werkstudent</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority" approved="yes">
+        <source>Seniority</source>
+        <target state="final">Dienstalter</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.entry-level" approved="yes">
+        <source>Entry level</source>
+        <target state="final">Berufseinsteiger</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.executive" approved="yes">
+        <source>Executive</source>
+        <target state="final">Führungskraft</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.experienced" approved="yes">
+        <source>Experienced</source>
+        <target state="final">Mit Berufserfahrung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.seniority.student" approved="yes">
+        <source>Student</source>
+        <target state="final">Student</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule" approved="yes">
+        <source>Schedule</source>
+        <target state="final">Arbeitszeit</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.full-time" approved="yes">
+        <source>Full time</source>
+        <target state="final">Vollzeit</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.full-or-part-time" approved="yes">
+        <source>Full- or part time</source>
+        <target state="final">Voll- oder Teilzeit</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.schedule.part-time" approved="yes">
+        <source>Part time</source>
+        <target state="final">Teilzeit</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience" approved="yes">
+        <source>Work experience</source>
+        <target state="final">Berufserfahrung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.lt-1" approved="yes">
+        <source>Less than 1 year</source>
+        <target state="final">Weniger als 1 Jahr</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.1-2" approved="yes">
+        <source>1-2 years</source>
+        <target state="final">1-2 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.2-5" approved="yes">
+        <source>2-5 years</source>
+        <target state="final">2-5 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.5-7" approved="yes">
+        <source>5-7 years</source>
+        <target state="final">5-7 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.7-10" approved="yes">
+        <source>7-10 years</source>
+        <target state="final">7-10 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.10-15" approved="yes">
+        <source>10-15 years</source>
+        <target state="final">10-15 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.years_of_experience.gt-15" approved="yes">
+        <source>More than 15 years</source>
+        <target state="final">Mehr als 15 Jahre</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.keywords" approved="yes">
+        <source>Keywords</source>
+        <target state="final">Schlagworte</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.occupation" approved="yes">
+        <source>Occupation</source>
+        <target state="final">Beschäftigung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.occupation_category" approved="yes">
+        <source>Occupation category</source>
+        <target state="final">Berufsart</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.create_date" approved="yes">
+        <source>Create date</source>
+        <target state="final">Erstellungsdatum</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job.job_descriptions" approved="yes">
+        <source>Job descriptions</source>
+        <target state="final">Job-Beschreibungen</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description" approved="yes">
+        <source>Job description</source>
+        <target state="final">Job-Beschreibung</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.header" approved="yes">
+        <source>Header</source>
+        <target state="final">Überschrift</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.bodytext" approved="yes">
+        <source>Bodytext</source>
+        <target state="final">Inhalt</target>
+      </trans-unit>
+      <trans-unit id="tx_personiojobs_domain_model_job_description.job" approved="yes">
+        <source>Related job</source>
+        <target state="final">Zugehöriger Job</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
