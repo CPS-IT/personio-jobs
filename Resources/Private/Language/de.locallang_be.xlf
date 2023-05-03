@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="de">
+    <header/>
+    <body>
+      <trans-unit id="wizards.tx_personiojobs_list.title" approved="yes">
+        <source>Personio: Job list</source>
+        <target state="final">Personio: Job-Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_list.description" approved="yes">
+        <source>Inserts a list with all available jobs.</source>
+        <target state="final">Fügt eine Liste mit allen verfügbaren Jobs ein.</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_show.title" approved="yes">
+        <source>Personio: Job detail</source>
+        <target state="final">Personio: Job-Einzelansicht</target>
+      </trans-unit>
+      <trans-unit id="wizards.tx_personiojobs_show.description" approved="yes">
+        <source>Shows the detail view of a single job.</source>
+        <target state="final">Zeigt die Detailansicht eines einzelnen Jobs an.</target>
+      </trans-unit>
+      <trans-unit id="flexforms.tab.settings">
+        <source>Settings</source>
+        <target state="needs-translation">Settings</target>
+      </trans-unit>
+      <trans-unit id="flexforms.tab.filter">
+        <source>Filter</source>
+        <target state="needs-translation">Filter</target>
+      </trans-unit>
+      <trans-unit id="flexforms.show.settings.listPid" approved="yes">
+        <source>List page</source>
+        <target state="final">Seite der Listenansicht</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.detailPid" approved="yes">
+        <source>Detail page</source>
+        <target state="final">Seite der Einzelansicht</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting" approved="yes">
+        <source>Sort by</source>
+        <target state="final">Sortieren nach</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.sorting" approved="yes">
+        <source>Sorting</source>
+        <target state="final">Sortierung</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.name" approved="yes">
+        <source>Name</source>
+        <target state="final">Name</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sorting.create_date" approved="yes">
+        <source>Create date</source>
+        <target state="final">Erstellungsdatum</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection" approved="yes">
+        <source>Sorting direction</source>
+        <target state="final">Sortierrichtung</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection.asc" approved="yes">
+        <source>ascending</source>
+        <target state="final">aufsteigend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.sortingDirection.desc" approved="yes">
+        <source>descending</source>
+        <target state="final">absteigend</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyInclude">
+        <source>Subcompany (include)</source>
+        <target state="needs-translation">Subcompany (include)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyInclude.description">
+        <source>Multiple values can be separated by comma.</source>
+        <target state="needs-translation">Multiple values can be separated by comma.</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyExclude">
+        <source>Subcompany (exclude)</source>
+        <target state="needs-translation">Subcompany (exclude)</target>
+      </trans-unit>
+      <trans-unit id="flexforms.list.settings.filter.subcompanyExclude.description">
+        <source>Multiple values can be separated by comma.</source>
+        <target state="needs-translation">Multiple values can be separated by comma.</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
