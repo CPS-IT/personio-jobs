@@ -75,26 +75,26 @@
                 </TCEforms>
                 <type>array</type>
                 <el>
-                    <settings.filter.subcompany_include>
+                    <settings.filter.subcompanyInclude>
                         <TCEforms>
-                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompany_include</label>
-                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompany_include.description</description>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude</label>
+                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude.description</description>
                             <config>
                                 <type>input</type>
                                 <eval>trim</eval>
                             </config>
                         </TCEforms>
-                    </settings.filter.subcompany_include>
-                    <settings.filter.subcompany_exclude>
+                    </settings.filter.subcompanyInclude>
+                    <settings.filter.subcompanyExclude>
                         <TCEforms>
-                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompany_exclude</label>
-                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompany_exclude.description</description>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude</label>
+                            <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude.description</description>
                             <config>
                                 <type>input</type>
                                 <eval>trim</eval>
                             </config>
                         </TCEforms>
-                    </settings.filter.subcompany_exclude>
+                    </settings.filter.subcompanyExclude>
                 </el>
             </ROOT>
         </filter>

@@ -51,16 +51,16 @@
 			<trans-unit id="flexforms.list.settings.sortingDirection.desc">
 				<source>descending</source>
 			</trans-unit>
-			<trans-unit id="flexforms.list.settings.filter.subcompany_include">
+			<trans-unit id="flexforms.list.settings.filter.subcompanyInclude">
 				<source>Subcompany (include)</source>
 			</trans-unit>
-			<trans-unit id="flexforms.list.settings.filter.subcompany_include.description">
+			<trans-unit id="flexforms.list.settings.filter.subcompanyInclude.description">
 				<source>Multiple values can be separated by comma.</source>
 			</trans-unit>
-			<trans-unit id="flexforms.list.settings.filter.subcompany_exclude">
+			<trans-unit id="flexforms.list.settings.filter.subcompanyExclude">
 				<source>Subcompany (exclude)</source>
 			</trans-unit>
-			<trans-unit id="flexforms.list.settings.filter.subcompany_exclude.description">
+			<trans-unit id="flexforms.list.settings.filter.subcompanyExclude.description">
 				<source>Multiple values can be separated by comma.</source>
 			</trans-unit>
 		</body>
