@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<xliff version="1.0">
+  <file source-language="en" target-language="sv-SE">
+    <header/>
+    <body>
+      <trans-unit id="list.header">
+        <source>Jobs</source>
+        <target state="needs-translation">Jobs</target>
+      </trans-unit>
+      <trans-unit id="meta.subcompany">
+        <source>Subcompany</source>
+        <target state="needs-translation">Subcompany</target>
+      </trans-unit>
+      <trans-unit id="meta.office">
+        <source>Office</source>
+        <target state="needs-translation">Office</target>
+      </trans-unit>
+      <trans-unit id="meta.department">
+        <source>Department</source>
+        <target state="needs-translation">Department</target>
+      </trans-unit>
+      <trans-unit id="meta.recruitingCategory">
+        <source>Category</source>
+        <target state="needs-translation">Category</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType">
+        <source>Employment type</source>
+        <target state="needs-translation">Employment type</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.freelance">
+        <source>Freelance</source>
+        <target state="needs-translation">Freelance</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.intern">
+        <source>Internship</source>
+        <target state="needs-translation">Internship</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.permanent">
+        <source>Permanent</source>
+        <target state="needs-translation">Permanent</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.trainee">
+        <source>Trainee</source>
+        <target state="needs-translation">Trainee</target>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.working_student">
+        <source>Working student</source>
+        <target state="needs-translation">Working student</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule">
+        <source>Schedule</source>
+        <target state="needs-translation">Schedule</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-time">
+        <source>Full time</source>
+        <target state="needs-translation">Full time</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-or-part-time">
+        <source>Full- or part time</source>
+        <target state="needs-translation">Full- or part time</target>
+      </trans-unit>
+      <trans-unit id="meta.schedule.part-time">
+        <source>Part time</source>
+        <target state="needs-translation">Part time</target>
+      </trans-unit>
+      <trans-unit id="link.detail">
+        <source>View job</source>
+        <target state="needs-translation">View job</target>
+      </trans-unit>
+      <trans-unit id="link.list">
+        <source>Back to list</source>
+        <target state="needs-translation">Back to list</target>
+      </trans-unit>
+      <trans-unit id="link.apply">
+        <source>Apply now</source>
+        <target state="needs-translation">Apply now</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
