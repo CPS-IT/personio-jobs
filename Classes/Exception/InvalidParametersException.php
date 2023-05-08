@@ -21,25 +21,23 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace CPSIT\Typo3PersonioJobs\Event;
+namespace CPSIT\Typo3PersonioJobs\Exception;
 
-use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ImportResult;
+use Exception;
 
 /**
- * AfterJobsImportedEvent
+ * InvalidParametersException
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class AfterJobsImportedEvent
+final class InvalidParametersException extends Exception
 {
-    public function __construct(
-        private readonly ImportResult $importResult,
-    ) {
-    }
-
-    public function getImportResult(): ImportResult
+    public static function create(string ...$parameters): self
     {
-        return $this->importResult;
+        return new self(
+            sprintf('The parameters "%s" cannot be used together.', implode('", "', $parameters)),
+            1683530338,
+        );
     }
 }

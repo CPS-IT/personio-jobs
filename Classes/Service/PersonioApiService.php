@@ -41,12 +41,12 @@ use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
 
 /**
- * PersonioService
+ * PersonioApiService
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class PersonioService
+final class PersonioApiService
 {
     private readonly Uri $apiUrl;
     private readonly TreeMapper $mapper;
