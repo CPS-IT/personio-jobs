@@ -31,7 +31,7 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider;
-use CPSIT\Typo3PersonioJobs\Service\PersonioService;
+use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
@@ -50,7 +50,7 @@ class JobController extends ActionController
         protected readonly MetaTagManagerRegistry $metaTagManagerRegistry,
         protected readonly JobPageTitleProvider $pageTitleProvider,
         protected readonly CacheManager $cacheManager,
-        protected readonly PersonioService $personioService,
+        protected readonly PersonioApiService $personioApiService,
         protected readonly SchemaFactory $schemaFactory,
     ) {
     }
@@ -76,7 +76,7 @@ class JobController extends ActionController
         $this->addSchema($job);
 
         $this->view->assign('job', $job);
-        $this->view->assign('applyUrl', (string)$this->personioService->getApplyUrl($job));
+        $this->view->assign('applyUrl', (string)$this->personioApiService->getApplyUrl($job));
 
         return $this->htmlResponse();
     }

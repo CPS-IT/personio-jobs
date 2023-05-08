@@ -33,7 +33,7 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Schema\EmploymentType as EmploymentTypeSchema;
 use CPSIT\Typo3PersonioJobs\Event\EnrichJobPostingSchemaEvent;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
-use CPSIT\Typo3PersonioJobs\Service\PersonioService;
+use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use DateTime;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -50,7 +50,7 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 final class SchemaFactory
 {
     public function __construct(
-        private readonly PersonioService $personioService,
+        private readonly PersonioApiService $personioApiService,
         private readonly ContentObjectRenderer $contentObjectRenderer,
         private readonly EventDispatcherInterface $eventDispatcher,
     ) {
@@ -80,7 +80,7 @@ final class SchemaFactory
             ->setProperty('title', $job->getName())
             ->setProperty('description', $this->decorateDescription($job))
             ->setProperty('url', (string)$serverRequest->getUri())
-            ->setProperty('sameAs', (string)$this->personioService->getJobUrl($job))
+            ->setProperty('sameAs', (string)$this->personioApiService->getJobUrl($job))
         ;
 
         $this->eventDispatcher->dispatch(new EnrichJobPostingSchemaEvent($job, $jobPosting));
