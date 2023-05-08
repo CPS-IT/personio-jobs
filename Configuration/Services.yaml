@@ -16,8 +16,6 @@ services:
       $pageCache: '@cache.pages'
 
   CPSIT\Typo3PersonioJobs\Command\ImportCommand:
-    arguments:
-      $connection: '@connection.jobs'
     tags:
       - name: 'console.command'
         command: 'personio-jobs:import'
@@ -28,6 +26,14 @@ services:
 
   CPSIT\Typo3PersonioJobs\Hooks\DataHandlerHook:
     public: true
+
+  CPSIT\Typo3PersonioJobs\Service\PersonioApiService:
+    public: true
+
+  CPSIT\Typo3PersonioJobs\Service\PersonioImportService:
+    public: true
+    arguments:
+      $connection: '@connection.jobs'
 
   cache.pages:
     class: 'TYPO3\CMS\Core\Cache\Frontend\FrontendInterface'

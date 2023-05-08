@@ -24,15 +24,10 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Command;
 
-use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
+use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ImportResult;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
-use CPSIT\Typo3PersonioJobs\Event\AfterJobsImportedEvent;
-use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
-use CPSIT\Typo3PersonioJobs\Service\PersonioService;
-use Generator;
-use Psr\EventDispatcher\EventDispatcherInterface;
+use CPSIT\Typo3PersonioJobs\Service\PersonioImportService;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -41,8 +36,6 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
-use TYPO3\CMS\Core\Database\Connection;
-use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 /**
  * ImportCommand
@@ -54,20 +47,9 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 final class ImportCommand extends Command
 {
     private SymfonyStyle $io;
-    private bool $dryRun = false;
-
-    /**
-     * @var array<value-of<ImportOperation>, list<Job>>
-     */
-    private array $result = [];
 
     public function __construct(
-        private readonly PersonioService $personioService,
-        private readonly JobRepository $jobRepository,
-        private readonly PersistenceManagerInterface $persistenceManager,
-        private readonly CacheManager $cacheManager,
-        private readonly Connection $connection,
-        private readonly EventDispatcherInterface $eventDispatcher,
+        private readonly PersonioImportService $personioImportService,
     ) {
         parent::__construct('personio-jobs:import');
     }
@@ -110,8 +92,6 @@ final class ImportCommand extends Command
     protected function initialize(InputInterface $input, OutputInterface $output): void
     {
         $this->io = new SymfonyStyle($input, $output);
-        $this->dryRun = (bool)$input->getOption('dry-run');
-        $this->result = [];
     }
 
     protected function execute(InputInterface $input, OutputInterface $output): int
@@ -121,6 +101,7 @@ final class ImportCommand extends Command
         $force = (bool)$input->getOption('force');
         $noDelete = (bool)$input->getOption('no-delete');
         $noUpdate = (bool)$input->getOption('no-update');
+        $dryRun = (bool)$input->getOption('dry-run');
 
         // Validate parameters
         if ($force && $noUpdate) {
@@ -129,33 +110,13 @@ final class ImportCommand extends Command
             return self::INVALID;
         }
 
-        // Fetch jobs from Personio API
-        $jobs = $this->personioService->getJobs();
-        $orphans = $noDelete ? [] : $this->jobRepository->findOrphans($jobs, $storagePid);
-
-        // Process imported jobs
-        foreach ($jobs as $job) {
-            $job->setPid($storagePid);
-
-            foreach ($job->getJobDescriptions() as $jobDescription) {
-                $jobDescription->setPid($storagePid);
-            }
-
-            $this->addOrUpdateJob($job, $storagePid, $force, !$noUpdate);
-        }
-
-        // Remove orphaned jobs
-        foreach ($orphans as $orphanedJob) {
-            $this->removeJob($orphanedJob);
-        }
-
-        // Persist all changes and flush caches
-        $this->persistChanges();
+        // Fetch and import jobs from Personio API
+        $result = $this->personioImportService->import($storagePid, !$noUpdate, !$noDelete, $force, $dryRun);
 
         // Show result
-        $this->printResult($output);
+        $this->printResult($result);
 
-        if ($this->dryRun) {
+        if ($dryRun) {
             $this->io->warning('No jobs were imported (dry-run mode).');
             $this->io->writeln('💡 Omit the <comment>--dry-run</comment> option to perform database operations.');
             $this->io->newLine();
@@ -166,160 +127,15 @@ final class ImportCommand extends Command
         return self::SUCCESS;
     }
 
-    private function addOrUpdateJob(Job $job, int $storagePid, bool $force = false, bool $update = true): void
-    {
-        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid);
-
-        // Add non-existing job
-        if ($existingJob === null) {
-            $this->addJob($job);
-
-            return;
-        }
-
-        // Update changed job
-        if (($update && $existingJob->getContentHash() !== $job->getContentHash()) || $force) {
-            $this->replaceJob($existingJob, $job);
-
-            return;
-        }
-
-        // Skip unchanged job
-        $this->addResult($job, ImportOperation::Skipped);
-    }
-
-    private function addJob(Job $job): void
-    {
-        if (!$this->dryRun) {
-            $this->jobRepository->add($job);
-        }
-
-        $this->addResult($job, ImportOperation::Added);
-    }
-
-    private function replaceJob(Job $existingJob, Job $importedJob): void
-    {
-        $this->addResult($importedJob, ImportOperation::Updated);
-
-        // Early return on dry-run
-        if ($this->dryRun) {
-            return;
-        }
-
-        // Keep existing UID
-        $existingUid = $existingJob->getUid();
-        if ($existingUid !== null) {
-            $importedJob->setUid($existingUid);
-        } else {
-            $this->persistenceManager->remove($existingJob);
-        }
-
-        // Remove existing job descriptions
-        foreach ($existingJob->getJobDescriptions() as $jobDescription) {
-            $this->persistenceManager->remove($jobDescription);
-        }
-
-        // Add updated job
-        $this->persistenceManager->add($importedJob);
-    }
-
-    private function removeJob(Job $job): void
-    {
-        if (!$this->dryRun) {
-            $this->persistenceManager->remove($job);
-        }
-
-        $this->addResult($job, ImportOperation::Removed);
-    }
-
-    private function persistChanges(): void
-    {
-        // Early return on dry-run
-        if ($this->dryRun) {
-            return;
-        }
-
-        $this->persistenceManager->persistAll();
-
-        foreach ($this->getModifiedJobs() as $job) {
-            $this->updateSlug($job);
-        }
-
-        $this->eventDispatcher->dispatch(new AfterJobsImportedEvent($this->result));
-
-        $this->flushCacheTags();
-    }
-
-    private function updateSlug(Job $job): void
-    {
-        // Fetch job record
-        $record = $this->connection->select(['*'], Job::TABLE_NAME, ['uid' => $job->getUid()])->fetchAssociative();
-
-        // Early return if record cannot be fetched
-        if ($record === false) {
-            return;
-        }
-
-        // Generate slug for updated record
-        $slug = SlugHelper::generateSlug(Job::TABLE_NAME, $record);
-
-        // Update record
-        $this->connection->update(Job::TABLE_NAME, ['slug' => $slug], ['uid' => $job->getUid()]);
-    }
-
-    private function flushCacheTags(): void
-    {
-        $flushGeneralCache = false;
-
-        // Flush specific job caches (used in list and detail view)
-        foreach ($this->getModifiedJobs() as $job) {
-            $this->cacheManager->flushTag($job);
-
-            $flushGeneralCache = true;
-        }
-
-        // Flush general job cache (used in list view)
-        if ($flushGeneralCache) {
-            $this->cacheManager->flushTag();
-        }
-    }
-
-    private function addResult(Job $job, ImportOperation $operation): void
-    {
-        if (!is_array($this->result[$operation->value] ?? null)) {
-            $this->result[$operation->value] = [];
-        }
-
-        $this->result[$operation->value][] = $job;
-    }
-
-    /**
-     * @return Generator<Job>
-     */
-    private function getModifiedJobs(): Generator
-    {
-        $operations = [
-            ImportOperation::Added,
-            ImportOperation::Removed,
-            ImportOperation::Updated,
-        ];
-
-        foreach ($operations as $operation) {
-            foreach ($this->result[$operation->value] ?? [] as $job) {
-                yield $job;
-            }
-        }
-    }
-
-    private function printResult(OutputInterface $output): void
+    private function printResult(ImportResult $result): void
     {
         $rowsAdded = false;
 
-        $table = new Table($output);
+        $table = new Table($this->io);
         $table->setHeaders(['Job ID', 'Job title', 'Result']);
         $table->setStyle('box');
 
-        foreach ($this->result as $operation => $jobs) {
+        foreach ($result->getAllProcessedJobs() as $operation => $jobs) {
             $importOperation = ImportOperation::from($operation);
 
             // Skip operation without jobs
@@ -328,7 +144,7 @@ final class ImportCommand extends Command
             }
 
             // Skip operation if verbosity is lower than required
-            if ($output->getVerbosity() < $importOperation->getVerbosity()) {
+            if ($this->io->getVerbosity() < $importOperation->getVerbosity()) {
                 continue;
             }
 

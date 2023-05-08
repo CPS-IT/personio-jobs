@@ -92,6 +92,71 @@ The following command parameters are available:
 💡 Increase verbosity with `--verbose` or `-v` to show all changes,
 even unchanged jobs that were skipped.
 
+### Code usage
+
+The Personio job import process can also be triggered directly within PHP. For
+this, two services exist:
+
+- [`PersonioApiService`](Classes/Service/PersonioApiService.php) provides the
+  main functionality to fetch jobs from Personio API and return them as hydrated
+  [`Job`](Classes/Domain/Model/Job.php) models. Note that these jobs are not yet
+  persisted. Instead, they only represent the current Personio job feed as
+  strong-typed value objects.
+- [`PersonioImportService`](Classes/Service/PersonioImportService.php) provides
+  additional functionality to actually persist imported jobs. Under the hood, the
+  previously mentioned `PersonioApiService` is called to fetch jobs, followed by
+  their actual persistence. For the import process, a set of import settings is
+  available:
+  - `int $storagePid`: Page ID where to persist new or updated jobs.
+  - `bool $updateExistingJobs = true`: Define whether to update jobs that were
+    already imported, but have changed in the meantime.
+  - `bool $deleteOrphans = true`: Define whether to delete jobs that are no
+    longer available on Personio.
+  - `bool $forceImport = false`: Select whether existing, unchanged jobs should
+    be re-imported.
+  - `bool $dryRun = false`: Do not perform any persistence operations, just fetch
+    and validate jobs.
+
+#### Fetch jobs from Personio API
+
+```php
+use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+$apiService = GeneralUtility::makeInstance(PersonioApiService::class);
+$jobs = $apiService->getJobs();
+
+foreach ($jobs as $job) {
+    echo 'Successfully fetched job: ' . $job->getName() . PHP_EOL;
+}
+```
+
+#### Import jobs from Personio API
+
+```php
+use CPSIT\Typo3PersonioJobs\Service\PersonioImportService;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
+
+$importService = GeneralUtility::makeInstance(PersonioImportService::class);
+$result = $importService->import();
+
+foreach ($result->getNewJobs() as $newJob) {
+    echo 'Imported new job: ' . $newJob->getName() . PHP_EOL;
+}
+
+foreach ($result->getUpdatedJobs() as $updatedJob) {
+    echo 'Updated job: ' . $updatedJob->getName() . PHP_EOL;
+}
+
+foreach ($result->getRemovedJobs() as $removedJob) {
+    echo 'Removed job: ' . $removedJob->getName() . PHP_EOL;
+}
+
+foreach ($result->getSkippedJobs() as $skippedJob) {
+    echo 'Skipped job: ' . $skippedJob->getName() . PHP_EOL;
+}
+```
+
 ### JSON schema
 
 In combination with [EXT:schema][1], a JSON schema for a single job is included
@@ -163,6 +228,23 @@ are available:
 * [`EnrichJobPostingSchemaEvent`](Classes/Event/EnrichJobPostingSchemaEvent.php)
 
 ## 🚧 Migration
+
+### 0.4.x → 0.5.x
+
+#### Decouple import process
+
+Import process is moved to a separate service class.
+
+* All import operations are now performed by the new
+  [`PersonioImportService`](Classes/Service/PersonioImportService.php) class.
+* `PersonioService` was renamed to [`PersonioApiService`](Classes/Service/PersonioApiService.php).
+  Replace all usages of this class by the new class name.
+* Import results are now properly displayed by objects of the new
+  [`ImportResult`](Classes/Domain/Model/Dto/ImportResult.php) class.
+* Public methods in [`AfterJobsImportedEvent`](Classes/Event/AfterJobsImportedEvent.php)
+  have changed to match the new `ImportResult` class. Use the new public method
+  `AfterJobsImportedEvent::getImportResult()` instead of previously available
+  methods.
 
 ### 0.3.x → 0.4.x
 
