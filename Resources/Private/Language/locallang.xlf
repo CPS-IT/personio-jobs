@@ -31,6 +31,9 @@
 			<trans-unit id="meta.employmentType.permanent">
 				<source>Permanent</source>
 			</trans-unit>
+			<trans-unit id="meta.employmentType.temporary">
+				<source>Temporary</source>
+			</trans-unit>
 			<trans-unit id="meta.employmentType.trainee">
 				<source>Trainee</source>
 			</trans-unit>
