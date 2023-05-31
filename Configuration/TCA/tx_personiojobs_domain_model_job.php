@@ -23,7 +23,7 @@ defined('TYPO3') or die();
 
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 
-return [
+$tca = [
     'ctrl' => [
         'label' => 'name',
         'tstamp' => 'tstamp',
@@ -87,7 +87,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'int,unique,required',
+                'eval' => 'int,unique',
                 'readOnly' => true,
             ],
         ],
@@ -97,7 +97,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
             ],
         ],
         'slug' => [
@@ -127,7 +127,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'size' => 30,
-                'eval' => 'trim,required',
+                'eval' => 'trim',
                 'max' => 255,
                 'readOnly' => true,
             ],
@@ -258,7 +258,7 @@ return [
             'config' => [
                 'type' => 'input',
                 'renderType' => 'inputDateTime',
-                'eval' => 'datetime,required',
+                'eval' => 'datetime',
             ],
         ],
         'job_descriptions' => [
@@ -302,3 +302,23 @@ return [
         ],
     ],
 ];
+
+$typo3Version = (new \TYPO3\CMS\Core\Information\Typo3Version())->getMajorVersion();
+$requiredFields = [
+    'personio_id',
+    'name',
+    'content_hash',
+    'create_date',
+];
+
+// @todo Remove different handling of required columns once support for TYPO3 v11 is dropped
+foreach ($requiredFields as $fieldName) {
+    if ($typo3Version >= 12) {
+        $tca['columns'][$fieldName]['config']['required'] = true;
+    } else {
+        $eval = $tca['columns'][$fieldName]['config']['eval'] ?? '';
+        $tca['columns'][$fieldName]['config']['eval'] = ltrim($eval . ',required', ',');
+    }
+}
+
+return $tca;
