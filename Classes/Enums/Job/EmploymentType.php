@@ -34,6 +34,7 @@ enum EmploymentType: string
     case Freelance = 'freelance';
     case Intern = 'intern';
     case Permanent = 'permanent';
+    case Temporary = 'temporary';
     case Trainee = 'trainee';
     case WorkingStudent = 'working_student';
 }

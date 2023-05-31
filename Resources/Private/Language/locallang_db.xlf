@@ -60,6 +60,9 @@
 			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.permanent">
 				<source>Permanent</source>
 			</trans-unit>
+			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.temporary">
+				<source>Temporary</source>
+			</trans-unit>
 			<trans-unit id="tx_personiojobs_domain_model_job.employment_type.trainee">
 				<source>Trainee</source>
 			</trans-unit>
