@@ -102,6 +102,6 @@ final class ImportResult
      */
     private function filterByOperation(ImportOperation $operation): array
     {
-        return $this->importResult[$operation->value] ?? [];
+        return $this->operations[$operation->value] ?? [];
     }
 }
