@@ -71,6 +71,11 @@ class ListDemand implements Demand
         $originalConstraint = $query->getConstraint();
         $filterConstraint = $this->filter->buildConstraint($query);
 
+        // Early return if no filter constraints are defined
+        if ($filterConstraint === null) {
+            return;
+        }
+
         if ($originalConstraint === null) {
             $query->matching($filterConstraint);
         } else {

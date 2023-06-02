@@ -72,7 +72,7 @@ class Filter
     /**
      * @param QueryInterface<Job> $query
      */
-    public function buildConstraint(QueryInterface $query): ConstraintInterface
+    public function buildConstraint(QueryInterface $query): ?ConstraintInterface
     {
         $constraints = [];
 
@@ -84,6 +84,11 @@ class Filter
             $constraints[] = $query->logicalNot(
                 $query->in('subcompany', $this->subcompanyExclude),
             );
+        }
+
+        // Early return if no constraints are defined
+        if ($constraints === []) {
+            return null;
         }
 
         return $query->logicalAnd(...$constraints);
