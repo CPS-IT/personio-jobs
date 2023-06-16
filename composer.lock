@@ -7500,16 +7500,16 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "0ef659303fd61750e7c7ec5aa4eb962352b1810d"
+                "reference": "e98c42d2c1220c07ac066f2ba801546489140b76"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/0ef659303fd61750e7c7ec5aa4eb962352b1810d",
-                "reference": "0ef659303fd61750e7c7ec5aa4eb962352b1810d",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/e98c42d2c1220c07ac066f2ba801546489140b76",
+                "reference": "e98c42d2c1220c07ac066f2ba801546489140b76",
                 "shasum": ""
             },
             "require": {
@@ -7588,7 +7588,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-06-14T10:18:24+00:00"
+            "time": "2023-06-14T13:34:50+00:00"
         },
         {
             "name": "symfony/error-handler",
