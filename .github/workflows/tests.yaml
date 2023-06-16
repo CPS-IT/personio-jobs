@@ -1,0 +1,82 @@
+name: Tests
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - '**'
+
+jobs:
+  tests:
+    name: Tests (PHP ${{ matrix.php-version }}, Composer ${{ matrix.composer-version }} & ${{ matrix.dependencies }} dependencies)
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        php-version: ["8.1", "8.2"]
+        composer-version: ["2.1", "2.2", "2.3", "2.4", "2.5"]
+        dependencies: ["highest", "lowest"]
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Prepare environment
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php-version }}
+          tools: composer:v${{ matrix.composer-version }}
+          coverage: none
+
+      # Install dependencies
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v2
+        with:
+          dependency-versions: ${{ matrix.dependencies }}
+
+      # Run tests
+      - name: Run tests
+        run: composer test:unit
+
+  coverage:
+    name: Test coverage
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      # Prepare environment
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.1
+          tools: composer:v2
+          coverage: pcov
+
+      # Install dependencies
+      - name: Install Composer dependencies
+        uses: ramsey/composer-install@v2
+        with:
+          dependency-versions: highest
+
+      # Run Unit tests
+      - name: Build coverage directory
+        run: mkdir -p .build/coverage
+      - name: Run Unit tests with coverage
+        run: composer test:coverage
+
+      # Report coverage
+      - name: Fix coverage path
+        working-directory: .Build/coverage
+        run: sed -i 's#/home/runner/work/project-builder/project-builder#${{ github.workspace }}#g' clover.xml
+      - name: codecov report
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          directory: .build/coverage
+          fail_ci_if_error: true
+          verbose: true
