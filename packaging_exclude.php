@@ -24,6 +24,7 @@ declare(strict_types=1);
 return [
     'directories' => [
         '.build',
+        '.ddev',
         '.git',
         '.github',
         'bin',
@@ -47,8 +48,8 @@ return [
         'php-cs-fixer.php',
         'phpstan.neon',
         'phpstan-baseline.neon',
-        'phpunit.coverage.xml',
-        'phpunit.xml',
+        'phpunit.functional.xml',
+        'phpunit.unit.xml',
         'rector.php',
         'typoscript-lint.yml',
     ],
