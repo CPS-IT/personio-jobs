@@ -53,18 +53,13 @@ final class ArrayUtility
                 throw InvalidArrayPathException::forInvalidPathSegment(implode('.', $currentPathSegments));
             }
 
-            // Handle non-array values
-            if (!is_array($reference)) {
-                throw InvalidArrayPathException::forUnexpectedType(
-                    implode('.', $currentPathSegments),
-                    'array',
-                    gettype($reference),
-                );
-            }
-
             // Handle placeholder for lists
             if ($pathSegment === '*') {
-                $reference = self::convertListToCollection($reference, implode('.', $remainingSegments));
+                $reference = self::convertListToCollection(
+                    $reference,
+                    implode('.', array_slice($currentPathSegments, 0, -1)),
+                    implode('.', $remainingSegments),
+                );
 
                 return $array;
             }
@@ -75,11 +70,15 @@ final class ArrayUtility
             }
 
             $reference = &$reference[$pathSegment];
-        }
 
-        // Handle non-array values
-        if (!is_array($reference)) {
-            throw InvalidArrayPathException::forUnexpectedType($path, 'array', gettype($reference));
+            // Handle non-array values
+            if (!is_array($reference)) {
+                throw InvalidArrayPathException::forUnexpectedType(
+                    implode('.', $currentPathSegments),
+                    'array',
+                    gettype($reference),
+                );
+            }
         }
 
         // Convert array to list
@@ -95,15 +94,15 @@ final class ArrayUtility
      * @return array<int, mixed>
      * @throws InvalidArrayPathException
      */
-    private static function convertListToCollection(array $array, string $path): array
+    private static function convertListToCollection(array $array, string $currentPath, string $remainingPath): array
     {
         // Handle non-lists
         if (!array_is_list($array)) {
-            throw InvalidArrayPathException::forUnexpectedType($path, 'list', 'array');
+            throw InvalidArrayPathException::forUnexpectedType($currentPath, 'list', 'array');
         }
 
         foreach ($array as $key => $value) {
-            $array[$key] = self::convertToCollection($value, $path);
+            $array[$key] = self::convertToCollection($value, $remainingPath);
         }
 
         return $array;
