@@ -29,7 +29,9 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsImportedEvent;
+use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\InvalidParametersException;
+use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
 use Generator;
 use Psr\EventDispatcher\EventDispatcherInterface;
@@ -59,7 +61,9 @@ final class PersonioImportService
 
     /**
      * @param int<0, max> $storagePid
+     * @throws InvalidArrayPathException
      * @throws InvalidParametersException
+     * @throws MalformedXmlException
      */
     public function import(
         int $storagePid,
