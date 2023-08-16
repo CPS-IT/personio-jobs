@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
  *
@@ -19,23 +21,31 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** @noinspection PhpUndefinedVariableInspection */
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Personio Jobs',
-    'description' => 'Extension to integrate jobs from Personio Recruiting API',
-    'category' => 'plugin',
-    'version' => '0.5.3',
-    'state' => 'beta',
-    'clearCacheOnLoad' => true,
-    'author' => 'Juliane Wundermann, Elias Häußler',
-    'author_email' => 'j.wundermann@familie-redlich.de, e.haeussler@familie-redlich.de',
-    'author_company' => 'coding. powerful. systems. CPS GmbH',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '11.5.0-12.4.99',
-        ],
-        'suggests' => [
-            'schema' => '2.7.0-2.99.99',
-        ],
-    ],
-];
+namespace CPSIT\Typo3PersonioJobs\Exception;
+
+use Exception;
+
+/**
+ * InvalidArrayPathException
+ *
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @license GPL-2.0-or-later
+ */
+final class InvalidArrayPathException extends Exception
+{
+    public static function forUnexpectedType(string $path, string $expected, string $actual): self
+    {
+        return new self(
+            sprintf('Expected %s at array path "%s", got %s instead.', $expected, $path, $actual),
+            1692177655,
+        );
+    }
+
+    public static function forInvalidPathSegment(string $path): self
+    {
+        return new self(
+            sprintf('The array path segment "%s" is not valid.', $path),
+            1692178102,
+        );
+    }
+}

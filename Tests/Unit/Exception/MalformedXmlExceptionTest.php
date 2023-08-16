@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
  *
@@ -19,23 +21,28 @@
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-/** @noinspection PhpUndefinedVariableInspection */
-$EM_CONF[$_EXTKEY] = [
-    'title' => 'Personio Jobs',
-    'description' => 'Extension to integrate jobs from Personio Recruiting API',
-    'category' => 'plugin',
-    'version' => '0.5.3',
-    'state' => 'beta',
-    'clearCacheOnLoad' => true,
-    'author' => 'Juliane Wundermann, Elias Häußler',
-    'author_email' => 'j.wundermann@familie-redlich.de, e.haeussler@familie-redlich.de',
-    'author_company' => 'coding. powerful. systems. CPS GmbH',
-    'constraints' => [
-        'depends' => [
-            'typo3' => '11.5.0-12.4.99',
-        ],
-        'suggests' => [
-            'schema' => '2.7.0-2.99.99',
-        ],
-    ],
-];
+namespace CPSIT\Typo3PersonioJobs\Tests\Unit\Exception;
+
+use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
+
+/**
+ * MalformedXmlExceptionTest
+ *
+ * @author Elias Häußler <e.haeussler@familie-redlich.de>
+ * @license GPL-2.0-or-later
+ * @covers \CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException
+ */
+final class MalformedXmlExceptionTest extends UnitTestCase
+{
+    /**
+     * @test
+     */
+    public function createReturnsMalformedXmlException(): void
+    {
+        $actual = MalformedXmlException::create('input', 'error');
+
+        self::assertSame('The string "input" does not contain valid XML: error', $actual->getMessage());
+        self::assertSame(1692170602, $actual->getCode());
+    }
+}
