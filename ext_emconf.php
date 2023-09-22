@@ -24,7 +24,7 @@ $EM_CONF[$_EXTKEY] = [
     'title' => 'Personio Jobs',
     'description' => 'Extension to integrate jobs from Personio Recruiting API',
     'category' => 'plugin',
-    'version' => '0.5.4',
+    'version' => '0.5.5',
     'state' => 'beta',
     'clearCacheOnLoad' => true,
     'author' => 'Juliane Wundermann, Elias Häußler',
@@ -33,6 +33,7 @@ $EM_CONF[$_EXTKEY] = [
     'constraints' => [
         'depends' => [
             'typo3' => '11.5.0-12.4.99',
+            'php' => '8.1.0-8.2.99',
         ],
         'suggests' => [
             'schema' => '2.7.0-2.99.99',
