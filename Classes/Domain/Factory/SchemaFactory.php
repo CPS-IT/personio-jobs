@@ -53,8 +53,7 @@ final class SchemaFactory
         private readonly PersonioApiService $personioApiService,
         private readonly ContentObjectRenderer $contentObjectRenderer,
         private readonly EventDispatcherInterface $eventDispatcher,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws ExtensionNotLoadedException
