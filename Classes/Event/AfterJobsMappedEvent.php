@@ -40,8 +40,7 @@ final class AfterJobsMappedEvent
     public function __construct(
         private readonly Uri $requestUri,
         private readonly array $jobs,
-    ) {
-    }
+    ) {}
 
     public function getRequestUri(): Uri
     {

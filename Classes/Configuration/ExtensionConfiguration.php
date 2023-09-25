@@ -39,8 +39,7 @@ final class ExtensionConfiguration
 {
     public function __construct(
         private readonly BaseConfiguration $configuration,
-    ) {
-    }
+    ) {}
 
     /**
      * @throws InvalidApiUrlException

@@ -52,8 +52,7 @@ class JobController extends ActionController
         protected readonly CacheManager $cacheManager,
         protected readonly PersonioApiService $personioApiService,
         protected readonly SchemaFactory $schemaFactory,
-    ) {
-    }
+    ) {}
 
     public function listAction(): ResponseInterface
     {
