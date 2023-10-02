@@ -42,8 +42,7 @@ final class DataHandlerHook
         private readonly CacheManager $cacheManager,
         private readonly JobRepository $jobRepository,
         private readonly PersistenceManagerInterface $persistenceManager,
-    ) {
-    }
+    ) {}
 
     /**
      * @param array<string, mixed> $fieldArray

@@ -35,8 +35,7 @@ final class AfterJobsImportedEvent
 {
     public function __construct(
         private readonly ImportResult $importResult,
-    ) {
-    }
+    ) {}
 
     public function getImportResult(): ImportResult
     {

@@ -37,8 +37,7 @@ final class EnrichJobPostingSchemaEvent
     public function __construct(
         private readonly Job $job,
         private readonly JobPosting $jobPosting,
-    ) {
-    }
+    ) {}
 
     public function getJob(): Job
     {

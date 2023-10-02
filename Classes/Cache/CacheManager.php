@@ -37,8 +37,7 @@ final class CacheManager
 {
     public function __construct(
         private readonly FrontendInterface $pageCache,
-    ) {
-    }
+    ) {}
 
     public function addTag(Job $job = null): void
     {

@@ -34,6 +34,4 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
  *
  * @extends Repository<JobDescription>
  */
-class JobDescriptionRepository extends Repository
-{
-}
+class JobDescriptionRepository extends Repository {}

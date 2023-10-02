@@ -41,8 +41,7 @@ final class ImportResult
 
     public function __construct(
         private readonly bool $dryRun,
-    ) {
-    }
+    ) {}
 
     public function add(Job $job, ImportOperation $operation): self
     {
