@@ -58,9 +58,9 @@
 	"config": {
 		"allow-plugins": {
 			"ergebnis/composer-normalize": true,
-			"typo3/cms-composer-installers": true,
+			"phpstan/extension-installer": true,
 			"typo3/class-alias-loader": true,
-			"phpstan/extension-installer": true
+			"typo3/cms-composer-installers": true
 		},
 		"bin-dir": ".Build/bin",
 		"sort-packages": true,
