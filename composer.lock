@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "34af99de6b93e96e6caa8f0df3bd7b37",
+    "content-hash": "6d29575cfa1e525ce7600df7d8866619",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -5863,44 +5863,42 @@
         },
         {
             "name": "brotkrueml/schema",
-            "version": "v2.10.0",
+            "version": "v3.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brotkrueml/schema.git",
-                "reference": "3f070bad5d0afb8e8559beb52798c54f040a8af4"
+                "reference": "880f092a3291d57aa78238e070833be94f58e38f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/3f070bad5d0afb8e8559beb52798c54f040a8af4",
-                "reference": "3f070bad5d0afb8e8559beb52798c54f040a8af4",
+                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/880f092a3291d57aa78238e070833be94f58e38f",
+                "reference": "880f092a3291d57aa78238e070833be94f58e38f",
                 "shasum": ""
             },
             "require": {
-                "ext-json": "*",
-                "php": ">=7.4",
-                "symfony/polyfill-php80": "^1.17",
-                "typo3/cms-core": "^10.4.11 || ^11.5 || ^12.4",
-                "typo3/cms-frontend": "^10.4.11 || ^11.5 || ^12.4"
+                "php": ">=8.1",
+                "typo3/cms-core": "^11.5.19 || ^12.4",
+                "typo3/cms-frontend": "^11.5.19 || ^12.4"
             },
             "conflict": {
                 "brotkrueml/sdbreadcrumb": "*"
             },
             "require-dev": {
-                "brotkrueml/coding-standards": "~3.0.0",
-                "ergebnis/composer-normalize": "~2.28.3",
+                "brotkrueml/coding-standards": "~5.0.0",
+                "ergebnis/composer-normalize": "~2.39.0",
                 "ext-sqlite3": "*",
-                "infection/infection": "^0.26",
+                "infection/infection": "^0.27.6",
                 "php-coveralls/php-coveralls": "^2.6",
                 "phpstan/extension-installer": "^1.3",
-                "phpstan/phpstan": "1.10.26",
-                "phpunit/phpunit": "^9.6",
-                "rector/rector": "0.17.6",
-                "saschaegerer/phpstan-typo3": "^1.8",
-                "symfony/yaml": "^5.4 || ^6.2",
-                "symplify/phpstan-rules": "^12.0",
-                "tomasvotruba/cognitive-complexity": "^0.1.1",
-                "typo3/cms-adminpanel": "^10.4.11 || ^11.5 || ^12.4",
-                "typo3/cms-lowlevel": "^10.4.11 || ^11.5 || ^12.4",
+                "phpstan/phpstan": "1.10.39",
+                "phpunit/phpunit": "^10.4",
+                "rector/rector": "0.18.5",
+                "saschaegerer/phpstan-typo3": "^1.9",
+                "symfony/yaml": "^5.4 || ^6.3",
+                "symplify/phpstan-rules": "^12.4",
+                "tomasvotruba/cognitive-complexity": "^0.2.2",
+                "typo3/cms-adminpanel": "^11.5.19 || ^12.4",
+                "typo3/cms-lowlevel": "^11.5.19 || ^12.4",
                 "typo3/testing-framework": "^7.0"
             },
             "suggest": {
@@ -5908,7 +5906,6 @@
                 "brotkrueml/schema-bib": "Provides additional terms related to bibliography",
                 "brotkrueml/schema-health": "Provides additional terms related to health and lifesciences",
                 "brotkrueml/schema-pending": "Provides pending terms which have yet to be accepted into the core vocabulary",
-                "brotkrueml/schema-rector": "Instant upgrade and refactoring for the TYPO3 schema extension code by using Rector",
                 "brotkrueml/schema-virtuallocation": "Provides pending type VirtualLocation for events",
                 "typo3/cms-adminpanel": "Display schema.org types and properties on a page in Admin Panel",
                 "typo3/cms-lowlevel": "Display available schema.org types in the Configuration module"
@@ -5916,7 +5913,7 @@
             "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "2.10.x-dev"
+                    "dev-main": "3.0.x-dev"
                 },
                 "typo3/cms": {
                     "app-dir": ".Build",
@@ -5954,7 +5951,7 @@
                 "issues": "https://github.com/brotkrueml/schema/issues",
                 "source": "https://github.com/brotkrueml/schema"
             },
-            "time": "2023-07-21T12:07:12+00:00"
+            "time": "2023-10-23T15:29:06+00:00"
         },
         {
             "name": "composer/pcre",

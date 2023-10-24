@@ -30,7 +30,7 @@
 	},
 	"require-dev": {
 		"armin/editorconfig-cli": "^1.5",
-		"brotkrueml/schema": "^2.7",
+		"brotkrueml/schema": "^2.7 || ^3.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"helmich/typo3-typoscript-lint": "^3.0",
 		"phpstan/extension-installer": "^1.2",
