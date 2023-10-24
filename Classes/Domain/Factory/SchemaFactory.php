@@ -39,6 +39,7 @@ use DateTime;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
+use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -69,8 +70,18 @@ final class SchemaFactory
         $organizationType = $this->createOrganization($job);
         $placeType = $this->createPlace($job);
 
-        /** @var JobPosting $jobPosting */
-        $jobPosting = TypeFactory::createType('JobPosting')
+        // Create job posting
+        if (method_exists(TypeFactory::class, 'create')) {
+            // @todo Use DI once support for EXT:schema v2 is dropped
+            $jobPosting = GeneralUtility::makeInstance(TypeFactory::class)->create('JobPosting');
+        } else {
+            // @todo Remove once support for EXT:schema v2 is dropped
+            $jobPosting = TypeFactory::createType('JobPosting');
+        }
+
+        \assert($jobPosting instanceof JobPosting);
+
+        $jobPosting
             ->setProperty('datePosted', ($job->getCreateDate() ?? new DateTime())->format('Y-m-d'))
             ->setProperty('employmentType', $this->decorateEmploymentType($job))
             ->setProperty('hiringOrganization', $organizationType)
