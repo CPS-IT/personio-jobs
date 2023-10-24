@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to function method_exists\\(\\) with 'Brotkrueml\\\\\\\\Schema\\\\\\\\Type\\\\\\\\TypeFactory' and 'create' will always evaluate to true\\.$#"
+			count: 1
+			path: Classes/Domain/Factory/SchemaFactory.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
 			path: Classes/Helper/SlugHelper.php
