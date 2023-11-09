@@ -38,6 +38,7 @@ return [
     'files' => [
         'DS_Store',
         'CODE_OF_CONDUCT.md',
+        'codecov.yml',
         'composer.lock',
         'CONTRIBUTING.md',
         'crowdin.yaml',
