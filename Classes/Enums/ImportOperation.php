@@ -49,7 +49,7 @@ enum ImportOperation: string
     }
 
     /**
-     * @return OutputInterface::VERBOSITY_*
+     * @return OutputInterface::VERBOSITY_VERBOSE|OutputInterface::VERBOSITY_NORMAL
      */
     public function getVerbosity(): int
     {
