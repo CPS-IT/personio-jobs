@@ -89,7 +89,7 @@ jobs:
         working-directory: .Build/coverage
         run: sed -i 's#/home/runner/work/personio-jobs/personio-jobs#${{ github.workspace }}#g' clover.xml
       - name: Upload coverage artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: coverage
           path: .Build/coverage/clover.xml
