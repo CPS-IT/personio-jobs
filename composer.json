@@ -42,6 +42,9 @@
 		"typo3/coding-standards": "^0.7.1",
 		"typo3/testing-framework": "^7.0.2 || ^8.0.1"
 	},
+	"conflict": {
+		"cuyz/valinor": "1.8.0"
+	},
 	"suggest": {
 		"brotkrueml/schema": "Include JSON schema on job detail pages (^2.7)"
 	},
