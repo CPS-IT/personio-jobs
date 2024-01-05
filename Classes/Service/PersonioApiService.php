@@ -86,7 +86,7 @@ final class PersonioApiService
         try {
             $jobs = $this->mapper->map('list<' . Job::class . '>', $source['position']);
 
-            $this->eventDispatcher->dispatch(new AfterJobsMappedEvent($requestUri, $jobs));
+            $this->eventDispatcher->dispatch(new AfterJobsMappedEvent($requestUri, $jobs, $language));
 
             return $jobs;
         } catch (MappingError $error) {

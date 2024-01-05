@@ -40,6 +40,7 @@ final class AfterJobsMappedEvent
     public function __construct(
         private readonly Uri $requestUri,
         private readonly array $jobs,
+        private readonly ?string $language = null,
     ) {}
 
     public function getRequestUri(): Uri
@@ -53,5 +54,10 @@ final class AfterJobsMappedEvent
     public function getJobs(): array
     {
         return $this->jobs;
+    }
+
+    public function getLanguage(): ?string
+    {
+        return $this->language;
     }
 }
