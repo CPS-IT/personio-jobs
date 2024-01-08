@@ -121,16 +121,16 @@
         },
         {
             "name": "cuyz/valinor",
-            "version": "1.7.0",
+            "version": "1.8.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "e384ad6d6801c3d4a03b444d267dbfec91ee23da"
+                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/e384ad6d6801c3d4a03b444d267dbfec91ee23da",
-                "reference": "e384ad6d6801c3d4a03b444d267dbfec91ee23da",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
+                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/1.7.0"
+                "source": "https://github.com/CuyZ/Valinor/tree/1.8.1"
             },
             "funding": [
                 {
@@ -190,7 +190,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2023-10-23T11:05:23+00:00"
+            "time": "2024-01-08T18:38:18+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -7351,16 +7351,16 @@
         },
         {
             "name": "phpstan/phpstan",
-            "version": "1.10.54",
+            "version": "1.10.55",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpstan/phpstan.git",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb"
+                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
-                "reference": "3e25f279dada0adc14ffd7bad09af2e2fc3523bb",
+                "url": "https://api.github.com/repos/phpstan/phpstan/zipball/9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
+                "reference": "9a88f9d18ddf4cf54c922fbeac16c4cb164c5949",
                 "shasum": ""
             },
             "require": {
@@ -7409,7 +7409,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2024-01-05T15:50:47+00:00"
+            "time": "2024-01-08T12:32:40+00:00"
         },
         {
             "name": "phpstan/phpstan-phpunit",
