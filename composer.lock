@@ -121,16 +121,16 @@
         },
         {
             "name": "cuyz/valinor",
-            "version": "1.8.1",
+            "version": "1.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b"
+                "reference": "daf8206d11b1cb6b308ecd2eb6b65657d2248544"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
-                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/daf8206d11b1cb6b308ecd2eb6b65657d2248544",
+                "reference": "daf8206d11b1cb6b308ecd2eb6b65657d2248544",
                 "shasum": ""
             },
             "require": {
@@ -182,7 +182,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/1.8.1"
+                "source": "https://github.com/CuyZ/Valinor/tree/1.8.2"
             },
             "funding": [
                 {
@@ -190,7 +190,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-08T18:38:18+00:00"
+            "time": "2024-01-08T20:31:48+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -1606,16 +1606,16 @@
         },
         {
             "name": "phpdocumentor/type-resolver",
-            "version": "1.7.3",
+            "version": "1.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/phpDocumentor/TypeResolver.git",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419"
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
-                "reference": "3219c6ee25c9ea71e3d9bbaf39c67c9ebd499419",
+                "url": "https://api.github.com/repos/phpDocumentor/TypeResolver/zipball/fad452781b3d774e3337b0c0b245dd8e5a4455fc",
+                "reference": "fad452781b3d774e3337b0c0b245dd8e5a4455fc",
                 "shasum": ""
             },
             "require": {
@@ -1658,9 +1658,9 @@
             "description": "A PSR-5 based resolver of Class names, Types and Structural Element Names",
             "support": {
                 "issues": "https://github.com/phpDocumentor/TypeResolver/issues",
-                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.7.3"
+                "source": "https://github.com/phpDocumentor/TypeResolver/tree/1.8.0"
             },
-            "time": "2023-08-12T11:01:26+00:00"
+            "time": "2024-01-11T11:49:22+00:00"
         },
         {
             "name": "phpstan/phpdoc-parser",
@@ -5869,16 +5869,16 @@
         },
         {
             "name": "brotkrueml/schema",
-            "version": "v3.0.0",
+            "version": "v3.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/brotkrueml/schema.git",
-                "reference": "880f092a3291d57aa78238e070833be94f58e38f"
+                "reference": "f1f9974e55297f8cda2b188b33dbcb2c798dadd8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/880f092a3291d57aa78238e070833be94f58e38f",
-                "reference": "880f092a3291d57aa78238e070833be94f58e38f",
+                "url": "https://api.github.com/repos/brotkrueml/schema/zipball/f1f9974e55297f8cda2b188b33dbcb2c798dadd8",
+                "reference": "f1f9974e55297f8cda2b188b33dbcb2c798dadd8",
                 "shasum": ""
             },
             "require": {
@@ -5890,19 +5890,19 @@
                 "brotkrueml/sdbreadcrumb": "*"
             },
             "require-dev": {
-                "brotkrueml/coding-standards": "~5.0.0",
-                "ergebnis/composer-normalize": "~2.39.0",
+                "brotkrueml/coding-standards": "~5.1.0",
+                "ergebnis/composer-normalize": "~2.41.1",
                 "ext-sqlite3": "*",
-                "infection/infection": "^0.27.6",
-                "php-coveralls/php-coveralls": "^2.6",
+                "infection/infection": "^0.27.9",
+                "php-coveralls/php-coveralls": "^2.7",
                 "phpstan/extension-installer": "^1.3",
-                "phpstan/phpstan": "1.10.39",
-                "phpunit/phpunit": "^10.4",
-                "rector/rector": "0.18.5",
+                "phpstan/phpstan": "1.10.55",
+                "phpunit/phpunit": "^10.5",
+                "rector/rector": "0.19.0",
                 "saschaegerer/phpstan-typo3": "^1.9",
-                "symfony/yaml": "^5.4 || ^6.3",
+                "symfony/yaml": "^5.4 || ^6.4 || ^7.0",
                 "symplify/phpstan-rules": "^12.4",
-                "tomasvotruba/cognitive-complexity": "^0.2.2",
+                "tomasvotruba/cognitive-complexity": "^0.2.3",
                 "typo3/cms-adminpanel": "^11.5.19 || ^12.4",
                 "typo3/cms-lowlevel": "^11.5.19 || ^12.4",
                 "typo3/testing-framework": "^7.0"
@@ -5919,7 +5919,7 @@
             "type": "typo3-cms-extension",
             "extra": {
                 "branch-alias": {
-                    "dev-main": "3.0.x-dev"
+                    "dev-main": "3.1.x-dev"
                 },
                 "typo3/cms": {
                     "app-dir": ".Build",
@@ -5957,7 +5957,7 @@
                 "issues": "https://github.com/brotkrueml/schema/issues",
                 "source": "https://github.com/brotkrueml/schema"
             },
-            "time": "2023-10-23T15:29:06+00:00"
+            "time": "2024-01-10T18:07:33+00:00"
         },
         {
             "name": "composer/pcre",
@@ -7848,16 +7848,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.5",
+            "version": "10.5.7",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "ed21115d505b4b4f7dc7b5651464e19a2c7f7856"
+                "reference": "e5c5b397a95cb0db013270a985726fcae93e61b8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/ed21115d505b4b4f7dc7b5651464e19a2c7f7856",
-                "reference": "ed21115d505b4b4f7dc7b5651464e19a2c7f7856",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/e5c5b397a95cb0db013270a985726fcae93e61b8",
+                "reference": "e5c5b397a95cb0db013270a985726fcae93e61b8",
                 "shasum": ""
             },
             "require": {
@@ -7929,7 +7929,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.5"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.7"
             },
             "funding": [
                 {
@@ -7945,7 +7945,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-12-27T15:13:52+00:00"
+            "time": "2024-01-14T16:40:30+00:00"
         },
         {
             "name": "rector/rector",
