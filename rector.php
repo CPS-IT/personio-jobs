@@ -22,11 +22,11 @@ declare(strict_types=1);
  */
 
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PostRector\Rector\NameImportingPostRector;
 use Rector\Set\ValueObject\LevelSetList;
-use Ssch\TYPO3Rector\Set\Typo3SetList;
+use Rector\ValueObject\PhpVersion;
+use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
 return static function (RectorConfig $rectorConfig): void {
     $rectorConfig->paths([
@@ -43,6 +43,6 @@ return static function (RectorConfig $rectorConfig): void {
 
     $rectorConfig->sets([
         LevelSetList::UP_TO_PHP_81,
-        Typo3SetList::TYPO3_11,
+        Typo3LevelSetList::UP_TO_TYPO3_11,
     ]);
 };
