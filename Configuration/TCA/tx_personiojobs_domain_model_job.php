@@ -29,6 +29,10 @@ $tca = [
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
         'title' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job',
+        'languageField' => 'sys_language_uid',
+        'transOrigPointerField' => 'l10n_parent',
+        'transOrigDiffSourceField' => 'l10n_diffsource',
+        'translationSource' => 'l10n_source',
         'delete' => 'deleted',
         'sortby' => 'sorting',
         'enablecolumns' => [
@@ -80,6 +84,36 @@ $tca = [
             ],
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
+        ],
+        'sys_language_uid' => [
+            'exclude' => true,
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.language',
+            'config' => [
+                'type' => 'language',
+            ],
+        ],
+        'l10n_parent' => [
+            'displayCond' => 'FIELD:sys_language_uid:>:0',
+            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.l18n_parent',
+            'config' => [
+                'type' => 'group',
+                'allowed' => \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
+                'size' => 1,
+                'maxitems' => 1,
+                'minitems' => 0,
+                'default' => 0,
+            ],
+        ],
+        'l10n_source' => [
+            'config' => [
+                'type' => 'passthrough',
+            ],
+        ],
+        'l10n_diffsource' => [
+            'config' => [
+                'type' => 'passthrough',
+                'default' => '',
+            ],
         ],
         'personio_id' => [
             'exclude' => true,
@@ -294,10 +328,14 @@ $tca = [
                     create_date,
                 --div--;LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tabs.description,
                     job_descriptions,
+                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:language,
+                    sys_language_uid,
+                    l10n_parent,
+                    l10n_diffsource,
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     hidden,
                     starttime,
-                    endtime
+                    endtime,
             ',
         ],
     ],

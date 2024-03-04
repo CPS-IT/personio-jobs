@@ -64,6 +64,12 @@ final class ImportCommand extends Command
             'Storage pid of imported jobs',
         );
         $this->addOption(
+            'language',
+            'l',
+            InputOption::VALUE_REQUIRED,
+            'Job language, should be the two-letter ISO 639-1 code of a configured site language',
+        );
+        $this->addOption(
             'force',
             'f',
             InputOption::VALUE_NONE,
@@ -96,8 +102,11 @@ final class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        $languageId = null;
         /* @phpstan-ignore-next-line */
         $storagePid = max(0, (int)$input->getArgument('storage-pid'));
+        /** @var string|null $language */
+        $language = $input->getOption('language');
         $force = (bool)$input->getOption('force');
         $noDelete = (bool)$input->getOption('no-delete');
         $noUpdate = (bool)$input->getOption('no-update');
@@ -111,7 +120,7 @@ final class ImportCommand extends Command
         }
 
         // Fetch and import jobs from Personio API
-        $result = $this->personioImportService->import($storagePid, !$noUpdate, !$noDelete, $force, $dryRun);
+        $result = $this->personioImportService->import($storagePid, $language, !$noUpdate, !$noDelete, $force, $dryRun);
 
         // Show result
         $this->printResult($result);

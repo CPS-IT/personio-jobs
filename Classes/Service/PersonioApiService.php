@@ -67,9 +67,14 @@ final class PersonioApiService
      * @throws MalformedApiResponseException
      * @throws MalformedXmlException
      */
-    public function getJobs(): array
+    public function getJobs(string $language = null): array
     {
         $requestUri = $this->apiUrl->withPath('/xml');
+
+        if ($language !== null) {
+            $requestUri = $requestUri->withQuery('language=' . $language);
+        }
+
         $response = $this->requestFactory->request((string)$requestUri);
         $source = XmlSource::fromXml((string)$response->getBody())
             ->asCollection('position')
@@ -79,7 +84,7 @@ final class PersonioApiService
         try {
             $jobs = $this->mapper->map('list<' . Job::class . '>', $source['position']);
 
-            $this->eventDispatcher->dispatch(new AfterJobsMappedEvent($requestUri, $jobs));
+            $this->eventDispatcher->dispatch(new AfterJobsMappedEvent($requestUri, $jobs, $language));
 
             return $jobs;
         } catch (MappingError $error) {
