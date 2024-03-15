@@ -46,7 +46,7 @@
 		"cuyz/valinor": "1.8.0"
 	},
 	"suggest": {
-		"brotkrueml/schema": "Include JSON schema on job detail pages (^2.7)"
+		"brotkrueml/schema": "Include JSON schema on job detail pages (^2.7 || ^3.0)"
 	},
 	"autoload": {
 		"psr-4": {
