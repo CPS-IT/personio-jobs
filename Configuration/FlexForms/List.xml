@@ -84,5 +84,33 @@
                 </el>
             </ROOT>
         </filter>
+        <pagination>
+            <ROOT>
+                <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.pagination</sheetTitle>
+                <type>array</type>
+                <el>
+                    <settings.enablePagination>
+                        <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.enablePagination</label>
+                        <config>
+                            <type>check</type>
+                        </config>
+                    </settings.enablePagination>
+                    <settings.itemsPerPage>
+                        <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.itemsPerPage</label>
+                        <config>
+                            <type>number</type>
+                            <default>10</default>
+                        </config>
+                    </settings.itemsPerPage>
+                    <settings.maximumNumberOfLinks>
+                        <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.maximumNumberOfLinks</label>
+                        <config>
+                            <type>number</type>
+                            <default>5</default>
+                        </config>
+                    </settings.maximumNumberOfLinks>
+                </el>
+            </ROOT>
+        </pagination>
     </sheets>
 </T3DataStructure>

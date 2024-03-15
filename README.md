@@ -34,6 +34,7 @@ with preconfigured support for Bootstrap v5 components.
 * Usage of modern-typed value objects during the import process
 * Plugins for list and detail view
 * Optional support for JSON Schema on job detail pages using [EXT:schema][1]
+* Optional support for pagination using [EXT:numbered_pagination][5]
 * Compatible with TYPO3 11.5 LTS, 12.4 LTS and 13.0
 
 ## 🔥 Installation
@@ -49,6 +50,13 @@ additionally require the `schema` extension:
 
 ```bash
 composer require brotkrueml/schema
+```
+
+💡 If you want to enable pagination on job list pages, it is suggested
+to additionally require the `numbered_pagination` extension:
+
+```bash
+composer require georgringer/numbered-pagination
 ```
 
 ### TER
@@ -276,3 +284,4 @@ This project is licensed under [GNU General Public License 2.0 (or later)](LICEN
 [2]: https://extensions.typo3.org/extension/personio_jobs
 [3]: https://schema.org/JobPosting
 [4]: https://www.personio.de/
+[5]: https://extensions.typo3.org/extension/numbered_pagination

@@ -31,11 +31,16 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider;
+use CPSIT\Typo3PersonioJobs\Pagination\PaginationFactory;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
+use TYPO3\CMS\Core\Pagination\PaginationInterface;
+use TYPO3\CMS\Core\Pagination\PaginatorInterface;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
+use TYPO3\CMS\Extbase\Pagination\QueryResultPaginator;
+use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 
 /**
  * JobController
@@ -52,16 +57,30 @@ class JobController extends ActionController
         protected readonly CacheManager $cacheManager,
         protected readonly PersonioApiService $personioApiService,
         protected readonly SchemaFactory $schemaFactory,
+        protected readonly PaginationFactory $paginationFactory,
     ) {}
 
     public function listAction(): ResponseInterface
     {
         $this->cacheManager->addTag();
 
+        // Fetch jobs
         $demand = ListDemand::fromArray($this->settings);
         $jobs = $this->jobRepository->findByDemand($demand);
 
-        $this->view->assign('jobs', $jobs);
+        // Create pagination
+        if ($this->settings['enablePagination'] ?? false) {
+            [$paginator, $pagination] = $this->createPagination($jobs);
+        } else {
+            $paginator = null;
+            $pagination = null;
+        }
+
+        $this->view->assignMultiple([
+            'jobs' => $jobs,
+            'paginator' => $paginator,
+            'pagination' => $pagination,
+        ]);
 
         return $this->htmlResponse();
     }
@@ -136,5 +155,30 @@ class JobController extends ActionController
 
         $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
         $schemaManager->addType($jobPosting);
+    }
+
+    /**
+     * @param QueryResultInterface<Job> $jobs
+     * @return array{PaginatorInterface, PaginationInterface}
+     */
+    private function createPagination(QueryResultInterface $jobs): array
+    {
+        $itemsPerPage = (int)($this->settings['itemsPerPage'] ?? 10);
+        $maximumNumberOfLinks = (int)($this->settings['maximumNumberOfLinks'] ?? 5);
+        $currentPageNumber = 1;
+
+        // Get current page number from request
+        if ($this->request->hasArgument('currentPage')) {
+            $currentPageFromRequest = $this->request->getArgument('currentPage');
+
+            if (is_numeric($currentPageFromRequest) && $currentPageFromRequest >= 1) {
+                $currentPageNumber = (int)$currentPageFromRequest;
+            }
+        }
+
+        $paginator = new QueryResultPaginator($jobs, $currentPageNumber, $itemsPerPage);
+        $pagination = $this->paginationFactory->get($paginator, $maximumNumberOfLinks);
+
+        return [$paginator, $pagination];
     }
 }

@@ -7,10 +7,23 @@
     <h2>{f:translate(key: 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang.xlf:list.header')}</h2>
 
     <ul class="list-group">
-        <f:for each="{jobs}" as="job">
-            <f:render partial="List/Job" arguments="{job: job}" />
-        </f:for>
+        <f:if condition="{pagination}">
+            <f:then>
+                <f:for each="{paginator.paginatedItems}" as="job">
+                    <f:render partial="List/Job" arguments="{job: job}" />
+                </f:for>
+            </f:then>
+            <f:else>
+                <f:for each="{jobs}" as="job">
+                    <f:render partial="List/Job" arguments="{job: job}" />
+                </f:for>
+            </f:else>
+        </f:if>
     </ul>
+
+    <f:if condition="{pagination}">
+        <f:render partial="List/Pagination" arguments="{pagination: pagination, paginator: paginator}" />
+    </f:if>
 </f:section>
 
 </html>

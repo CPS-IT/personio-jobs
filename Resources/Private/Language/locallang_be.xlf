@@ -23,6 +23,9 @@
 			<trans-unit id="flexforms.tab.filter">
 				<source>Filter</source>
 			</trans-unit>
+			<trans-unit id="flexforms.tab.pagination">
+				<source>Pagination</source>
+			</trans-unit>
 
 			<trans-unit id="flexforms.show.settings.listPid">
 				<source>List page</source>
@@ -62,6 +65,15 @@
 			</trans-unit>
 			<trans-unit id="flexforms.list.settings.filter.subcompanyExclude.description">
 				<source>Multiple values can be separated by comma.</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.enablePagination">
+				<source>Enable pagination</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.itemsPerPage">
+				<source>Items per page</source>
+			</trans-unit>
+			<trans-unit id="flexforms.list.settings.maximumNumberOfLinks">
+				<source>Maximum number of links</source>
 			</trans-unit>
 		</body>
 	</file>

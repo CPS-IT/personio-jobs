@@ -62,6 +62,16 @@
 			<trans-unit id="link.apply">
 				<source>Apply now</source>
 			</trans-unit>
+
+			<trans-unit id="pagination.ariaLabel">
+				<source>Job list pagination</source>
+			</trans-unit>
+			<trans-unit id="pagination.previous">
+				<source>Previous</source>
+			</trans-unit>
+			<trans-unit id="pagination.next">
+				<source>Next</source>
+			</trans-unit>
 		</body>
 	</file>
 </xliff>
