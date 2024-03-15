@@ -40,6 +40,8 @@ use DateTimeInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Localization\Locale;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
 /**
  * PersonioApiService
@@ -91,8 +93,7 @@ final class PersonioApiService
 
     public function getJobUrl(Job $job): Uri
     {
-        $serverRequest = FrontendUtility::getServerRequest();
-        $language = $serverRequest->getAttribute('language')?->getTwoLetterIsoCode();
+        $language = $this->getLanguageCode();
         $jobUrl = $this->apiUrl->withPath(sprintf('/job/%d', $job->getPersonioId()));
 
         if ($language !== null) {
@@ -119,5 +120,24 @@ final class PersonioApiService
             )
             ->mapper()
         ;
+    }
+
+    private function getLanguageCode(): ?string
+    {
+        $serverRequest = FrontendUtility::getServerRequest();
+        $siteLanguage = $serverRequest->getAttribute('language');
+
+        if (!($siteLanguage instanceof SiteLanguage)) {
+            return null;
+        }
+
+        $locale = $siteLanguage->getLocale();
+
+        if ($locale instanceof Locale) {
+            return $locale->getLanguageCode();
+        }
+
+        // @todo Remove once support for TYPO3 v11 is dropped
+        return $siteLanguage->getTwoLetterIsoCode();
     }
 }

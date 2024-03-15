@@ -53,7 +53,7 @@ final class XmlSource extends ArrayObject
      */
     public static function fromXml(string $xml): self
     {
-        set_error_handler(static fn(int $code, string $message) => self::handleParseError($xml, $message));
+        set_error_handler(static fn (int $code, string $message) => self::handleParseError($xml, $message));
 
         try {
             $source = XmlToArray::convert($xml);
