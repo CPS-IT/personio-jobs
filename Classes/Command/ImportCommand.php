@@ -154,10 +154,10 @@ final class ImportCommand extends Command
             }
 
             // Sort jobs by personio id
-            usort($jobs, static fn(Job $a, Job $b) => $a->getPersonioId() <=> $b->getPersonioId());
+            usort($jobs, static fn (Job $a, Job $b) => $a->getPersonioId() <=> $b->getPersonioId());
 
             // Add job to table
-            $table->addRows(array_map(static fn(Job $job) => self::decorateTableRow($job, $importOperation), $jobs));
+            $table->addRows(array_map(static fn (Job $job) => self::decorateTableRow($job, $importOperation), $jobs));
 
             $rowsAdded = true;
         }

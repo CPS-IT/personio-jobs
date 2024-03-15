@@ -89,7 +89,7 @@ class JobRepository extends Repository
                 $query->logicalNot(
                     $query->in(
                         'personioId',
-                        array_map(static fn(Job $job) => $job->getPersonioId(), $existingJobs),
+                        array_map(static fn (Job $job) => $job->getPersonioId(), $existingJobs),
                     ),
                 ),
             );
