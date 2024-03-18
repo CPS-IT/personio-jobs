@@ -30,7 +30,7 @@ jobs:
       # Install dependencies
       - name: Install Composer dependencies
         run: |
-          composer require --no-progress --no-plugins brotkrueml/schema:"^2.7 || ^3.0"
+          composer require --no-progress --no-plugins brotkrueml/schema:"^2.7 || ^3.0" georgringer/numbered-pagination:"^1.0 || ^2.0"
 
       # Check Composer dependencies
       - name: Check dependencies

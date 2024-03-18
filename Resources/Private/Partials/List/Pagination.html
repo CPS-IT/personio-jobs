@@ -1,0 +1,73 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<nav aria-label="{f:translate(key: 'pagination.ariaLabel')}">
+    <ul class="pagination justify-content-center mt-3">
+        <f:comment><!-- Previous/First page --></f:comment>
+        <f:if condition="{paginator.currentPageNumber} > {pagination.firstPageNumber}">
+            <f:then>
+                <f:render partial="List/Pagination/PageLink" arguments="{
+                    actionName: actionName,
+                    page: pagination.previousPageNumber,
+                    label: '{f:translate(key: \'pagination.previous\')}'
+                }" />
+
+                <f:if condition="{pagination.displayRangeStart} > {pagination.firstPageNumber}">
+                    <f:render partial="List/Pagination/PageLink" arguments="{
+                        actionName: actionName,
+                        page: pagination.firstPageNumber
+                    }" />
+                </f:if>
+            </f:then>
+            <f:else>
+                <f:render partial="List/Pagination/Disabled" arguments="{
+                    label: '{f:translate(key: \'pagination.previous\')}'
+                }" />
+            </f:else>
+        </f:if>
+
+        <f:comment><!-- Placeholder --></f:comment>
+        <f:if condition="{pagination.hasLessPages} && {pagination.displayRangeStart - 1} > {pagination.firstPageNumber}">
+            <f:render partial="List/Pagination/Placeholder" />
+        </f:if>
+
+        <f:comment><!-- All pages --></f:comment>
+        <f:for each="{pagination.allPageNumbers}" as="page">
+            <f:render partial="List/Pagination/PageLink" arguments="{
+                actionName: actionName,
+                page: page,
+                active: '{f:if(condition: \'{page} == {paginator.currentPageNumber}\', then: 1)}'
+            }" />
+        </f:for>
+
+        <f:comment><!-- Placeholder --></f:comment>
+        <f:if condition="{pagination.hasMorePages} && {pagination.displayRangeEnd + 1} < {pagination.lastPageNumber}">
+            <f:render partial="List/Pagination/Placeholder" />
+        </f:if>
+
+        <f:comment><!-- Last/Next page --></f:comment>
+        <f:if condition="{paginator.currentPageNumber} < {pagination.lastPageNumber}">
+            <f:then>
+                <f:if condition="{pagination.displayRangeEnd} < {pagination.lastPageNumber}">
+                    <f:render partial="List/Pagination/PageLink" arguments="{
+                        actionName: actionName,
+                        page: pagination.lastPageNumber
+                    }" />
+                </f:if>
+
+                <f:render partial="List/Pagination/PageLink" arguments="{
+                    actionName: actionName,
+                    page: pagination.nextPageNumber,
+                    label: '{f:translate(key: \'pagination.next\')}'
+                }" />
+            </f:then>
+            <f:else>
+                <f:render partial="List/Pagination/Disabled" arguments="{
+                    label: '{f:translate(key: \'pagination.next\')}'
+                }" />
+            </f:else>
+        </f:if>
+    </ul>
+</nav>
+
+</html>

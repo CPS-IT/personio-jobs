@@ -100,5 +100,43 @@
                 </el>
             </ROOT>
         </filter>
+        <pagination>
+            <ROOT>
+                <TCEforms>
+                    <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.pagination</sheetTitle>
+                </TCEforms>
+                <type>array</type>
+                <el>
+                    <settings.enablePagination>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.enablePagination</label>
+                            <config>
+                                <type>check</type>
+                            </config>
+                        </TCEforms>
+                    </settings.enablePagination>
+                    <settings.itemsPerPage>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.itemsPerPage</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim,int</eval>
+                                <default>10</default>
+                            </config>
+                        </TCEforms>
+                    </settings.itemsPerPage>
+                    <settings.maximumNumberOfLinks>
+                        <TCEforms>
+                            <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.maximumNumberOfLinks</label>
+                            <config>
+                                <type>input</type>
+                                <eval>trim,int</eval>
+                                <default>5</default>
+                            </config>
+                        </TCEforms>
+                    </settings.maximumNumberOfLinks>
+                </el>
+            </ROOT>
+        </pagination>
     </sheets>
 </T3DataStructure>

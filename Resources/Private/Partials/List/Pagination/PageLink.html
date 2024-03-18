@@ -1,0 +1,23 @@
+<html xmlns:f="http://typo3.org/ns/TYPO3/CMS/Fluid/ViewHelpers"
+      data-namespace-typo3-fluid="true">
+
+<f:if condition="{active}">
+    <f:then>
+        <li class="page-item active" aria-current="page">
+            <f:link.action action="{actionName}"
+                           arguments="{currentPage: page}"
+                           class="page-link"
+            >{f:if(condition: label, then: label, else: page)}</f:link.action>
+        </li>
+    </f:then>
+    <f:else>
+        <li class="page-item">
+            <f:link.action action="{actionName}"
+                           arguments="{currentPage: page}"
+                           class="page-link"
+            >{f:if(condition: label, then: label, else: page)}</f:link.action>
+        </li>
+    </f:else>
+</f:if>
+
+</html>
