@@ -26,6 +26,7 @@ namespace CPSIT\Typo3PersonioJobs;
 use CPSIT\Typo3PersonioJobs\Controller\JobController;
 use CPSIT\Typo3PersonioJobs\Hooks\DataHandlerHook;
 use TYPO3\CMS\Core\Core\Environment;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -74,9 +75,15 @@ final class Extension
 
     /**
      * FOR USE IN ext_localconf.php ONLY.
+     *
+     * @todo Remove once support for TYPO3 v11 and v12 is dropped
      */
     public static function registerTSconfig(): void
     {
+        if ((new Typo3Version())->getMajorVersion() >= 13) {
+            return;
+        }
+
         ExtensionManagementUtility::addPageTSConfig(
             '@import "EXT:personio_jobs/Configuration/TSconfig/Page.tsconfig"',
         );

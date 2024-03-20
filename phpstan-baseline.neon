@@ -14,3 +14,18 @@ parameters:
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: Classes/Helper/SlugHelper.php
+
+		-
+			message: "#^Instanceof between TYPO3\\\\CMS\\\\Core\\\\Localization\\\\Locale and TYPO3\\\\CMS\\\\Core\\\\Localization\\\\Locale will always evaluate to true\\.$#"
+			count: 1
+			path: Classes/Service/PersonioApiService.php
+
+		-
+			message: "#^Unreachable statement \\- code above always terminates\\.$#"
+			count: 1
+			path: Classes/Service/PersonioApiService.php
+
+		-
+			message: "#^Comparison operation \"\\<\" between TYPO3\\\\CMS\\\\Core\\\\Information\\\\Typo3Version and 12 results in an error\\.$#"
+			count: 1
+			path: Configuration/TCA/Overrides/tt_content.php

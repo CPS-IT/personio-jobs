@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Configuration;
 
 use CPSIT\Typo3PersonioJobs\Extension;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -38,10 +39,11 @@ final class Tca
 {
     /**
      * @param list<string|\BackedEnum> $itemValues
-     * @return list<array{string, string}>
+     * @return list<array{string, string}>|list<array{label: string, value: string}>
      */
     public static function mapItems(string $tableName, string $fieldName, array $itemValues): array
     {
+        $typo3Version = (new Typo3Version())->getMajorVersion();
         $items = [];
 
         foreach ($itemValues as $itemValue) {
@@ -49,10 +51,17 @@ final class Tca
                 $itemValue = (string)$itemValue->value;
             }
 
-            $items[] = [
-                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
-                $itemValue,
+            $itemArray = [
+                'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
+                'value' => $itemValue,
             ];
+
+            // @todo Remove once support for TYPO3 v11 is dropped
+            if ($typo3Version < 12) {
+                $itemArray = array_values($itemArray);
+            }
+
+            $items[] = $itemArray;
         }
 
         return $items;

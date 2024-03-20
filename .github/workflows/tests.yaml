@@ -15,8 +15,11 @@ jobs:
       fail-fast: false
       matrix:
         php-version: ["8.1", "8.2", "8.3"]
-        typo3-version: ["11.5", "12.4"]
+        typo3-version: ["11.5", "12.4", "13.0"]
         dependencies: ["highest", "lowest"]
+        exclude:
+          - php-version: "8.1"
+            typo3-version: "13.0"
     env:
       typo3DatabaseName: typo3
       typo3DatabaseHost: '127.0.0.1'
@@ -120,12 +123,8 @@ jobs:
           coverageLocations: |
             ${{ steps.download.outputs.download-path }}/clover.xml:clover
 
-      # codecov
-      - name: codecov report
-        uses: codecov/codecov-action@v4
+      # Coveralls
+      - name: Coveralls report
+        uses: coverallsapp/github-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: |
-            ${{ steps.download.outputs.download-path }}/clover.xml
-          fail_ci_if_error: true
-          verbose: true
+          file: ${{ steps.download.outputs.download-path }}/clover.xml

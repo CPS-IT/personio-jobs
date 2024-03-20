@@ -4,7 +4,7 @@
 
 # TYPO3 extension `personio_jobs`
 
-[![Coverage](https://codecov.io/gh/CPS-IT/personio-jobs/graph/badge.svg?token=9T4ZqzlqVL)](https://codecov.io/gh/CPS-IT/personio-jobs)
+[![Coverage](https://img.shields.io/coverallsCoverage/github/CPS-IT/personio-jobs?logo=coveralls)](https://coveralls.io/github/CPS-IT/personio-jobs)
 [![Maintainability](https://api.codeclimate.com/v1/badges/75952c5451dea0632fc0/maintainability)](https://codeclimate.com/github/CPS-IT/personio-jobs/maintainability)
 [![CGL](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml)
 [![Release](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml)
@@ -34,7 +34,7 @@ with preconfigured support for Bootstrap v5 components.
 * Usage of modern-typed value objects during the import process
 * Plugins for list and detail view
 * Optional support for JSON Schema on job detail pages using [EXT:schema][1]
-* Compatible with TYPO3 11.5 LTS and 12.4 LTS
+* Compatible with TYPO3 11.5 LTS, 12.4 LTS and 13.0
 
 ## 🔥 Installation
 
