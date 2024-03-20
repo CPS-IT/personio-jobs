@@ -22,27 +22,41 @@ declare(strict_types=1);
  */
 
 use Rector\Config\RectorConfig;
-use Rector\Core\ValueObject\PhpVersion;
 use Rector\Php74\Rector\LNumber\AddLiteralSeparatorToNumberRector;
 use Rector\PostRector\Rector\NameImportingPostRector;
-use Rector\Set\ValueObject\LevelSetList;
-use Ssch\TYPO3Rector\Set\Typo3SetList;
+use Rector\ValueObject\PhpVersion;
+use Ssch\TYPO3Rector\CodeQuality\General\ConvertImplicitVariablesToExplicitGlobalsRector;
+use Ssch\TYPO3Rector\CodeQuality\General\ExtEmConfRector;
+use Ssch\TYPO3Rector\Configuration\Typo3Option;
+use Ssch\TYPO3Rector\Set\Typo3LevelSetList;
 
-return static function(RectorConfig $rectorConfig): void {
-    $rectorConfig->paths([
+return RectorConfig::configure()
+    ->withConfiguredRule(ExtEmConfRector::class, [
+        ExtEmConfRector::ADDITIONAL_VALUES_TO_BE_REMOVED => [],
+    ])
+    ->withPaths([
         __DIR__ . '/Classes',
         __DIR__ . '/Configuration',
-    ]);
-
-    $rectorConfig->skip([
+    ])
+    ->withPhpSets(php81: true)
+    ->withSets([
+        Typo3LevelSetList::UP_TO_TYPO3_11,
+    ])
+    ->withPHPStanConfigs([
+        Typo3Option::PHPSTAN_FOR_RECTOR_PATH,
+    ])
+    ->withPhpVersion(PhpVersion::PHP_81)
+    ->withRules([
+        ConvertImplicitVariablesToExplicitGlobalsRector::class,
+    ])
+    ->withSkip([
         AddLiteralSeparatorToNumberRector::class,
-        NameImportingPostRector::class,
-    ]);
-
-    $rectorConfig->phpVersion(PhpVersion::PHP_81);
-
-    $rectorConfig->sets([
-        LevelSetList::UP_TO_PHP_81,
-        Typo3SetList::TYPO3_11,
-    ]);
-};
+        NameImportingPostRector::class => [
+            'ext_localconf.php',
+            'ext_tables.php',
+            'ClassAliasMap.php',
+            __DIR__ . '/Configuration/*.php',
+            __DIR__ . '/Configuration/**/*.php',
+        ],
+    ])
+;
