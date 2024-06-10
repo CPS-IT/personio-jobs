@@ -23,7 +23,6 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Domain\Model;
 
-use JsonSerializable;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -32,7 +31,7 @@ use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-class JobDescription extends AbstractEntity implements JsonSerializable
+class JobDescription extends AbstractEntity implements \JsonSerializable
 {
     final public const TABLE_NAME = 'tx_personiojobs_domain_model_job_description';
 

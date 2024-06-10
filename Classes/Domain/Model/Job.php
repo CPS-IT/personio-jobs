@@ -27,7 +27,6 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
 use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
-use JsonSerializable;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -38,7 +37,7 @@ use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-class Job extends AbstractEntity implements JsonSerializable
+class Job extends AbstractEntity implements \JsonSerializable
 {
     final public const TABLE_NAME = 'tx_personiojobs_domain_model_job';
 
