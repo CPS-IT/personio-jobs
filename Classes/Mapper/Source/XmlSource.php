@@ -28,7 +28,6 @@ use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Utility\ArrayUtility;
 use Mtownsend\XmlToArray\XmlToArray;
-use Throwable;
 
 /**
  * XmlSource
@@ -38,7 +37,7 @@ use Throwable;
  *
  * @extends ArrayObject<string, mixed>
  */
-final class XmlSource extends ArrayObject
+final class XmlSource extends \ArrayObject
 {
     /**
      * @param array<string, mixed> $source
@@ -53,11 +52,11 @@ final class XmlSource extends ArrayObject
      */
     public static function fromXml(string $xml): self
     {
-        set_error_handler(static fn (int $code, string $message) => self::handleParseError($xml, $message));
+        set_error_handler(static fn(int $code, string $message) => self::handleParseError($xml, $message));
 
         try {
             $source = XmlToArray::convert($xml);
-        } catch (Throwable $exception) {
+        } catch (\Throwable $exception) {
             self::handleParseError($xml, $exception->getMessage());
         } finally {
             restore_error_handler();

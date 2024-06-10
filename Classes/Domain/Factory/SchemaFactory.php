@@ -35,7 +35,6 @@ use CPSIT\Typo3PersonioJobs\Event\EnrichJobPostingSchemaEvent;
 use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
-use DateTime;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
@@ -82,7 +81,7 @@ final class SchemaFactory
         \assert($jobPosting instanceof JobPosting);
 
         $jobPosting
-            ->setProperty('datePosted', ($job->getCreateDate() ?? new DateTime())->format('Y-m-d'))
+            ->setProperty('datePosted', ($job->getCreateDate() ?? new \DateTime())->format('Y-m-d'))
             ->setProperty('employmentType', $this->decorateEmploymentType($job))
             ->setProperty('hiringOrganization', $organizationType)
             ->setProperty('jobLocation', $placeType)

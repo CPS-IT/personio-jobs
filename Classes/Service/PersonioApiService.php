@@ -36,7 +36,6 @@ use CuyZ\Valinor\Mapper\MappingError;
 use CuyZ\Valinor\Mapper\Tree\Message\Messages;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
-use DateTimeInterface;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
@@ -111,7 +110,7 @@ final class PersonioApiService
     private function createMapper(): TreeMapper
     {
         return (new MapperBuilder())
-            ->supportDateFormats(DateTimeInterface::ATOM)
+            ->supportDateFormats(\DateTimeInterface::ATOM)
             ->allowSuperfluousKeys()
             ->enableFlexibleCasting()
             ->registerConstructor(

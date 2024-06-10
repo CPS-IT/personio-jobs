@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes;
 
 use Psr\Http\Message\ResponseInterface;
-use Throwable;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Response;
 
@@ -39,7 +38,7 @@ final class DummyRequestFactory extends RequestFactory
 {
     public function __construct(
         public ResponseInterface $response = new Response(),
-        public ?Throwable $exception = null,
+        public ?\Throwable $exception = null,
     ) {
         // Missing parent constructor call is intended.
     }

@@ -33,7 +33,6 @@ use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\InvalidParametersException;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
-use Generator;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
@@ -224,9 +223,9 @@ final class PersonioImportService
     }
 
     /**
-     * @return Generator<Job>
+     * @return \Generator<Job>
      */
-    private function getModifiedJobs(): Generator
+    private function getModifiedJobs(): \Generator
     {
         foreach ($this->result->getNewJobs() as $newJob) {
             yield $newJob;

@@ -21,7 +21,7 @@ defined('TYPO3') or die();
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-(static function() {
+(static function () {
     $typo3Version = new \TYPO3\CMS\Core\Information\Typo3Version();
 
     // @todo Remove once support for TYPO3 v11 is dropped

@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Exception;
 
 use CuyZ\Valinor\Mapper\Tree\Message\Messages;
-use RuntimeException;
 
 /**
  * MalformedApiResponseException
@@ -32,7 +31,7 @@ use RuntimeException;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class MalformedApiResponseException extends RuntimeException
+final class MalformedApiResponseException extends \RuntimeException
 {
     public static function forMappingErrors(Messages $errors): self
     {

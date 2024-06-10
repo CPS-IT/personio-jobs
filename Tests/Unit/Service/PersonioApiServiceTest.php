@@ -35,7 +35,6 @@ use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory;
-use DateTime;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\StreamFactory;
@@ -177,7 +176,7 @@ final class PersonioApiServiceTest extends UnitTestCase
             ->setKeywords('Testing,QA,Fun')
             ->setOccupation('software_and_web_development')
             ->setOccupationCategory('it_software')
-            ->setCreateDate(DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00'));
+            ->setCreateDate(\DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00'));
         $job->recalculateContentHash();
 
         return $job;

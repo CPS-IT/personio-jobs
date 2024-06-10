@@ -23,15 +23,13 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Exception;
 
-use Exception;
-
 /**
  * InvalidArrayPathException
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class InvalidArrayPathException extends Exception
+final class InvalidArrayPathException extends \Exception
 {
     public static function forUnexpectedType(string $path, string $expected, string $actual): self
     {
