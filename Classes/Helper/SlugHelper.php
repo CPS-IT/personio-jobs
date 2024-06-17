@@ -40,7 +40,6 @@ final class SlugHelper
      */
     public static function generateSlug(string $tableName, array $record, string $slugFieldName = 'slug'): ?string
     {
-        /* @phpstan-ignore-next-line */
         $fieldConfiguration = $GLOBALS['TCA'][$tableName]['columns'][$slugFieldName]['config'] ?? null;
 
         // Early return if slug field is not configured
