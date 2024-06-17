@@ -132,6 +132,21 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertJobEqualsJob($this->createJob(2), $actual[1]);
     }
 
+    /**
+     * @test
+     */
+    public function getJobsReturnsMappedJobObjectWithoutWorkingExperience(): void
+    {
+        $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-no-working-experience.xml');
+
+        $this->requestFactory->response = new Response($stream);
+
+        $actual = $this->subject->getJobs();
+
+        self::assertCount(1, $actual);
+        self::assertJobEqualsJob($this->createJob(1, null), $actual[0]);
+    }
+
     private static function assertJobEqualsJob(Job $expected, Job $actual): void
     {
         // Create expected job descriptions
@@ -160,7 +175,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertEquals($expectedJobDescription2->setJob($actual), $actualJobDescriptions[1]);
     }
 
-    private function createJob(int $id): Job
+    private function createJob(int $id, ?YearsOfExperience $yearsOfExperience = YearsOfExperience::TwoFiveYears): Job
     {
         $job = (new Job())
             ->setPersonioId($id)
@@ -172,7 +187,7 @@ final class PersonioApiServiceTest extends UnitTestCase
             ->setEmploymentType(EmploymentType::Permanent->value)
             ->setSeniority(Seniority::Experienced->value)
             ->setSchedule(Schedule::FullTime->value)
-            ->setYearsOfExperience(YearsOfExperience::TwoFiveYears->value)
+            ->setYearsOfExperience($yearsOfExperience->value ?? '')
             ->setKeywords('Testing,QA,Fun')
             ->setOccupation('software_and_web_development')
             ->setOccupationCategory('it_software')

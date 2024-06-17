@@ -21,7 +21,7 @@ parameters:
 			path: Classes/Service/PersonioApiService.php
 
 		-
-			message: "#^Parameter \\#1 \\.\\.\\.\\$constructors of method CuyZ\\\\Valinor\\\\MapperBuilder\\:\\:registerConstructor\\(\\) expects \\(pure\\-callable\\(\\)\\: mixed\\)\\|class\\-string, Closure\\(int, string\\|null, string\\|null, string\\|null, string\\|null, string, array\\{jobDescription\\: list\\<CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\JobDescription\\>\\}, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\EmploymentType, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\Seniority, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\Schedule, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\YearsOfExperience, string\\|null, string\\|null, string\\|null, DateTime\\)\\: CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Job given\\.$#"
+			message: "#^Parameter \\#1 \\.\\.\\.\\$constructors of method CuyZ\\\\Valinor\\\\MapperBuilder\\:\\:registerConstructor\\(\\) expects \\(pure\\-callable\\(\\)\\: mixed\\)\\|class\\-string, Closure\\(int, string\\|null, string\\|null, string\\|null, string\\|null, string, array\\{jobDescription\\: list\\<CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\JobDescription\\>\\}, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\EmploymentType, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\Seniority, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\Schedule, CPSIT\\\\Typo3PersonioJobs\\\\Enums\\\\Job\\\\YearsOfExperience\\|null, string\\|null, string\\|null, string\\|null, DateTime\\)\\: CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Job given\\.$#"
 			count: 1
 			path: Classes/Service/PersonioApiService.php
 
