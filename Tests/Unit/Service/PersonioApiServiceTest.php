@@ -162,8 +162,11 @@ final class PersonioApiServiceTest extends UnitTestCase
         // Fetch actual job descriptions to compare them separately
         $actualJobDescriptions = $actual->getJobDescriptions()->toArray();
 
+        /** @var ObjectStorage<JobDescription> $jobDescriptions */
+        $jobDescriptions = new ObjectStorage();
+
         // Reset job descriptions (we compare them separately)
-        $actual->setJobDescriptions(new ObjectStorage());
+        $actual->setJobDescriptions($jobDescriptions);
         $actual->recalculateContentHash();
 
         // Compare job
@@ -177,6 +180,10 @@ final class PersonioApiServiceTest extends UnitTestCase
 
     private function createJob(int $id, ?YearsOfExperience $yearsOfExperience = YearsOfExperience::TwoFiveYears): Job
     {
+        $createDate = \DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00');
+
+        self::assertNotFalse($createDate);
+
         $job = (new Job())
             ->setPersonioId($id)
             ->setSubcompany('Test company')
@@ -191,7 +198,7 @@ final class PersonioApiServiceTest extends UnitTestCase
             ->setKeywords('Testing,QA,Fun')
             ->setOccupation('software_and_web_development')
             ->setOccupationCategory('it_software')
-            ->setCreateDate(\DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00'));
+            ->setCreateDate($createDate);
         $job->recalculateContentHash();
 
         return $job;
