@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<workzag-jobs>
+    <position>
+        <id>1</id>
+        <subcompany>Test company</subcompany>
+        <office>Berlin</office>
+        <department>IT</department>
+        <recruitingCategory>Testing</recruitingCategory>
+        <name>Software tester (f/m/x)</name>
+        <jobDescriptions>
+            <jobDescription>
+                <name>Hello World!</name>
+                <value>
+                    <![CDATA[<strong>Lorem ipsum dolor sit amet.</strong>]]>
+                </value>
+            </jobDescription>
+            <jobDescription>
+                <name>See you soon!</name>
+                <value>
+                    <![CDATA[<strong>Lorem ipsum dolor sit amet.</strong>]]>
+                </value>
+            </jobDescription>
+        </jobDescriptions>
+        <employmentType>permanent</employmentType>
+        <seniority>experienced</seniority>
+        <schedule>full-time</schedule>
+        <keywords>Testing,QA,Fun</keywords>
+        <occupation>software_and_web_development</occupation>
+        <occupationCategory>it_software</occupationCategory>
+        <createdAt>2023-08-11T14:15:17+00:00</createdAt>
+    </position>
+</workzag-jobs>

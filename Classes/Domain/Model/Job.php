@@ -82,7 +82,7 @@ class Job extends AbstractEntity implements \JsonSerializable
         EmploymentType $employmentType,
         Seniority $seniority,
         Schedule $schedule,
-        YearsOfExperience $yearsOfExperience,
+        ?YearsOfExperience $yearsOfExperience,
         ?string $keywords,
         ?string $occupation,
         ?string $occupationCategory,
@@ -104,7 +104,7 @@ class Job extends AbstractEntity implements \JsonSerializable
         $job->employmentType = $employmentType->value;
         $job->seniority = $seniority->value;
         $job->schedule = $schedule->value;
-        $job->yearsOfExperience = $yearsOfExperience->value;
+        $job->yearsOfExperience = $yearsOfExperience->value ?? '';
         $job->keywords = (string)$keywords;
         $job->occupation = (string)$occupation;
         $job->occupationCategory = (string)$occupationCategory;

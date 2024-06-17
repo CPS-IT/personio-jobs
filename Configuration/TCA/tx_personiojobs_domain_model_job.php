@@ -256,6 +256,7 @@ $tca = [
                     \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
                     'years_of_experience',
                     \CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience::cases(),
+                    true,
                 ),
             ],
         ],
