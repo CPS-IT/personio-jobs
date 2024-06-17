@@ -27,15 +27,16 @@ use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsMappedEvent;
-use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
-use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
-use CPSIT\Typo3PersonioJobs\Mapper\Source\XmlSource;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use CuyZ\Valinor\Mapper\MappingError;
 use CuyZ\Valinor\Mapper\Tree\Message\Messages;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
+use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
+use EliasHaeussler\ValinorXml\Mapper\Source\XmlSource;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
@@ -64,15 +65,15 @@ final class PersonioApiService
 
     /**
      * @return list<Job>
-     * @throws InvalidArrayPathException
-     * @throws MalformedApiResponseException
-     * @throws MalformedXmlException
+     * @throws ArrayPathHasUnexpectedType
+     * @throws ArrayPathIsInvalid
+     * @throws XmlIsMalformed
      */
     public function getJobs(): array
     {
         $requestUri = $this->apiUrl->withPath('/xml');
         $response = $this->requestFactory->request((string)$requestUri);
-        $source = XmlSource::fromXml((string)$response->getBody())
+        $source = XmlSource::fromXmlString((string)$response->getBody())
             ->asCollection('position')
             ->asCollection('position.*.jobDescriptions.jobDescription')
         ;

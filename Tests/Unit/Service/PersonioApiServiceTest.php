@@ -31,10 +31,10 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
 use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
-use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory;
+use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\StreamFactory;
@@ -80,8 +80,8 @@ final class PersonioApiServiceTest extends UnitTestCase
 
         $this->requestFactory->response = new Response($stream);
 
-        $this->expectException(MalformedXmlException::class);
-        $this->expectExceptionCode(1692170602);
+        $this->expectException(XmlIsMalformed::class);
+        $this->expectExceptionCode(1718372740);
 
         $this->subject->getJobs();
     }
