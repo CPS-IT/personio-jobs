@@ -29,10 +29,11 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsImportedEvent;
-use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\InvalidParametersException;
-use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
+use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
@@ -60,9 +61,10 @@ final class PersonioImportService
 
     /**
      * @param int<0, max> $storagePid
-     * @throws InvalidArrayPathException
+     * @throws ArrayPathHasUnexpectedType
+     * @throws ArrayPathIsInvalid
      * @throws InvalidParametersException
-     * @throws MalformedXmlException
+     * @throws XmlIsMalformed
      */
     public function import(
         int $storagePid,
