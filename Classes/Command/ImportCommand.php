@@ -96,7 +96,7 @@ final class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        /* @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line cast.int */
         $storagePid = max(0, (int)$input->getArgument('storage-pid'));
         $force = (bool)$input->getOption('force');
         $noDelete = (bool)$input->getOption('no-delete');

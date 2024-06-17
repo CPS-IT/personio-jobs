@@ -85,7 +85,6 @@ final class Tca
         if ($flexForm !== null) {
             ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, $flexForm);
 
-            /* @phpstan-ignore-next-line */
             $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
         }
     }

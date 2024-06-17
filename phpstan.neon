@@ -8,3 +8,5 @@ parameters:
 		- Classes
 		- Configuration
 		- Tests
+	featureToggles:
+		explicitMixedForGlobalVariables: false
