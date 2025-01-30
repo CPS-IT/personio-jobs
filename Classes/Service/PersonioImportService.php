@@ -88,9 +88,7 @@ final class PersonioImportService
 
         // Resolve language id
         if ($language !== null) {
-            $languageId = $this->resolveLanguageId($language, $storagePid)
-                ?? throw UnavailableLanguageException::create($language)
-            ;
+            $languageId = $this->resolveLanguageId($language, $storagePid) ?? throw UnavailableLanguageException::create($language);
         } else {
             $languageId = null;
         }
@@ -122,18 +120,18 @@ final class PersonioImportService
     }
 
     /**
-     * @param int<-1, max>|null $language
+     * @param int<-1, max>|null $languageId
      */
     private function addOrUpdateJob(
         Job $job,
         int $storagePid,
-        int $language = null,
+        int $languageId = null,
         bool $force = false,
         bool $update = true,
     ): void {
-        $job->setLanguage($language ?? -1);
+        $job->setLanguageId($languageId ?? -1);
 
-        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid, $language);
+        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid, $languageId);
 
         // Add non-existing job
         if ($existingJob === null) {
