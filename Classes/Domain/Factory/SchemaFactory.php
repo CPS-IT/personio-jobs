@@ -156,7 +156,7 @@ final class SchemaFactory
             // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/12.0/Breaking-96520-EnforceNon-emptyConfigurationInCObjparseFunc.html
             $parsedDescription = $this->contentObjectRenderer->parseFunc($description, null, '< lib.parseFunc_RTE');
         } else {
-            /* @phpstan-ignore-next-line argument.type (Only relevant for legacy TYPO3 versions) */
+            /* @phpstan-ignore argument.type (Only relevant for legacy TYPO3 versions) */
             $parsedDescription = $this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE');
         }
 
