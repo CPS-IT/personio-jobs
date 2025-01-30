@@ -126,7 +126,7 @@ class JobRepository extends Repository
             $languageAspect = new LanguageAspect($language, overlayType: LanguageAspect::OVERLAYS_MIXED);
             $querySettings->setLanguageAspect($languageAspect);
         } else {
-            /* @phpstan-ignore-next-line */
+            /* @phpstan-ignore method.notFound */
             $querySettings->setLanguageUid($language);
         }
     }
