@@ -69,7 +69,7 @@ final class PersonioApiService
      * @throws ArrayPathIsInvalid
      * @throws XmlIsMalformed
      */
-    public function getJobs(string $language = null): array
+    public function getJobs(?string $language = null): array
     {
         $requestUri = $this->apiUrl->withPath('/xml');
 

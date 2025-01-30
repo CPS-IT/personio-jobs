@@ -73,7 +73,7 @@ final class PersonioImportService
      */
     public function import(
         int $storagePid,
-        string $language = null,
+        ?string $language = null,
         bool $updateExistingJobs = true,
         bool $deleteOrphans = true,
         bool $forceImport = false,
@@ -125,7 +125,7 @@ final class PersonioImportService
     private function addOrUpdateJob(
         Job $job,
         int $storagePid,
-        int $languageId = null,
+        ?int $languageId = null,
         bool $force = false,
         bool $update = true,
     ): void {
