@@ -342,11 +342,11 @@ class Job extends AbstractEntity implements \JsonSerializable
     }
 
     /**
-     * @param int<-1, max> $language
+     * @param int<-1, max> $languageId
      */
-    public function setLanguage(int $language): self
+    public function setLanguageId(int $languageId): self
     {
-        $this->_languageUid = $language;
+        $this->_languageUid = $languageId;
 
         return $this;
     }
