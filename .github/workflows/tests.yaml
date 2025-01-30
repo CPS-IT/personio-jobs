@@ -14,9 +14,14 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        php-version: ["8.1", "8.2", "8.3"]
-        typo3-version: ["11.5", "12.4"]
+        php-version: ["8.1", "8.2", "8.3", "8.4"]
+        typo3-version: ["11.5", "12.4", "13.0"]
         dependencies: ["highest", "lowest"]
+        exclude:
+          - php-version: "8.1"
+            typo3-version: "13.0"
+          - php-version: "8.4"
+            typo3-version: "11.5"
     env:
       typo3DatabaseName: typo3
       typo3DatabaseHost: '127.0.0.1'
@@ -41,7 +46,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
         with:
           dependency-versions: ${{ matrix.dependencies }}
           composer-options: --with=typo3/cms-core:"^${{ matrix.typo3-version }}"
@@ -67,7 +72,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: 8.3
+          php-version: 8.4
           tools: composer:v2
           coverage: pcov
 
@@ -77,7 +82,7 @@ jobs:
 
       # Install dependencies
       - name: Install Composer dependencies
-        uses: ramsey/composer-install@v2
+        uses: ramsey/composer-install@v3
 
       # Run tests
       - name: Run tests
@@ -112,7 +117,7 @@ jobs:
 
       # CodeClimate
       - name: CodeClimate report
-        uses: paambaati/codeclimate-action@v5.0.0
+        uses: paambaati/codeclimate-action@v9.0.0
         if: env.CC_TEST_REPORTER_ID
         env:
           CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
@@ -120,12 +125,8 @@ jobs:
           coverageLocations: |
             ${{ steps.download.outputs.download-path }}/clover.xml:clover
 
-      # codecov
-      - name: codecov report
-        uses: codecov/codecov-action@v3
+      # Coveralls
+      - name: Coveralls report
+        uses: coverallsapp/github-action@v2
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-          files: |
-            ${{ steps.download.outputs.download-path }}/clover.xml
-          fail_ci_if_error: true
-          verbose: true
+          file: ${{ steps.download.outputs.download-path }}/clover.xml

@@ -27,19 +27,21 @@ use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsMappedEvent;
-use CPSIT\Typo3PersonioJobs\Exception\InvalidArrayPathException;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
-use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
-use CPSIT\Typo3PersonioJobs\Mapper\Source\XmlSource;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use CuyZ\Valinor\Mapper\MappingError;
 use CuyZ\Valinor\Mapper\Tree\Message\Messages;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
-use DateTimeInterface;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
+use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
+use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
+use EliasHaeussler\ValinorXml\Mapper\Source\XmlSource;
 use Psr\EventDispatcher\EventDispatcherInterface;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
+use TYPO3\CMS\Core\Localization\Locale;
+use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
 /**
  * PersonioApiService
@@ -63,9 +65,9 @@ final class PersonioApiService
 
     /**
      * @return list<Job>
-     * @throws InvalidArrayPathException
-     * @throws MalformedApiResponseException
-     * @throws MalformedXmlException
+     * @throws ArrayPathHasUnexpectedType
+     * @throws ArrayPathIsInvalid
+     * @throws XmlIsMalformed
      */
     public function getJobs(string $language = null): array
     {
@@ -76,7 +78,7 @@ final class PersonioApiService
         }
 
         $response = $this->requestFactory->request((string)$requestUri);
-        $source = XmlSource::fromXml((string)$response->getBody())
+        $source = XmlSource::fromXmlString((string)$response->getBody())
             ->asCollection('position')
             ->asCollection('position.*.jobDescriptions.jobDescription')
         ;
@@ -96,8 +98,7 @@ final class PersonioApiService
 
     public function getJobUrl(Job $job): Uri
     {
-        $serverRequest = FrontendUtility::getServerRequest();
-        $language = $serverRequest->getAttribute('language')?->getTwoLetterIsoCode();
+        $language = $this->getLanguageCode();
         $jobUrl = $this->apiUrl->withPath(sprintf('/job/%d', $job->getPersonioId()));
 
         if ($language !== null) {
@@ -115,7 +116,7 @@ final class PersonioApiService
     private function createMapper(): TreeMapper
     {
         return (new MapperBuilder())
-            ->supportDateFormats(DateTimeInterface::ATOM)
+            ->supportDateFormats(\DateTimeInterface::ATOM)
             ->allowSuperfluousKeys()
             ->enableFlexibleCasting()
             ->registerConstructor(
@@ -124,5 +125,24 @@ final class PersonioApiService
             )
             ->mapper()
         ;
+    }
+
+    private function getLanguageCode(): ?string
+    {
+        $serverRequest = FrontendUtility::getServerRequest();
+        $siteLanguage = $serverRequest->getAttribute('language');
+
+        if (!($siteLanguage instanceof SiteLanguage)) {
+            return null;
+        }
+
+        $locale = $siteLanguage->getLocale();
+
+        if ($locale instanceof Locale) {
+            return $locale->getLanguageCode();
+        }
+
+        // @todo Remove once support for TYPO3 v11 is dropped
+        return $siteLanguage->getTwoLetterIsoCode();
     }
 }

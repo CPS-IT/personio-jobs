@@ -1,0 +1,21 @@
+<!-- @todo Remove once support for TYPO3 v11 is dropped -->
+
+<extra>
+    <ROOT>
+        <type>array</type>
+        <el>
+            <settings.listPid>
+                <TCEforms>
+                    <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.show.settings.listPid</label>
+                    <config>
+                        <type>group</type>
+                        <allowed>pages</allowed>
+                        <minitems>0</minitems>
+                        <maxitems>1</maxitems>
+                        <size>1</size>
+                    </config>
+                </TCEforms>
+            </settings.listPid>
+        </el>
+    </ROOT>
+</extra>

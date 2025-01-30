@@ -102,8 +102,7 @@ final class ImportCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $languageId = null;
-        /* @phpstan-ignore-next-line */
+        /* @phpstan-ignore-next-line cast.int */
         $storagePid = max(0, (int)$input->getArgument('storage-pid'));
         /** @var string|null $language */
         $language = $input->getOption('language');

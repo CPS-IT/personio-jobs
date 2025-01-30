@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Configuration;
 
 use CPSIT\Typo3PersonioJobs\Extension;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -38,21 +39,29 @@ final class Tca
 {
     /**
      * @param list<string|\BackedEnum> $itemValues
-     * @return list<array{string, string}>
+     * @return list<array{string, string}>|list<array{label: string, value: string}>
      */
-    public static function mapItems(string $tableName, string $fieldName, array $itemValues): array
-    {
+    public static function mapItems(
+        string $tableName,
+        string $fieldName,
+        array $itemValues,
+        bool $allowEmpty = false,
+    ): array {
         $items = [];
+
+        if ($allowEmpty) {
+            $items[] = self::resolveItem('', '');
+        }
 
         foreach ($itemValues as $itemValue) {
             if ($itemValue instanceof \BackedEnum) {
                 $itemValue = (string)$itemValue->value;
             }
 
-            $items[] = [
+            $items[] = self::resolveItem(
                 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
                 $itemValue,
-            ];
+            );
         }
 
         return $items;
@@ -76,9 +85,27 @@ final class Tca
         if ($flexForm !== null) {
             ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, $flexForm);
 
-            /* @phpstan-ignore-next-line */
             $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
         }
+    }
+
+    /**
+     * @return array{label: string, value: string}|array{string, string}
+     */
+    private static function resolveItem(string $label, string $value): array
+    {
+        $typo3Version = (new Typo3Version())->getMajorVersion();
+        $item = [
+            'label' => $label,
+            'value' => $value,
+        ];
+
+        // @todo Remove once support for TYPO3 v11 is dropped
+        if ($typo3Version < 12) {
+            $item = array_values($item);
+        }
+
+        return $item;
     }
 
     private static function buildPluginSignature(string $pluginName): string

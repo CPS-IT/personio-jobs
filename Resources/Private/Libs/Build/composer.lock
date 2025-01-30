@@ -4,37 +4,37 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "bc657d45ff3ecb8d112304c4077817f9",
+    "content-hash": "1f69312829f88910ea59a17c0bceda68",
     "packages": [
         {
             "name": "cuyz/valinor",
-            "version": "1.8.1",
+            "version": "1.14.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b"
+                "reference": "12033fccdcc6afa7e73b3e234e4d6656530f2bcb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
-                "reference": "7f88ceb3a8e30a93be0bef2cf1d05b60f271306b",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/12033fccdcc6afa7e73b3e234e4d6656530f2bcb",
+                "reference": "12033fccdcc6afa7e73b3e234e4d6656530f2bcb",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
-                "php": "~8.0.0 || ~8.1.0 || ~8.2.0 || ~8.3.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
                 "psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.4",
-                "infection/infection": "^0.26",
+                "infection/infection": "^0.27",
                 "marcocesarato/php-conventional-changelog": "^1.12",
                 "mikey179/vfsstream": "^1.6.10",
                 "phpstan/phpstan": "^1.3",
                 "phpstan/phpstan-phpunit": "^1.0",
                 "phpstan/phpstan-strict-rules": "^1.0",
-                "phpunit/phpunit": "^9.5",
-                "rector/rector": "~0.17.0",
+                "phpunit/phpunit": "^10.5",
+                "rector/rector": "^1.0",
                 "vimeo/psalm": "^5.0"
             },
             "type": "library",
@@ -69,7 +69,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/1.8.1"
+                "source": "https://github.com/CuyZ/Valinor/tree/1.14.1"
             },
             "funding": [
                 {
@@ -77,7 +77,62 @@
                     "type": "github"
                 }
             ],
-            "time": "2024-01-08T18:38:18+00:00"
+            "time": "2024-11-06T07:46:46+00:00"
+        },
+        {
+            "name": "eliashaeussler/valinor-xml",
+            "version": "1.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/eliashaeussler/valinor-xml.git",
+                "reference": "7cf143d08be169edcb9101777df048e7b705c1c5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/eliashaeussler/valinor-xml/zipball/7cf143d08be169edcb9101777df048e7b705c1c5",
+                "reference": "7cf143d08be169edcb9101777df048e7b705c1c5",
+                "shasum": ""
+            },
+            "require": {
+                "cuyz/valinor": "^1.3",
+                "ext-mbstring": "*",
+                "mtownsend/xml-to-array": "^2.0",
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
+            },
+            "require-dev": {
+                "armin/editorconfig-cli": "^1.8 || ^2.0",
+                "eliashaeussler/php-cs-fixer-config": "^2.0",
+                "eliashaeussler/phpstan-config": "^2.0",
+                "eliashaeussler/rector-config": "^3.0",
+                "ergebnis/composer-normalize": "^2.30",
+                "phpstan/extension-installer": "^1.2",
+                "phpstan/phpstan-phpunit": "^1.1",
+                "phpunit/phpunit": "^10.2 || ^11.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "EliasHaeussler\\ValinorXml\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-3.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "Elias Häußler",
+                    "email": "elias@haeussler.dev",
+                    "homepage": "https://haeussler.dev",
+                    "role": "Maintainer"
+                }
+            ],
+            "description": "XML source for cuyz/valinor",
+            "support": {
+                "issues": "https://github.com/eliashaeussler/valinor-xml/issues",
+                "source": "https://github.com/eliashaeussler/valinor-xml/tree/1.0.3"
+            },
+            "time": "2024-11-26T20:59:11+00:00"
         },
         {
             "name": "mtownsend/xml-to-array",
@@ -187,12 +242,12 @@
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {},
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": "~8.1.0 || ~8.2.0 || ~8.3.0"
+        "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
     },
-    "platform-dev": [],
+    "platform-dev": {},
     "plugin-api-version": "2.6.0"
 }

@@ -23,15 +23,13 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Exception;
 
-use Exception;
-
 /**
  * UnavailableLanguageException
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-3.0-or-later
  */
-final class UnavailableLanguageException extends Exception
+final class UnavailableLanguageException extends \Exception
 {
     public static function create(string $language): self
     {

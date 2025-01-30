@@ -23,15 +23,13 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Exception;
 
-use Exception;
-
 /**
  * InvalidApiUrlException
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class InvalidApiUrlException extends Exception
+final class InvalidApiUrlException extends \Exception
 {
     public static function create(): self
     {

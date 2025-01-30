@@ -31,11 +31,10 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
 use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
-use CPSIT\Typo3PersonioJobs\Exception\MalformedXmlException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory;
-use DateTime;
+use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\StreamFactory;
@@ -81,8 +80,8 @@ final class PersonioApiServiceTest extends UnitTestCase
 
         $this->requestFactory->response = new Response($stream);
 
-        $this->expectException(MalformedXmlException::class);
-        $this->expectExceptionCode(1692170602);
+        $this->expectException(XmlIsMalformed::class);
+        $this->expectExceptionCode(1718372740);
 
         $this->subject->getJobs();
     }
@@ -136,6 +135,21 @@ final class PersonioApiServiceTest extends UnitTestCase
     /**
      * @test
      */
+    public function getJobsReturnsMappedJobObjectWithoutWorkingExperience(): void
+    {
+        $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-no-working-experience.xml');
+
+        $this->requestFactory->response = new Response($stream);
+
+        $actual = $this->subject->getJobs();
+
+        self::assertCount(1, $actual);
+        self::assertJobEqualsJob($this->createJob(1, null), $actual[0]);
+    }
+
+    /**
+     * @test
+     */
     public function getJobsReturnsJobInGivenLanguage(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-other-language.xml');
@@ -165,8 +179,11 @@ final class PersonioApiServiceTest extends UnitTestCase
         // Fetch actual job descriptions to compare them separately
         $actualJobDescriptions = $actual->getJobDescriptions()->toArray();
 
+        /** @var ObjectStorage<JobDescription> $jobDescriptions */
+        $jobDescriptions = new ObjectStorage();
+
         // Reset job descriptions (we compare them separately)
-        $actual->setJobDescriptions(new ObjectStorage());
+        $actual->setJobDescriptions($jobDescriptions);
         $actual->recalculateContentHash();
 
         // Compare job
@@ -178,8 +195,12 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertEquals($expectedJobDescription2->setJob($actual), $actualJobDescriptions[1]);
     }
 
-    private function createJob(int $id): Job
+    private function createJob(int $id, ?YearsOfExperience $yearsOfExperience = YearsOfExperience::TwoFiveYears): Job
     {
+        $createDate = \DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00');
+
+        self::assertNotFalse($createDate);
+
         $job = (new Job())
             ->setPersonioId($id)
             ->setSubcompany('Test company')
@@ -190,11 +211,11 @@ final class PersonioApiServiceTest extends UnitTestCase
             ->setEmploymentType(EmploymentType::Permanent->value)
             ->setSeniority(Seniority::Experienced->value)
             ->setSchedule(Schedule::FullTime->value)
-            ->setYearsOfExperience(YearsOfExperience::TwoFiveYears->value)
+            ->setYearsOfExperience($yearsOfExperience->value ?? '')
             ->setKeywords('Testing,QA,Fun')
             ->setOccupation('software_and_web_development')
             ->setOccupationCategory('it_software')
-            ->setCreateDate(DateTime::createFromFormat(\DateTimeInterface::ATOM, '2023-08-11T14:15:17+00:00'));
+            ->setCreateDate($createDate);
         $job->recalculateContentHash();
 
         return $job;

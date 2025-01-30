@@ -7,3 +7,6 @@ parameters:
 	paths:
 		- Classes
 		- Configuration
+		- Tests
+	featureToggles:
+		explicitMixedForGlobalVariables: false
