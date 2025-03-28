@@ -82,13 +82,19 @@ typo3 personio-jobs:import <storage-pid> [options]
 
 The following command parameters are available:
 
-| Command parameter       | Description                                              | Required | Default |
-|-------------------------|----------------------------------------------------------|----------|---------|
-| **`storage-pid`**       | Storage pid of imported jobs                             | ✅        | –       |
-| **`-f`**, **`--force`** | Enforce re-import of unchanged jobs                      | –        | no      |
-| **`--no-delete`**       | Do not delete orphaned jobs                              | –        | no      |
-| **`--no-update`**       | Do not update imported jobs that have been changed       | –        | no      |
-| **`--dry-run`**         | Do not perform database operations, only display changes | –        | no      |
+| Command parameter          | Description                                                                         | Required | Default        |
+|----------------------------|-------------------------------------------------------------------------------------|----------|----------------|
+| **`storage-pid`**          | Storage pid of imported jobs                                                        | ✅        | –              |
+| **`-l`**, **`--language`** | Job language, should be the two-letter ISO 639-1 code of a configured site language | –        | –<sup>1)</sup> |
+| **`-f`**, **`--force`**    | Enforce re-import of unchanged jobs                                                 | –        | no             |
+| **`--no-delete`**          | Do not delete orphaned jobs                                                         | –        | no             |
+| **`--no-update`**          | Do not update imported jobs that have been changed                                  | –        | no             |
+| **`--dry-run`**            | Do not perform database operations, only display changes                            | –        | no             |
+
+*<sup>1)</sup> If no language is configured, Personio will return
+jobs from the default language. They will be persisted in a way that
+all languages are matched (that is, the value of `sys_language_uid`
+will be `-1`).*
 
 💡 Increase verbosity with `--verbose` or `-v` to show all changes,
 even unchanged jobs that were skipped.
