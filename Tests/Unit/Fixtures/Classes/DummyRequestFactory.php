@@ -46,7 +46,7 @@ final class DummyRequestFactory extends RequestFactory
     /**
      * @param array<string, mixed> $options
      */
-    public function request(string $uri, string $method = 'GET', array $options = []): ResponseInterface
+    public function request(string $uri, string $method = 'GET', array $options = [], ?string $context = null): ResponseInterface
     {
         if ($this->exception !== null) {
             throw $this->exception;
