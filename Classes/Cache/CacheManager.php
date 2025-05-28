@@ -39,17 +39,17 @@ final class CacheManager
         private readonly FrontendInterface $pageCache,
     ) {}
 
-    public function addTag(Job $job = null): void
+    public function addTag(?Job $job = null): void
     {
         $this->getTypoScriptFrontendController()?->addCacheTags([$this->buildCacheTag($job)]);
     }
 
-    public function flushTag(Job $job = null): void
+    public function flushTag(?Job $job = null): void
     {
         $this->pageCache->flushByTag($this->buildCacheTag($job));
     }
 
-    private function buildCacheTag(Job $job = null): string
+    private function buildCacheTag(?Job $job = null): string
     {
         $cacheTag = 'tx_personiojobs';
 
