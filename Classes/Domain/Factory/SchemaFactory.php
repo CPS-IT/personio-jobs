@@ -49,11 +49,19 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 final readonly class SchemaFactory
 {
+    private ?TypeFactory $typeFactory;
+
     public function __construct(
         private PersonioApiService $personioApiService,
         private ContentObjectRenderer $contentObjectRenderer,
         private EventDispatcherInterface $eventDispatcher,
-    ) {}
+    ) {
+        if (\class_exists(TypeFactory::class)) {
+            $this->typeFactory = GeneralUtility::makeInstance(TypeFactory::class);
+        } else {
+            $this->typeFactory = null;
+        }
+    }
 
     /**
      * @throws ExtensionNotLoadedException
@@ -69,10 +77,8 @@ final readonly class SchemaFactory
         $organizationType = $this->createOrganization($job);
         $placeType = $this->createPlace($job);
 
-        // Create job posting
-        $jobPosting = GeneralUtility::makeInstance(TypeFactory::class)->create('JobPosting');
-        \assert($jobPosting instanceof JobPosting);
-
+        /** @var JobPosting $jobPosting */
+        $jobPosting = $this->typeFactory?->create('JobPosting');
         $jobPosting
             ->setProperty('datePosted', ($job->getCreateDate() ?? new \DateTime())->format('Y-m-d'))
             ->setProperty('employmentType', $this->decorateEmploymentType($job))
@@ -93,7 +99,8 @@ final readonly class SchemaFactory
     private function createOrganization(Job $job): Organization
     {
         /** @var Organization $organization */
-        $organization = TypeFactory::createType('Organization')
+        $organization = $this->typeFactory?->create('Organization');
+        $organization
             ->setProperty('name', $job->getSubcompany())
             ->setProperty('address', $job->getOffice())
         ;
@@ -104,9 +111,8 @@ final readonly class SchemaFactory
     private function createPlace(Job $job): Place
     {
         /** @var Place $place */
-        $place = TypeFactory::createType('Place')
-            ->setProperty('address', $job->getOffice())
-        ;
+        $place = $this->typeFactory?->create('Place');
+        $place->setProperty('address', $job->getOffice());
 
         return $place;
     }
