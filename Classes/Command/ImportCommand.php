@@ -28,6 +28,7 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ImportResult;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
 use CPSIT\Typo3PersonioJobs\Service\PersonioImportService;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\Table;
 use Symfony\Component\Console\Helper\TableSeparator;
@@ -44,6 +45,7 @@ use Symfony\Component\Console\Style\SymfonyStyle;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
+#[AsCommand('personio-jobs:import', 'Import jobs from Personio XML feed')]
 final class ImportCommand extends Command
 {
     private SymfonyStyle $io;

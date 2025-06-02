@@ -25,6 +25,7 @@ namespace CPSIT\Typo3PersonioJobs\Configuration;
 
 use CPSIT\Typo3PersonioJobs\Exception\InvalidApiUrlException;
 use CPSIT\Typo3PersonioJobs\Extension;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Configuration\ExtensionConfiguration as BaseConfiguration;
 use TYPO3\CMS\Core\Exception;
 use TYPO3\CMS\Core\Http\Uri;
@@ -35,10 +36,11 @@ use TYPO3\CMS\Core\Http\Uri;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class ExtensionConfiguration
+#[Autoconfigure(public: true)]
+final readonly class ExtensionConfiguration
 {
     public function __construct(
-        private readonly BaseConfiguration $configuration,
+        private BaseConfiguration $configuration,
     ) {}
 
     /**

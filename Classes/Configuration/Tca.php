@@ -24,7 +24,6 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Configuration;
 
 use CPSIT\Typo3PersonioJobs\Extension;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -69,8 +68,8 @@ final class Tca
 
     public static function addPlugin(
         string $name,
-        string $icon = null,
-        string $flexForm = null,
+        ?string $icon = null,
+        ?string $flexForm = null,
     ): void {
         $pluginSignature = self::buildPluginSignature($name);
 
@@ -90,22 +89,14 @@ final class Tca
     }
 
     /**
-     * @return array{label: string, value: string}|array{string, string}
+     * @return array{label: string, value: string}
      */
     private static function resolveItem(string $label, string $value): array
     {
-        $typo3Version = (new Typo3Version())->getMajorVersion();
-        $item = [
+        return [
             'label' => $label,
             'value' => $value,
         ];
-
-        // @todo Remove once support for TYPO3 v11 is dropped
-        if ($typo3Version < 12) {
-            $item = array_values($item);
-        }
-
-        return $item;
     }
 
     private static function buildPluginSignature(string $pluginName): string

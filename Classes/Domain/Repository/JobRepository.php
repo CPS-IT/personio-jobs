@@ -49,7 +49,7 @@ class JobRepository extends Repository
         return $query->execute();
     }
 
-    public function findOneByPersonioId(int $personioId, int $storagePid = null): ?Job
+    public function findOneByPersonioId(int $personioId, ?int $storagePid = null): ?Job
     {
         $query = $this->createQuery();
 
@@ -76,7 +76,7 @@ class JobRepository extends Repository
      * @param list<Job> $existingJobs
      * @return QueryResultInterface<Job>
      */
-    public function findOrphans(array $existingJobs, int $storagePid = null): QueryResultInterface
+    public function findOrphans(array $existingJobs, ?int $storagePid = null): QueryResultInterface
     {
         $query = $this->createQuery();
 

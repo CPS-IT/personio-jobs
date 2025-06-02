@@ -16,7 +16,7 @@
 		}
 	],
 	"require": {
-		"php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
+		"php": "~8.2.0 || ~8.3.0 || ~8.4.0",
 		"ext-json": "*",
 		"ext-mbstring": "*",
 		"cuyz/valinor": "^1.3",
@@ -24,13 +24,14 @@
 		"psr/event-dispatcher": "^1.0",
 		"psr/http-message": "^1.0 || ^2.0",
 		"symfony/console": "^5.4 || ^6.0 || ^7.0",
-		"typo3/cms-core": "^11.5 || ^12.4 || ~13.0.0",
-		"typo3/cms-extbase": "^11.5 || ^12.4 || ~13.0.0",
-		"typo3/cms-frontend": "^11.5 || ^12.4 || ~13.0.0"
+		"symfony/dependency-injection": "^6.4 || ^7.0",
+		"typo3/cms-core": "^12.4 || ~13.0.0",
+		"typo3/cms-extbase": "^12.4 || ~13.0.0",
+		"typo3/cms-frontend": "^12.4 || ~13.0.0"
 	},
 	"require-dev": {
-		"armin/editorconfig-cli": "^1.5 || ^2.0",
-		"brotkrueml/schema": "^2.7 || ^3.0",
+		"armin/editorconfig-cli": "^2.0",
+		"brotkrueml/schema": "^3.0",
 		"eliashaeussler/version-bumper": "^2.1.1",
 		"ergebnis/composer-normalize": "^2.29",
 		"friendsofphp/php-cs-fixer": "^3.57",
@@ -38,17 +39,17 @@
 		"phpstan/extension-installer": "^1.2",
 		"phpstan/phpstan": "^1.10",
 		"phpstan/phpstan-phpunit": "^1.3",
-		"phpunit/phpcov": "^8.2 || ^9.0 || ^10.0",
+		"phpunit/phpcov": "^9.0 || ^10.0",
 		"saschaegerer/phpstan-typo3": "^1.8",
 		"ssch/typo3-rector": "^2.0",
-		"typo3/coding-standards": "^0.7.0 || ^0.8.0",
-		"typo3/testing-framework": "^7.0.2 || ^8.0.9"
+		"typo3/coding-standards": "^0.8.0",
+		"typo3/testing-framework": "^8.2.7 || ^9.2.0"
 	},
 	"conflict": {
 		"cuyz/valinor": "1.8.0"
 	},
 	"suggest": {
-		"brotkrueml/schema": "Include JSON schema on job detail pages (^2.7 || ^3.0)"
+		"brotkrueml/schema": "Include JSON schema on job detail pages (^3.0)"
 	},
 	"autoload": {
 		"psr-4": {

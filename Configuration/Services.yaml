@@ -2,7 +2,6 @@ services:
   _defaults:
     autowire: true
     autoconfigure: true
-    public: false
 
   CPSIT\Typo3PersonioJobs\:
     resource: '../Classes/*'
@@ -10,39 +9,3 @@ services:
       - '../Classes/Domain/Model/*'
       - '../Classes/Enums/*'
       - '../Classes/Exception/*'
-
-  CPSIT\Typo3PersonioJobs\Cache\CacheManager:
-    arguments:
-      $pageCache: '@cache.pages'
-
-  CPSIT\Typo3PersonioJobs\Command\ImportCommand:
-    tags:
-      - name: 'console.command'
-        command: 'personio-jobs:import'
-        description: 'Import jobs from Personio XML feed'
-
-  CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration:
-    public: true
-
-  CPSIT\Typo3PersonioJobs\Hooks\DataHandlerHook:
-    public: true
-
-  CPSIT\Typo3PersonioJobs\Service\PersonioApiService:
-    public: true
-
-  CPSIT\Typo3PersonioJobs\Service\PersonioImportService:
-    public: true
-    arguments:
-      $connection: '@connection.jobs'
-
-  cache.pages:
-    class: 'TYPO3\CMS\Core\Cache\Frontend\FrontendInterface'
-    factory: ['@TYPO3\CMS\Core\Cache\CacheManager', 'getCache']
-    arguments:
-      - 'pages'
-
-  connection.jobs:
-    class: 'TYPO3\CMS\Core\Database\Connection'
-    factory: ['@TYPO3\CMS\Core\Database\ConnectionPool', 'getConnectionForTable']
-    arguments:
-      - !php/const CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME
