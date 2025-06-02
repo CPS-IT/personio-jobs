@@ -1,6 +1,11 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Parameter \\#1 \\$settings \\(array\\{sorting\\?\\: string, sortingDirection\\?\\: 'ASC'\\|'DESC', filter\\?\\: array\\{subcompanyInclude\\?\\: string, subcompanyExclude\\?\\: string\\}\\}\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\ListDemand\\:\\:fromArray\\(\\) should be contravariant with parameter \\$settings \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\Demand\\:\\:fromArray\\(\\)$#"
+			count: 1
+			path: Classes/Domain/Model/Dto/ListDemand.php
+
+		-
 			message: "#^Cannot cast mixed to int\\.$#"
 			count: 3
 			path: Classes/Helper/SlugHelper.php
@@ -9,3 +14,8 @@ parameters:
 			message: "#^Cannot cast mixed to string\\.$#"
 			count: 1
 			path: Classes/Helper/SlugHelper.php
+
+		-
+			message: "#^Parameter \\#3 \\$options \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Tests\\\\Unit\\\\Fixtures\\\\Classes\\\\DummyRequestFactory\\:\\:request\\(\\) should be contravariant with parameter \\$options \\(array\\) of method TYPO3\\\\CMS\\\\Core\\\\Http\\\\RequestFactory\\:\\:request\\(\\)$#"
+			count: 1
+			path: Tests/Unit/Fixtures/Classes/DummyRequestFactory.php
