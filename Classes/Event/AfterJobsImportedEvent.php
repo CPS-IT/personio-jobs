@@ -31,10 +31,10 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ImportResult;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class AfterJobsImportedEvent
+final readonly class AfterJobsImportedEvent
 {
     public function __construct(
-        private readonly ImportResult $importResult,
+        private ImportResult $importResult,
     ) {}
 
     public function getImportResult(): ImportResult

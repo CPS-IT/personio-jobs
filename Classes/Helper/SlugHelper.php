@@ -58,9 +58,9 @@ final class SlugHelper
         $state = RecordStateFactory::forName($tableName)->fromArray($record, (int)$record['pid'], (int)$record['uid']);
 
         // Assure slug is unique as configured
-        if (in_array('uniqueInSite', $evalInfo)) {
+        if (in_array('uniqueInSite', $evalInfo, true)) {
             $slug = $slugHelper->buildSlugForUniqueInSite($slug, $state);
-        } elseif (in_array('uniqueInPid', $evalInfo)) {
+        } elseif (in_array('uniqueInPid', $evalInfo, true)) {
             $slug = $slugHelper->buildSlugForUniqueInPid($slug, $state);
         }
 

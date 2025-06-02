@@ -24,6 +24,7 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Cache;
 
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
 use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
@@ -33,10 +34,11 @@ use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class CacheManager
+final readonly class CacheManager
 {
     public function __construct(
-        private readonly FrontendInterface $pageCache,
+        #[Autowire(expression: 'service("TYPO3\\\\CMS\\\\Core\\\\Cache\\\\CacheManager").getCache("pages")')]
+        private FrontendInterface $pageCache,
     ) {}
 
     public function addTag(?Job $job = null): void

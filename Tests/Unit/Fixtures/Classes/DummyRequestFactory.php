@@ -38,6 +38,7 @@ final class DummyRequestFactory extends RequestFactory
 {
     public ?string $lastUri = null;
 
+    /* @phpstan-ignore constructor.missingParentCall */
     public function __construct(
         public ResponseInterface $response = new Response(),
         public ?\Throwable $exception = null,

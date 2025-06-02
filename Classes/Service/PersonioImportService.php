@@ -36,6 +36,8 @@ use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
 use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
 use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Database\Connection;
 use TYPO3\CMS\Core\Exception\SiteNotFoundException;
 use TYPO3\CMS\Core\Site\SiteFinder;
@@ -47,12 +49,14 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
+#[Autoconfigure(public: true)]
 final class PersonioImportService
 {
     private ImportResult $result;
 
     public function __construct(
         private readonly CacheManager $cacheManager,
+        #[Autowire(expression: 'service("TYPO3\\\\CMS\\\\Core\\\\Database\\\\ConnectionPool").getConnectionForTable("tx_personiojobs_domain_model_job")')]
         private readonly Connection $connection,
         private readonly EventDispatcherInterface $eventDispatcher,
         private readonly JobRepository $jobRepository,

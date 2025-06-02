@@ -49,9 +49,9 @@ class Job extends AbstractEntity implements \JsonSerializable
     protected string $name = '';
 
     /**
-     * @Extbase\ORM\Cascade("remove")
      * @var ObjectStorage<JobDescription>
      */
+    #[Extbase\ORM\Cascade(['value' => 'remove'])]
     protected ObjectStorage $jobDescriptions;
     protected string $employmentType = '';
     protected string $seniority = '';

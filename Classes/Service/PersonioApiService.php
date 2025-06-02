@@ -38,9 +38,9 @@ use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
 use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
 use EliasHaeussler\ValinorXml\Mapper\Source\XmlSource;
 use Psr\EventDispatcher\EventDispatcherInterface;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Uri;
-use TYPO3\CMS\Core\Localization\Locale;
 use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
 
 /**
@@ -49,14 +49,15 @@ use TYPO3\CMS\Core\Site\Entity\SiteLanguage;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class PersonioApiService
+#[Autoconfigure(public: true)]
+final readonly class PersonioApiService
 {
-    private readonly Uri $apiUrl;
-    private readonly TreeMapper $mapper;
+    private Uri $apiUrl;
+    private TreeMapper $mapper;
 
     public function __construct(
-        private readonly RequestFactory $requestFactory,
-        private readonly EventDispatcherInterface $eventDispatcher,
+        private RequestFactory $requestFactory,
+        private EventDispatcherInterface $eventDispatcher,
         ExtensionConfiguration $extensionConfiguration,
     ) {
         $this->apiUrl = $extensionConfiguration->getApiUrl();
@@ -136,13 +137,6 @@ final class PersonioApiService
             return null;
         }
 
-        $locale = $siteLanguage->getLocale();
-
-        if ($locale instanceof Locale) {
-            return $locale->getLanguageCode();
-        }
-
-        // @todo Remove once support for TYPO3 v11 is dropped
-        return $siteLanguage->getTwoLetterIsoCode();
+        return $siteLanguage->getLocale()->getLanguageCode();
     }
 }

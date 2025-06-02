@@ -1,9 +1,9 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to function method_exists\\(\\) with 'Brotkrueml\\\\\\\\Schema\\\\\\\\Type\\\\\\\\TypeFactory' and 'create' will always evaluate to true\\.$#"
+			message: "#^Parameter \\#1 \\$settings \\(array\\{sorting\\?\\: string, sortingDirection\\?\\: 'ASC'\\|'DESC', filter\\?\\: array\\{subcompanyInclude\\?\\: string, subcompanyExclude\\?\\: string\\}\\}\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\ListDemand\\:\\:fromArray\\(\\) should be contravariant with parameter \\$settings \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\Demand\\:\\:fromArray\\(\\)$#"
 			count: 1
-			path: Classes/Domain/Factory/SchemaFactory.php
+			path: Classes/Domain/Model/Dto/ListDemand.php
 
 		-
 			message: "#^Cannot cast mixed to int\\.$#"
@@ -16,16 +16,6 @@ parameters:
 			path: Classes/Helper/SlugHelper.php
 
 		-
-			message: "#^Instanceof between TYPO3\\\\CMS\\\\Core\\\\Localization\\\\Locale and TYPO3\\\\CMS\\\\Core\\\\Localization\\\\Locale will always evaluate to true\\.$#"
+			message: "#^Parameter \\#3 \\$options \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Tests\\\\Unit\\\\Fixtures\\\\Classes\\\\DummyRequestFactory\\:\\:request\\(\\) should be contravariant with parameter \\$options \\(array\\) of method TYPO3\\\\CMS\\\\Core\\\\Http\\\\RequestFactory\\:\\:request\\(\\)$#"
 			count: 1
-			path: Classes/Service/PersonioApiService.php
-
-		-
-			message: "#^Unreachable statement \\- code above always terminates\\.$#"
-			count: 1
-			path: Classes/Service/PersonioApiService.php
-
-		-
-			message: "#^Comparison operation \"\\<\" between TYPO3\\\\CMS\\\\Core\\\\Information\\\\Typo3Version and 12 results in an error\\.$#"
-			count: 1
-			path: Configuration/TCA/Overrides/tt_content.php
+			path: Tests/Unit/Fixtures/Classes/DummyRequestFactory.php
