@@ -281,7 +281,7 @@ final class PersonioImportService
         }
 
         foreach ($site->getLanguages() as $siteLanguage) {
-            if ($siteLanguage->getTwoLetterIsoCode() === $language) {
+            if ($siteLanguage->getLocale()->getLanguageCode() === $language) {
                 /** @var non-negative-int $languageId */
                 $languageId = $siteLanguage->getLanguageId();
 
