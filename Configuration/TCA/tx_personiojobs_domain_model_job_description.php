@@ -22,18 +22,8 @@ defined('TYPO3') or die();
  */
 
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use TYPO3\CMS\Core\Information\Typo3Version;
 
-$typo3Version = (new Typo3Version())->getMajorVersion();
-
-// @todo Remove once support for TYPO3 v11 is dropped
-if ($typo3Version >= 12) {
-    $labelKey = 'label';
-} else {
-    $labelKey = 0;
-}
-
-$tca = [
+return [
     'ctrl' => [
         'label' => 'header',
         'tstamp' => 'tstamp',
@@ -57,7 +47,7 @@ $tca = [
                 'renderType' => 'checkboxToggle',
                 'items' => [
                     [
-                        $labelKey => '',
+                        'label' => '',
                         'invertStateDisplay' => true,
                     ],
                 ],
@@ -66,44 +56,25 @@ $tca = [
         'starttime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => $typo3Version >= 13
-                ? [
-                    'type' => 'datetime',
-                    'format' => 'datetime',
-                    'default' => 0,
-                ]
-                // @todo Remove once support for TYPO3 v11 and v12 is dropped
-                : [
-                    'type' => 'input',
-                    'renderType' => 'inputDateTime',
-                    'eval' => 'datetime,int',
-                    'default' => 0,
-                ],
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'datetime',
+                'default' => 0,
+            ],
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
         ],
         'endtime' => [
             'exclude' => true,
             'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => $typo3Version >= 13
-                ? [
-                    'type' => 'datetime',
-                    'format' => 'datetime',
-                    'default' => 0,
-                    'range' => [
-                        'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                    ],
-                ]
-                // @todo Remove once support for TYPO3 v11 and v12 is dropped
-                : [
-                    'type' => 'input',
-                    'renderType' => 'inputDateTime',
-                    'eval' => 'datetime,int',
-                    'default' => 0,
-                    'range' => [
-                        'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                    ],
+            'config' => [
+                'type' => 'datetime',
+                'format' => 'datetime',
+                'default' => 0,
+                'range' => [
+                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
                 ],
+            ],
             'l10n_mode' => 'exclude',
             'l10n_display' => 'defaultAsReadonly',
         ],
@@ -122,6 +93,7 @@ $tca = [
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
+                'required' => true,
             ],
         ],
         'job' => [
@@ -143,24 +115,8 @@ $tca = [
                 --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
                     hidden,
                     starttime,
-                    endtime
+                    endtime,
             ',
         ],
     ],
 ];
-
-$requiredFields = [
-    'bodytext',
-];
-
-// @todo Remove different handling of required columns once support for TYPO3 v11 is dropped
-foreach ($requiredFields as $fieldName) {
-    if ($typo3Version >= 12) {
-        $tca['columns'][$fieldName]['config']['required'] = true;
-    } else {
-        $eval = $tca['columns'][$fieldName]['config']['eval'] ?? '';
-        $tca['columns'][$fieldName]['config']['eval'] = ltrim($eval . ',required', ',');
-    }
-}
-
-return $tca;

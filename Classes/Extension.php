@@ -75,7 +75,7 @@ final class Extension
     /**
      * FOR USE IN ext_localconf.php ONLY.
      *
-     * @todo Remove once support for TYPO3 v11 and v12 is dropped
+     * @todo Remove once support for TYPO3 v12 is dropped
      */
     public static function registerTSconfig(): void
     {

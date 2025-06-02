@@ -32,14 +32,14 @@ use TYPO3\CMS\Core\Http\Uri;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class AfterJobsMappedEvent
+final readonly class AfterJobsMappedEvent
 {
     /**
      * @param list<Job> $jobs
      */
     public function __construct(
-        private readonly Uri $requestUri,
-        private readonly array $jobs,
+        private Uri $requestUri,
+        private array $jobs,
     ) {}
 
     public function getRequestUri(): Uri

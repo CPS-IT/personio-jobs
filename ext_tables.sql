@@ -1,4 +1,4 @@
-# @todo Remove auto-created DB tables once support for TYPO3 v11/v12 is dropped,
+# @todo Remove auto-created DB tables once support for TYPO3 v12 is dropped,
 #	      see https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/13.0/Feature-101553-Auto-createDBFieldsFromTCAColumns.html
 
 #

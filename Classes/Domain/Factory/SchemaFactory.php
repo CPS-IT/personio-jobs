@@ -47,12 +47,12 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class SchemaFactory
+final readonly class SchemaFactory
 {
     public function __construct(
-        private readonly PersonioApiService $personioApiService,
-        private readonly ContentObjectRenderer $contentObjectRenderer,
-        private readonly EventDispatcherInterface $eventDispatcher,
+        private PersonioApiService $personioApiService,
+        private ContentObjectRenderer $contentObjectRenderer,
+        private EventDispatcherInterface $eventDispatcher,
     ) {}
 
     /**
@@ -70,14 +70,7 @@ final class SchemaFactory
         $placeType = $this->createPlace($job);
 
         // Create job posting
-        if (method_exists(TypeFactory::class, 'create')) {
-            // @todo Use DI once support for EXT:schema v2 is dropped
-            $jobPosting = GeneralUtility::makeInstance(TypeFactory::class)->create('JobPosting');
-        } else {
-            // @todo Remove once support for EXT:schema v2 is dropped
-            $jobPosting = TypeFactory::createType('JobPosting');
-        }
-
+        $jobPosting = GeneralUtility::makeInstance(TypeFactory::class)->create('JobPosting');
         \assert($jobPosting instanceof JobPosting);
 
         $jobPosting

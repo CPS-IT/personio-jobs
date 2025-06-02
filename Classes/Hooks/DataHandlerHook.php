@@ -27,6 +27,7 @@ use CPSIT\Typo3PersonioJobs\Cache\CacheManager;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
+use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use TYPO3\CMS\Core\DataHandling\DataHandler;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
@@ -36,12 +37,13 @@ use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class DataHandlerHook
+#[Autoconfigure(public: true)]
+final readonly class DataHandlerHook
 {
     public function __construct(
-        private readonly CacheManager $cacheManager,
-        private readonly JobRepository $jobRepository,
-        private readonly PersistenceManagerInterface $persistenceManager,
+        private CacheManager $cacheManager,
+        private JobRepository $jobRepository,
+        private PersistenceManagerInterface $persistenceManager,
     ) {}
 
     /**

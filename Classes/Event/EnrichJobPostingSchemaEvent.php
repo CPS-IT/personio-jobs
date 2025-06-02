@@ -32,11 +32,11 @@ use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
-final class EnrichJobPostingSchemaEvent
+final readonly class EnrichJobPostingSchemaEvent
 {
     public function __construct(
-        private readonly Job $job,
-        private readonly JobPosting $jobPosting,
+        private Job $job,
+        private JobPosting $jobPosting,
     ) {}
 
     public function getJob(): Job
