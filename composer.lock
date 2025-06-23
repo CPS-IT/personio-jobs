@@ -121,16 +121,16 @@
         },
         {
             "name": "cuyz/valinor",
-            "version": "1.16.1",
+            "version": "1.17.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "acbda7ff3c25e5749f1e04ed183b3795434264c0"
+                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/acbda7ff3c25e5749f1e04ed183b3795434264c0",
-                "reference": "acbda7ff3c25e5749f1e04ed183b3795434264c0",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
+                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
                 "shasum": ""
             },
             "require": {
@@ -144,7 +144,7 @@
             },
             "require-dev": {
                 "friendsofphp/php-cs-fixer": "^3.4",
-                "infection/infection": "^0.27",
+                "infection/infection": "^0.29",
                 "marcocesarato/php-conventional-changelog": "^1.12",
                 "mikey179/vfsstream": "^1.6.10",
                 "phpbench/phpbench": "^1.3",
@@ -153,7 +153,7 @@
                 "phpstan/phpstan-strict-rules": "^2.0",
                 "phpunit/phpunit": "^10.5",
                 "rector/rector": "^2.0",
-                "vimeo/psalm": "^5.0"
+                "vimeo/psalm": "^6.0"
             },
             "type": "library",
             "autoload": {
@@ -187,7 +187,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/1.16.1"
+                "source": "https://github.com/CuyZ/Valinor/tree/1.17.0"
             },
             "funding": [
                 {
@@ -195,7 +195,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-05-19T13:46:02+00:00"
+            "time": "2025-06-20T06:40:38+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -6202,54 +6202,6 @@
             "time": "2024-05-06T16:37:16+00:00"
         },
         {
-            "name": "cweagans/composer-patches",
-            "version": "1.7.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/cweagans/composer-patches.git",
-                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/cweagans/composer-patches/zipball/e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
-                "reference": "e190d4466fe2b103a55467dfa83fc2fecfcaf2db",
-                "shasum": ""
-            },
-            "require": {
-                "composer-plugin-api": "^1.0 || ^2.0",
-                "php": ">=5.3.0"
-            },
-            "require-dev": {
-                "composer/composer": "~1.0 || ~2.0",
-                "phpunit/phpunit": "~4.6"
-            },
-            "type": "composer-plugin",
-            "extra": {
-                "class": "cweagans\\Composer\\Patches"
-            },
-            "autoload": {
-                "psr-4": {
-                    "cweagans\\Composer\\": "src"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Cameron Eagans",
-                    "email": "me@cweagans.net"
-                }
-            ],
-            "description": "Provides a way to patch Composer packages.",
-            "support": {
-                "issues": "https://github.com/cweagans/composer-patches/issues",
-                "source": "https://github.com/cweagans/composer-patches/tree/1.7.3"
-            },
-            "time": "2022-12-20T22:53:13+00:00"
-        },
-        {
             "name": "cypresslab/gitelephant",
             "version": "v4.6.0",
             "source": {
@@ -7109,16 +7061,16 @@
         },
         {
             "name": "helmich/typo3-typoscript-parser",
-            "version": "v2.7.0",
+            "version": "v2.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/martin-helmich/typo3-typoscript-parser.git",
-                "reference": "5a1f5a025bf93603128f01f658ae31458c4e09d9"
+                "reference": "068a328e8f949332bc5660d587115fbec451e1d5"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/martin-helmich/typo3-typoscript-parser/zipball/5a1f5a025bf93603128f01f658ae31458c4e09d9",
-                "reference": "5a1f5a025bf93603128f01f658ae31458c4e09d9",
+                "url": "https://api.github.com/repos/martin-helmich/typo3-typoscript-parser/zipball/068a328e8f949332bc5660d587115fbec451e1d5",
+                "reference": "068a328e8f949332bc5660d587115fbec451e1d5",
                 "shasum": ""
             },
             "require": {
@@ -7156,7 +7108,7 @@
             "homepage": "https://github.com/martin-helmich",
             "support": {
                 "issues": "https://github.com/martin-helmich/typo3-typoscript-parser/issues",
-                "source": "https://github.com/martin-helmich/typo3-typoscript-parser/tree/v2.7.0"
+                "source": "https://github.com/martin-helmich/typo3-typoscript-parser/tree/v2.8.0"
             },
             "funding": [
                 {
@@ -7168,7 +7120,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-03-02T20:04:51+00:00"
+            "time": "2025-06-17T14:20:45+00:00"
         },
         {
             "name": "idiosyncratic/editorconfig",
@@ -8692,16 +8644,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "10.5.46",
+            "version": "10.5.47",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "8080be387a5be380dda48c6f41cee4a13aadab3d"
+                "reference": "3637b3e50d32ab3a0d1a33b3b6177169ec3d95a3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/8080be387a5be380dda48c6f41cee4a13aadab3d",
-                "reference": "8080be387a5be380dda48c6f41cee4a13aadab3d",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/3637b3e50d32ab3a0d1a33b3b6177169ec3d95a3",
+                "reference": "3637b3e50d32ab3a0d1a33b3b6177169ec3d95a3",
                 "shasum": ""
             },
             "require": {
@@ -8773,7 +8725,7 @@
             "support": {
                 "issues": "https://github.com/sebastianbergmann/phpunit/issues",
                 "security": "https://github.com/sebastianbergmann/phpunit/security/policy",
-                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.46"
+                "source": "https://github.com/sebastianbergmann/phpunit/tree/10.5.47"
             },
             "funding": [
                 {
@@ -8797,7 +8749,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-05-02T06:46:24+00:00"
+            "time": "2025-06-20T11:29:11+00:00"
         },
         {
             "name": "react/cache",
@@ -10432,20 +10384,19 @@
         },
         {
             "name": "ssch/typo3-rector",
-            "version": "v2.14.3",
+            "version": "v2.14.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sabbelasichon/typo3-rector.git",
-                "reference": "c3376d8269182ec8a1a34a5572be7956b946a8cf"
+                "reference": "ba7043a1516247e39558209647544a03f17d0a10"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/c3376d8269182ec8a1a34a5572be7956b946a8cf",
-                "reference": "c3376d8269182ec8a1a34a5572be7956b946a8cf",
+                "url": "https://api.github.com/repos/sabbelasichon/typo3-rector/zipball/ba7043a1516247e39558209647544a03f17d0a10",
+                "reference": "ba7043a1516247e39558209647544a03f17d0a10",
                 "shasum": ""
             },
             "require": {
-                "cweagans/composer-patches": "^1.7",
                 "ext-json": "*",
                 "league/flysystem": "^2.0 || ^3.0",
                 "league/flysystem-memory": "^2.0 || ^3.0",
@@ -10463,6 +10414,7 @@
                 "webmozart/assert": "^1.11.0"
             },
             "require-dev": {
+                "cweagans/composer-patches": "^1.7",
                 "ergebnis/composer-normalize": "^2.42.0",
                 "php-parallel-lint/php-parallel-lint": "^1.3.2",
                 "phpstan/extension-installer": "^1.3.1",
@@ -10553,7 +10505,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-15T16:07:00+00:00"
+            "time": "2025-06-18T18:18:27+00:00"
         },
         {
             "name": "symfony/polyfill-php80",
