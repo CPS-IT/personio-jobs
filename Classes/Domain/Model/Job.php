@@ -27,6 +27,7 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
 use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
+use CuyZ\Valinor\Mapper\Object\Constructor;
 use TYPO3\CMS\Extbase\Annotation as Extbase;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -71,6 +72,7 @@ class Job extends AbstractEntity implements \JsonSerializable
     /**
      * @param array{jobDescription: list<JobDescription>} $jobDescriptions
      */
+    #[Constructor]
     public static function fromApiResponse(
         int $id,
         ?string $subcompany,

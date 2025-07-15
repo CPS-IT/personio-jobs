@@ -23,6 +23,7 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Domain\Model;
 
+use CuyZ\Valinor\Mapper\Object\Constructor;
 use TYPO3\CMS\Extbase\DomainObject\AbstractEntity;
 
 /**
@@ -39,6 +40,7 @@ class JobDescription extends AbstractEntity implements \JsonSerializable
     protected string $bodytext = '';
     protected ?Job $job = null;
 
+    #[Constructor]
     public static function fromApiResponse(
         string $name,
         string $value,
