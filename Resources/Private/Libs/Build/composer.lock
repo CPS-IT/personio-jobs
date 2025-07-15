@@ -4,26 +4,25 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "21d6e1b3e52dfacb102c5592a38e651b",
+    "content-hash": "002462d7019265390c697c4ce1b3e09d",
     "packages": [
         {
             "name": "cuyz/valinor",
-            "version": "1.17.0",
+            "version": "2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022"
+                "reference": "914a8cbe64c71f9f0a9728df75e7d92a2988fb40"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
-                "reference": "9eb2802797e36f3af1fd6e13ff23e4e3d0058022",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/914a8cbe64c71f9f0a9728df75e7d92a2988fb40",
+                "reference": "914a8cbe64c71f9f0a9728df75e7d92a2988fb40",
                 "shasum": ""
             },
             "require": {
                 "composer-runtime-api": "^2.0",
-                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0",
-                "psr/simple-cache": "^1.0 || ^2.0 || ^3.0"
+                "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
             },
             "conflict": {
                 "phpstan/phpstan": "<1.0 || >= 3.0",
@@ -74,7 +73,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/1.17.0"
+                "source": "https://github.com/CuyZ/Valinor/tree/2.0.0"
             },
             "funding": [
                 {
@@ -82,24 +81,24 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-06-20T06:40:38+00:00"
+            "time": "2025-06-27T06:38:26+00:00"
         },
         {
             "name": "eliashaeussler/valinor-xml",
-            "version": "1.0.3",
+            "version": "1.0.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/eliashaeussler/valinor-xml.git",
-                "reference": "7cf143d08be169edcb9101777df048e7b705c1c5"
+                "reference": "78aaff7c94b4b52e14ff21f547dd7ee827686632"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/eliashaeussler/valinor-xml/zipball/7cf143d08be169edcb9101777df048e7b705c1c5",
-                "reference": "7cf143d08be169edcb9101777df048e7b705c1c5",
+                "url": "https://api.github.com/repos/eliashaeussler/valinor-xml/zipball/78aaff7c94b4b52e14ff21f547dd7ee827686632",
+                "reference": "78aaff7c94b4b52e14ff21f547dd7ee827686632",
                 "shasum": ""
             },
             "require": {
-                "cuyz/valinor": "^1.3",
+                "cuyz/valinor": "^1.3 || ^2.0",
                 "ext-mbstring": "*",
                 "mtownsend/xml-to-array": "^2.0",
                 "php": "~8.1.0 || ~8.2.0 || ~8.3.0 || ~8.4.0"
@@ -111,8 +110,8 @@
                 "eliashaeussler/rector-config": "^3.0",
                 "ergebnis/composer-normalize": "^2.30",
                 "phpstan/extension-installer": "^1.2",
-                "phpstan/phpstan-phpunit": "^1.1",
-                "phpunit/phpunit": "^10.2 || ^11.0"
+                "phpstan/phpstan-phpunit": "^2.0",
+                "phpunit/phpunit": "^10.2 || ^11.0 || ^12.0"
             },
             "type": "library",
             "autoload": {
@@ -135,9 +134,9 @@
             "description": "XML source for cuyz/valinor",
             "support": {
                 "issues": "https://github.com/eliashaeussler/valinor-xml/issues",
-                "source": "https://github.com/eliashaeussler/valinor-xml/tree/1.0.3"
+                "source": "https://github.com/eliashaeussler/valinor-xml/tree/1.0.4"
             },
-            "time": "2024-11-26T20:59:11+00:00"
+            "time": "2025-07-15T10:09:22+00:00"
         },
         {
             "name": "mtownsend/xml-to-array",
@@ -191,57 +190,6 @@
                 "source": "https://github.com/mtownsend5512/xml-to-array/tree/2.0.0"
             },
             "time": "2021-02-27T22:39:18+00:00"
-        },
-        {
-            "name": "psr/simple-cache",
-            "version": "3.0.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/php-fig/simple-cache.git",
-                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/php-fig/simple-cache/zipball/764e0b3939f5ca87cb904f570ef9be2d78a07865",
-                "reference": "764e0b3939f5ca87cb904f570ef9be2d78a07865",
-                "shasum": ""
-            },
-            "require": {
-                "php": ">=8.0.0"
-            },
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "3.0.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Psr\\SimpleCache\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "PHP-FIG",
-                    "homepage": "https://www.php-fig.org/"
-                }
-            ],
-            "description": "Common interfaces for simple caching",
-            "keywords": [
-                "cache",
-                "caching",
-                "psr",
-                "psr-16",
-                "simple-cache"
-            ],
-            "support": {
-                "source": "https://github.com/php-fig/simple-cache/tree/3.0.0"
-            },
-            "time": "2021-10-29T13:26:27+00:00"
         }
     ],
     "packages-dev": [],

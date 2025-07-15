@@ -25,12 +25,10 @@ namespace CPSIT\Typo3PersonioJobs\Service;
 
 use CPSIT\Typo3PersonioJobs\Configuration\ExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsMappedEvent;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use CuyZ\Valinor\Mapper\MappingError;
-use CuyZ\Valinor\Mapper\Tree\Message\Messages;
 use CuyZ\Valinor\Mapper\TreeMapper;
 use CuyZ\Valinor\MapperBuilder;
 use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
@@ -86,9 +84,7 @@ final readonly class PersonioApiService
 
             return $jobs;
         } catch (MappingError $error) {
-            $errors = Messages::flattenFromNode($error->node())->errors();
-
-            throw MalformedApiResponseException::forMappingErrors($errors);
+            throw MalformedApiResponseException::forMappingError($error);
         }
     }
 
@@ -114,11 +110,8 @@ final readonly class PersonioApiService
         return (new MapperBuilder())
             ->supportDateFormats(\DateTimeInterface::ATOM)
             ->allowSuperfluousKeys()
-            ->enableFlexibleCasting()
-            ->registerConstructor(
-                Job::fromApiResponse(...),
-                JobDescription::fromApiResponse(...),
-            )
+            ->allowScalarValueCasting()
+            ->allowUndefinedValues()
             ->mapper()
         ;
     }

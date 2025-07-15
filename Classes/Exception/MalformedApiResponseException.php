@@ -23,7 +23,7 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Exception;
 
-use CuyZ\Valinor\Mapper\Tree\Message\Messages;
+use CuyZ\Valinor\Mapper\MappingError;
 
 /**
  * MalformedApiResponseException
@@ -33,12 +33,12 @@ use CuyZ\Valinor\Mapper\Tree\Message\Messages;
  */
 final class MalformedApiResponseException extends \RuntimeException
 {
-    public static function forMappingErrors(Messages $errors): self
+    public static function forMappingError(MappingError $error): self
     {
         $message = 'Received malformed API response:';
 
-        foreach ($errors as $error) {
-            $message .= PHP_EOL . sprintf(' - %s: %s', $error->node()->path(), $error->toString());
+        foreach ($error->messages() as $errorMessage) {
+            $message .= PHP_EOL . sprintf(' - %s: %s', $errorMessage->path(), $errorMessage->toString());
         }
 
         return new self($message, 1677234223);
