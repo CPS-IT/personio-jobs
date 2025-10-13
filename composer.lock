@@ -121,16 +121,16 @@
         },
         {
             "name": "cuyz/valinor",
-            "version": "2.2.0",
+            "version": "2.2.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/CuyZ/Valinor.git",
-                "reference": "35470e576041dd9695ef36aceaab8925bc676586"
+                "reference": "574bbe531e78f56c39ec129cbe4e92a7d2eea987"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/35470e576041dd9695ef36aceaab8925bc676586",
-                "reference": "35470e576041dd9695ef36aceaab8925bc676586",
+                "url": "https://api.github.com/repos/CuyZ/Valinor/zipball/574bbe531e78f56c39ec129cbe4e92a7d2eea987",
+                "reference": "574bbe531e78f56c39ec129cbe4e92a7d2eea987",
                 "shasum": ""
             },
             "require": {
@@ -186,7 +186,7 @@
             ],
             "support": {
                 "issues": "https://github.com/CuyZ/Valinor/issues",
-                "source": "https://github.com/CuyZ/Valinor/tree/2.2.0"
+                "source": "https://github.com/CuyZ/Valinor/tree/2.2.1"
             },
             "funding": [
                 {
@@ -194,7 +194,7 @@
                     "type": "github"
                 }
             ],
-            "time": "2025-09-29T13:07:34+00:00"
+            "time": "2025-10-12T22:36:15+00:00"
         },
         {
             "name": "dasprid/enum",
@@ -320,20 +320,21 @@
                 "issues": "https://github.com/doctrine/annotations/issues",
                 "source": "https://github.com/doctrine/annotations/tree/2.0.2"
             },
+            "abandoned": true,
             "time": "2024-09-05T10:17:24+00:00"
         },
         {
             "name": "doctrine/dbal",
-            "version": "4.3.3",
+            "version": "4.3.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/dbal.git",
-                "reference": "231959669bb2173194c95636eae7f1b41b2a8b19"
+                "reference": "1a2fbd0e93b8dec7c3d1ac2b6396a7b929b130dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/dbal/zipball/231959669bb2173194c95636eae7f1b41b2a8b19",
-                "reference": "231959669bb2173194c95636eae7f1b41b2a8b19",
+                "url": "https://api.github.com/repos/doctrine/dbal/zipball/1a2fbd0e93b8dec7c3d1ac2b6396a7b929b130dc",
+                "reference": "1a2fbd0e93b8dec7c3d1ac2b6396a7b929b130dc",
                 "shasum": ""
             },
             "require": {
@@ -343,15 +344,15 @@
                 "psr/log": "^1|^2|^3"
             },
             "require-dev": {
-                "doctrine/coding-standard": "13.0.1",
+                "doctrine/coding-standard": "14.0.0",
                 "fig/log-test": "^1",
                 "jetbrains/phpstorm-stubs": "2023.2",
-                "phpstan/phpstan": "2.1.22",
-                "phpstan/phpstan-phpunit": "2.0.6",
+                "phpstan/phpstan": "2.1.30",
+                "phpstan/phpstan-phpunit": "2.0.7",
                 "phpstan/phpstan-strict-rules": "^2",
                 "phpunit/phpunit": "11.5.23",
-                "slevomat/coding-standard": "8.16.2",
-                "squizlabs/php_codesniffer": "3.13.1",
+                "slevomat/coding-standard": "8.24.0",
+                "squizlabs/php_codesniffer": "4.0.0",
                 "symfony/cache": "^6.3.8|^7.0",
                 "symfony/console": "^5.4|^6.3|^7.0"
             },
@@ -410,7 +411,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/dbal/issues",
-                "source": "https://github.com/doctrine/dbal/tree/4.3.3"
+                "source": "https://github.com/doctrine/dbal/tree/4.3.4"
             },
             "funding": [
                 {
@@ -426,7 +427,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2025-09-04T23:52:42+00:00"
+            "time": "2025-10-09T09:11:36+00:00"
         },
         {
             "name": "doctrine/deprecations",
@@ -7245,16 +7246,16 @@
         },
         {
             "name": "justinrainbow/json-schema",
-            "version": "6.5.2",
+            "version": "6.6.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jsonrainbow/json-schema.git",
-                "reference": "ac0d369c09653cf7af561f6d91a705bc617a87b8"
+                "reference": "68ba7677532803cc0c5900dd5a4d730537f2b2f3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/ac0d369c09653cf7af561f6d91a705bc617a87b8",
-                "reference": "ac0d369c09653cf7af561f6d91a705bc617a87b8",
+                "url": "https://api.github.com/repos/jsonrainbow/json-schema/zipball/68ba7677532803cc0c5900dd5a4d730537f2b2f3",
+                "reference": "68ba7677532803cc0c5900dd5a4d730537f2b2f3",
                 "shasum": ""
             },
             "require": {
@@ -7314,9 +7315,9 @@
             ],
             "support": {
                 "issues": "https://github.com/jsonrainbow/json-schema/issues",
-                "source": "https://github.com/jsonrainbow/json-schema/tree/6.5.2"
+                "source": "https://github.com/jsonrainbow/json-schema/tree/6.6.0"
             },
-            "time": "2025-09-09T09:42:27+00:00"
+            "time": "2025-10-10T11:34:09+00:00"
         },
         {
             "name": "league/flysystem",
