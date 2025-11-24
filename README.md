@@ -5,7 +5,6 @@
 # TYPO3 extension `personio_jobs`
 
 [![Coverage](https://img.shields.io/coverallsCoverage/github/CPS-IT/personio-jobs?logo=coveralls)](https://coveralls.io/github/CPS-IT/personio-jobs)
-[![Maintainability](https://api.codeclimate.com/v1/badges/75952c5451dea0632fc0/maintainability)](https://codeclimate.com/github/CPS-IT/personio-jobs/maintainability)
 [![CGL](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/cgl.yaml)
 [![Release](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml/badge.svg)](https://github.com/CPS-IT/personio-jobs/actions/workflows/release.yaml)
 [![License](http://poser.pugx.org/cpsit/typo3-personio-jobs/license)](LICENSE.md)\
