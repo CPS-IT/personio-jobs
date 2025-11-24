@@ -83,7 +83,6 @@ final class Extension
             return;
         }
 
-        /* @phpstan-ignore staticMethod.deprecated */
         ExtensionManagementUtility::addPageTSConfig(
             '@import "EXT:personio_jobs/Configuration/TSconfig/Page.tsconfig"',
         );
