@@ -17,6 +17,10 @@ jobs:
         php-version: ["8.2", "8.3", "8.4"]
         typo3-version: ["12.4", "13.0"]
         dependencies: ["highest", "lowest"]
+        include:
+          # @todo Remove once support for TYPO3 v13.0 is dropped
+          - typo3-version: "13.0"
+            composer-options: "--no-security-blocking"
     env:
       typo3DatabaseName: typo3
       typo3DatabaseHost: '127.0.0.1'
@@ -44,7 +48,7 @@ jobs:
         uses: ramsey/composer-install@v3
         with:
           dependency-versions: ${{ matrix.dependencies }}
-          composer-options: --with=typo3/cms-core:"^${{ matrix.typo3-version }}"
+          composer-options: --with=typo3/cms-core:"^${{ matrix.typo3-version }}" ${{ matrix.composer-options }}
 
       # Run tests
       - name: Run tests
