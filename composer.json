@@ -16,7 +16,7 @@
 		}
 	],
 	"require": {
-		"php": "~8.2.0 || ~8.3.0 || ~8.4.0",
+		"php": "~8.2.0 || ~8.3.0 || ~8.4.0 || ~8.5.0",
 		"ext-json": "*",
 		"ext-mbstring": "*",
 		"cuyz/valinor": "^2.0",
@@ -32,7 +32,7 @@
 	"require-dev": {
 		"armin/editorconfig-cli": "^2.0",
 		"brotkrueml/schema": "^3.0",
-		"eliashaeussler/version-bumper": "^3.0",
+		"eliashaeussler/version-bumper": "^3.1",
 		"ergebnis/composer-normalize": "^2.29",
 		"friendsofphp/php-cs-fixer": "^3.57",
 		"helmich/typo3-typoscript-lint": "^3.0",
