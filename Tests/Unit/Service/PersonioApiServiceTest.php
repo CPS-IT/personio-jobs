@@ -147,6 +147,23 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertJobEqualsJob($this->createJob(1, null), $actual[0]);
     }
 
+    /**
+     * @test
+     */
+    public function getJobsReturnsJobInGivenLanguage(): void
+    {
+        $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-other-language.xml');
+
+        $this->requestFactory->response = new Response($stream);
+
+        $actual = $this->subject->getJobs('de');
+
+        self::assertSame('https://testing.jobs.personio.local/xml?language=de', $this->requestFactory->lastUri);
+        self::assertCount(2, $actual);
+        self::assertJobEqualsJob($this->createGermanJob(1), $actual[0]);
+        self::assertJobEqualsJob($this->createGermanJob(2), $actual[1]);
+    }
+
     private static function assertJobEqualsJob(Job $expected, Job $actual): void
     {
         // Create expected job descriptions
@@ -199,6 +216,17 @@ final class PersonioApiServiceTest extends UnitTestCase
             ->setOccupation('software_and_web_development')
             ->setOccupationCategory('it_software')
             ->setCreateDate($createDate);
+        $job->recalculateContentHash();
+
+        return $job;
+    }
+
+    private function createGermanJob(int $id): Job
+    {
+        $job = $this->createJob($id)
+            ->setSubcompany('Testfirma')
+            ->setName('Software-Tester (w/m/d)')
+            ->setKeywords('Testing,QS');
         $job->recalculateContentHash();
 
         return $job;
