@@ -36,6 +36,8 @@ use TYPO3\CMS\Core\Http\Response;
  */
 final class DummyRequestFactory extends RequestFactory
 {
+    public ?string $lastUri = null;
+
     /* @phpstan-ignore constructor.missingParentCall */
     public function __construct(
         public ResponseInterface $response = new Response(),
@@ -49,6 +51,8 @@ final class DummyRequestFactory extends RequestFactory
      */
     public function request(string $uri, string $method = 'GET', array $options = [], ?string $context = null): ResponseInterface
     {
+        $this->lastUri = $uri;
+
         if ($this->exception !== null) {
             throw $this->exception;
         }
