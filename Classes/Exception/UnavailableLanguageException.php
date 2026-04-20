@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
  *
- * Copyright (C) 2023 Elias Häußler <e.haeussler@familie-redlich.de>
+ * Copyright (C) 2024 Elias Häußler <e.haeussler@familie-redlich.de>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,43 +21,21 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace CPSIT\Typo3PersonioJobs\Event;
-
-use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use TYPO3\CMS\Core\Http\Uri;
+namespace CPSIT\Typo3PersonioJobs\Exception;
 
 /**
- * AfterJobsMappedEvent
+ * UnavailableLanguageException
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
- * @license GPL-2.0-or-later
+ * @license GPL-3.0-or-later
  */
-final readonly class AfterJobsMappedEvent
+final class UnavailableLanguageException extends \Exception
 {
-    /**
-     * @param list<Job> $jobs
-     */
-    public function __construct(
-        private Uri $requestUri,
-        private array $jobs,
-        private ?string $language = null,
-    ) {}
-
-    public function getRequestUri(): Uri
+    public static function create(string $language): self
     {
-        return $this->requestUri;
-    }
-
-    /**
-     * @return list<Job>
-     */
-    public function getJobs(): array
-    {
-        return $this->jobs;
-    }
-
-    public function getLanguage(): ?string
-    {
-        return $this->language;
+        return new self(
+            sprintf('The given language "%s" is not available on this site.', $language),
+            1704297254,
+        );
     }
 }
