@@ -25,6 +25,9 @@ namespace CPSIT\Typo3PersonioJobs\Domain\Repository;
 
 use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\Demand;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
+use TYPO3\CMS\Core\Context\LanguageAspect;
+use TYPO3\CMS\Core\Information\Typo3Version;
+use TYPO3\CMS\Extbase\Persistence\QueryInterface;
 use TYPO3\CMS\Extbase\Persistence\QueryResultInterface;
 use TYPO3\CMS\Extbase\Persistence\Repository;
 
@@ -49,7 +52,10 @@ class JobRepository extends Repository
         return $query->execute();
     }
 
-    public function findOneByPersonioId(int $personioId, ?int $storagePid = null): ?Job
+    /**
+     * @param int<-1, max>|null $languageId
+     */
+    public function findOneByPersonioId(int $personioId, ?int $storagePid = null, ?int $languageId = null): ?Job
     {
         $query = $this->createQuery();
 
@@ -59,6 +65,10 @@ class JobRepository extends Repository
 
         $query->matching($query->equals('personioId', $personioId));
         $query->setLimit(1);
+
+        if ($languageId !== null) {
+            $this->setLanguageForQuery($query, $languageId);
+        }
 
         return $query->execute()->getFirst();
     }
@@ -74,14 +84,19 @@ class JobRepository extends Repository
 
     /**
      * @param list<Job> $existingJobs
+     * @param int<-1, max>|null $languageId
      * @return QueryResultInterface<Job>
      */
-    public function findOrphans(array $existingJobs, ?int $storagePid = null): QueryResultInterface
+    public function findOrphans(array $existingJobs, ?int $storagePid = null, ?int $languageId = null): QueryResultInterface
     {
         $query = $this->createQuery();
 
         if ($storagePid !== null) {
             $query->getQuerySettings()->setStoragePageIds([$storagePid]);
+        }
+
+        if ($languageId !== null) {
+            $this->setLanguageForQuery($query, $languageId);
         }
 
         if ($existingJobs !== []) {
@@ -96,5 +111,23 @@ class JobRepository extends Repository
         }
 
         return $query->execute();
+    }
+
+    /**
+     * @param QueryInterface<Job> $query
+     * @param int<-1, max> $languageId
+     */
+    protected function setLanguageForQuery(QueryInterface $query, int $languageId): void
+    {
+        $querySettings = $query->getQuerySettings();
+
+        // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/12.0/Breaking-97926-ExtbaseQuerySettingsMethodsRemoved.html
+        if ((new Typo3Version())->getMajorVersion() >= 12) {
+            $languageAspect = new LanguageAspect($languageId, overlayType: LanguageAspect::OVERLAYS_MIXED);
+            $querySettings->setLanguageAspect($languageAspect);
+        } else {
+            /* @phpstan-ignore method.notFound */
+            $querySettings->setLanguageUid($languageId);
+        }
     }
 }
