@@ -56,7 +56,7 @@ final readonly class SchemaFactory
         private ContentObjectRenderer $contentObjectRenderer,
         private EventDispatcherInterface $eventDispatcher,
     ) {
-        if (\class_exists(TypeFactory::class)) {
+        if (class_exists(TypeFactory::class)) {
             $this->typeFactory = GeneralUtility::makeInstance(TypeFactory::class);
         } else {
             $this->typeFactory = null;
