@@ -57,16 +57,20 @@ final class Extension
             self::KEY,
             'List',
             [
-                JobController::class => 'list',
+                JobController::class => ['list'],
             ],
+            [],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         );
 
         ExtensionUtility::configurePlugin(
             self::KEY,
             'Show',
             [
-                JobController::class => 'show',
+                JobController::class => ['show'],
             ],
+            [],
+            ExtensionUtility::PLUGIN_TYPE_CONTENT_ELEMENT,
         );
     }
 

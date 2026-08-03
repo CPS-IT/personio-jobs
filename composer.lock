@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "36cbd2941304c2acf09d13fbcdef2c98",
+    "content-hash": "fe70dece84d817af07520a3cfed4de80",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1520,6 +1520,63 @@
                 "source": "https://github.com/mtownsend5512/xml-to-array/tree/2.0.0"
             },
             "time": "2021-02-27T22:39:18+00:00"
+        },
+        {
+            "name": "nikic/php-parser",
+            "version": "v5.8.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nikic/PHP-Parser.git",
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
+                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "ext-tokenizer": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "ircmaxell/php-yacc": "^0.0.7",
+                "phpunit/phpunit": "^9.0"
+            },
+            "bin": [
+                "bin/php-parse"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "5.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "PhpParser\\": "lib/PhpParser"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD-3-Clause"
+            ],
+            "authors": [
+                {
+                    "name": "Nikita Popov"
+                }
+            ],
+            "description": "A PHP parser written in PHP",
+            "keywords": [
+                "parser",
+                "php"
+            ],
+            "support": {
+                "issues": "https://github.com/nikic/PHP-Parser/issues",
+                "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
+            },
+            "time": "2026-07-04T14:30:18+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -5876,6 +5933,70 @@
             "time": "2026-07-14T12:21:38+00:00"
         },
         {
+            "name": "typo3/cms-fluid",
+            "version": "v13.4.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/fluid.git",
+                "reference": "5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c",
+                "reference": "5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c",
+                "shasum": ""
+            },
+            "require": {
+                "symfony/dependency-injection": "^7.4",
+                "typo3/cms-core": "13.4.33",
+                "typo3/cms-extbase": "13.4.33",
+                "typo3fluid/fluid": "^4.6.1"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "Package": {
+                        "protected": true,
+                        "serviceProvider": "TYPO3\\CMS\\Fluid\\ServiceProvider",
+                        "partOfFactoryDefault": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "fluid"
+                },
+                "branch-alias": {
+                    "dev-main": "13.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Fluid\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Fluid Integration - Integration of the Fluid templating engine into TYPO3.",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org/other/typo3/view-helper-reference/main/en-us/",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2026-07-14T12:21:38+00:00"
+        },
+        {
             "name": "typo3/cms-frontend",
             "version": "v13.4.33",
             "source": {
@@ -5936,6 +6057,74 @@
                 }
             ],
             "description": "TYPO3 CMS Frontend",
+            "homepage": "https://typo3.org",
+            "support": {
+                "chat": "https://typo3.org/help",
+                "docs": "https://docs.typo3.org",
+                "issues": "https://forge.typo3.org",
+                "source": "https://github.com/typo3/typo3"
+            },
+            "time": "2026-07-14T12:21:38+00:00"
+        },
+        {
+            "name": "typo3/cms-install",
+            "version": "v13.4.33",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/TYPO3-CMS/install.git",
+                "reference": "389fd56653cc1ee3af2310608566e41f7910a22a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/TYPO3-CMS/install/zipball/389fd56653cc1ee3af2310608566e41f7910a22a",
+                "reference": "389fd56653cc1ee3af2310608566e41f7910a22a",
+                "shasum": ""
+            },
+            "require": {
+                "doctrine/dbal": "~4.4.3",
+                "guzzlehttp/promises": "^2.0.3",
+                "nikic/php-parser": "^5.4.0",
+                "symfony/finder": "^7.4",
+                "symfony/http-foundation": "^7.4.13",
+                "typo3/cms-core": "13.4.33",
+                "typo3/cms-extbase": "13.4.33",
+                "typo3/cms-fluid": "13.4.33"
+            },
+            "conflict": {
+                "typo3/cms": "*"
+            },
+            "type": "typo3-cms-framework",
+            "extra": {
+                "typo3/cms": {
+                    "Package": {
+                        "protected": true,
+                        "serviceProvider": "TYPO3\\CMS\\Install\\ServiceProvider",
+                        "partOfFactoryDefault": true,
+                        "partOfMinimalUsableSystem": true
+                    },
+                    "extension-key": "install"
+                },
+                "branch-alias": {
+                    "dev-main": "13.4.x-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TYPO3\\CMS\\Install\\": "Classes/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "GPL-2.0-or-later"
+            ],
+            "authors": [
+                {
+                    "name": "TYPO3 Core Team",
+                    "email": "typo3cms@typo3.org",
+                    "role": "Developer"
+                }
+            ],
+            "description": "TYPO3 CMS Install Tool - The Install Tool is used for installation, upgrade, system administration and setup tasks.",
             "homepage": "https://typo3.org",
             "support": {
                 "chat": "https://typo3.org/help",
@@ -8385,63 +8574,6 @@
                 "source": "https://github.com/nette/utils/tree/v4.1.4"
             },
             "time": "2026-05-11T20:49:54+00:00"
-        },
-        {
-            "name": "nikic/php-parser",
-            "version": "v5.8.0",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/nikic/PHP-Parser.git",
-                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/nikic/PHP-Parser/zipball/044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
-                "reference": "044a6a392ff8ad0d61f14370a5fbbd0a0107152f",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "ext-tokenizer": "*",
-                "php": ">=7.4"
-            },
-            "require-dev": {
-                "ircmaxell/php-yacc": "^0.0.7",
-                "phpunit/phpunit": "^9.0"
-            },
-            "bin": [
-                "bin/php-parse"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "5.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "PhpParser\\": "lib/PhpParser"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "BSD-3-Clause"
-            ],
-            "authors": [
-                {
-                    "name": "Nikita Popov"
-                }
-            ],
-            "description": "A PHP parser written in PHP",
-            "keywords": [
-                "parser",
-                "php"
-            ],
-            "support": {
-                "issues": "https://github.com/nikic/PHP-Parser/issues",
-                "source": "https://github.com/nikic/PHP-Parser/tree/v5.8.0"
-            },
-            "time": "2026-07-04T14:30:18+00:00"
         },
         {
             "name": "phar-io/manifest",
@@ -11552,70 +11684,6 @@
             "support": {
                 "chat": "https://typo3.org/help",
                 "docs": "https://docs.typo3.org",
-                "issues": "https://forge.typo3.org",
-                "source": "https://github.com/typo3/typo3"
-            },
-            "time": "2026-07-14T12:21:38+00:00"
-        },
-        {
-            "name": "typo3/cms-fluid",
-            "version": "v13.4.33",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/TYPO3-CMS/fluid.git",
-                "reference": "5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/TYPO3-CMS/fluid/zipball/5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c",
-                "reference": "5c2369ab3ba5f387e01c3da03365d5a23ddf1f7c",
-                "shasum": ""
-            },
-            "require": {
-                "symfony/dependency-injection": "^7.4",
-                "typo3/cms-core": "13.4.33",
-                "typo3/cms-extbase": "13.4.33",
-                "typo3fluid/fluid": "^4.6.1"
-            },
-            "conflict": {
-                "typo3/cms": "*"
-            },
-            "type": "typo3-cms-framework",
-            "extra": {
-                "typo3/cms": {
-                    "Package": {
-                        "protected": true,
-                        "serviceProvider": "TYPO3\\CMS\\Fluid\\ServiceProvider",
-                        "partOfFactoryDefault": true,
-                        "partOfMinimalUsableSystem": true
-                    },
-                    "extension-key": "fluid"
-                },
-                "branch-alias": {
-                    "dev-main": "13.4.x-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "TYPO3\\CMS\\Fluid\\": "Classes/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "GPL-2.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "TYPO3 Core Team",
-                    "email": "typo3cms@typo3.org",
-                    "role": "Developer"
-                }
-            ],
-            "description": "TYPO3 CMS Fluid Integration - Integration of the Fluid templating engine into TYPO3.",
-            "homepage": "https://typo3.org",
-            "support": {
-                "chat": "https://typo3.org/help",
-                "docs": "https://docs.typo3.org/other/typo3/view-helper-reference/main/en-us/",
                 "issues": "https://forge.typo3.org",
                 "source": "https://github.com/typo3/typo3"
             },
