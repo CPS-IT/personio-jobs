@@ -34,6 +34,7 @@
 	"require-dev": {
 		"armin/editorconfig-cli": "^2.0",
 		"brotkrueml/schema": "^3.0",
+		"eliashaeussler/typo3-vendor-bundler": "^4.1",
 		"eliashaeussler/version-bumper": "^4.0",
 		"ergebnis/composer-normalize": "^2.29",
 		"friendsofphp/php-cs-fixer": "^3.57",
@@ -44,8 +45,11 @@
 		"phpstan/phpstan-phpunit": "^2.0",
 		"phpstan/phpstan-strict-rules": "^2.0",
 		"phpunit/phpcov": "^10.0 || ^11.0 || ^13.0",
+		"phpunit/phpunit": "^11.5 || ^12.5 || ^13.2",
 		"saschaegerer/phpstan-typo3": "^2.0",
+		"shipmonk/composer-dependency-analyser": "^1.8",
 		"ssch/typo3-rector": "^3.14",
+		"symfony/event-dispatcher": "^6.4 || ^7.0",
 		"typo3/coding-standards": "^0.9.0",
 		"typo3/testing-framework": "^9.2.0"
 	},
@@ -65,6 +69,7 @@
 	"config": {
 		"allow-plugins": {
 			"cweagans/composer-patches": true,
+			"eliashaeussler/typo3-vendor-bundler": true,
 			"eliashaeussler/version-bumper": true,
 			"ergebnis/composer-normalize": true,
 			"phpstan/extension-installer": true,
@@ -82,15 +87,16 @@
 		}
 	},
 	"scripts": {
+		"analyze": [
+			"@analyze:dependencies"
+		],
+		"analyze:dependencies": "composer-dependency-analyser",
 		"fix": [
 			"@fix:composer",
 			"@fix:editorconfig",
 			"@fix:php"
 		],
-		"fix:composer": [
-			"@composer normalize",
-			"@composer normalize Resources/Private/Libs/Build/composer.json"
-		],
+		"fix:composer": "@composer normalize",
 		"fix:editorconfig": "@lint:editorconfig --fix",
 		"fix:php": "php-cs-fixer fix",
 		"lint": [
