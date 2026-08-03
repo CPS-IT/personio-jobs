@@ -36,7 +36,6 @@ use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
@@ -151,14 +150,6 @@ final readonly class SchemaFactory
             $description .= $rawJobDescription . ' ';
         }
 
-        if ((new Typo3Version())->getMajorVersion() >= 12) {
-            // https://docs.typo3.org/c/typo3/cms-core/main/en-us/Changelog/12.0/Breaking-96520-EnforceNon-emptyConfigurationInCObjparseFunc.html
-            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, null, '< lib.parseFunc_RTE');
-        } else {
-            /* @phpstan-ignore-next-line argument.type (Only relevant for legacy TYPO3 versions) */
-            $parsedDescription = $this->contentObjectRenderer->parseFunc($description, [], '< lib.parseFunc_RTE');
-        }
-
-        return $parsedDescription;
+        return $this->contentObjectRenderer->parseFunc($description, null, '< lib.parseFunc_RTE');
     }
 }

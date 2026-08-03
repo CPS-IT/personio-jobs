@@ -23,4 +23,3 @@ defined('TYPO3') or die();
 
 \CPSIT\Typo3PersonioJobs\Extension::registerHooks();
 \CPSIT\Typo3PersonioJobs\Extension::registerPlugins();
-\CPSIT\Typo3PersonioJobs\Extension::registerTSconfig();

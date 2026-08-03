@@ -35,6 +35,7 @@ use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyExtensionConfiguration;
 use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory;
 use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Component\EventDispatcher\EventDispatcher;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\StreamFactory;
@@ -71,9 +72,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getJobsThrowsExceptionOnMalformedXml(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-malformed.xml');
@@ -86,9 +85,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         $this->subject->getJobs();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getJobsThrowsExceptionOnInvalidApiResponse(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-invalid.xml');
@@ -101,9 +98,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         $this->subject->getJobs();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getJobsReturnsMappedSingleJobObject(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-single-position.xml');
@@ -116,9 +111,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertJobEqualsJob($this->createJob(1), $actual[0]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getJobsReturnsMappedMultipleJobObjects(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-multiple-positions.xml');
@@ -132,9 +125,7 @@ final class PersonioApiServiceTest extends UnitTestCase
         self::assertJobEqualsJob($this->createJob(2), $actual[1]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getJobsReturnsMappedJobObjectWithoutWorkingExperience(): void
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-no-working-experience.xml');

@@ -33,7 +33,7 @@ with preconfigured support for Bootstrap v5 components.
 * Usage of modern-typed value objects during the import process
 * Plugins for list and detail view
 * Optional support for JSON Schema on job detail pages using [EXT:schema][1]
-* Compatible with TYPO3 12.4 LTS and 13.0
+* Compatible with TYPO3 13.4 LTS
 
 ## 🔥 Installation
 
