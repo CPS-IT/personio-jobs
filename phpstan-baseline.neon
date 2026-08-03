@@ -1,36 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			rawMessage: Cannot access offset 'list' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/Configuration/Tca.php
-
-		-
-			rawMessage: Cannot access offset 'subtypes_addlist' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/Configuration/Tca.php
-
-		-
-			rawMessage: Cannot access offset 'tt_content' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/Configuration/Tca.php
-
-		-
-			rawMessage: Cannot access offset 'types' on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/Configuration/Tca.php
-
-		-
-			rawMessage: Cannot access offset string on mixed.
-			identifier: offsetAccess.nonOffsetAccessible
-			count: 1
-			path: Classes/Configuration/Tca.php
-
-		-
 			rawMessage: 'Parameter #1 $settings of static method CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ListDemand::fromArray() expects array{sorting?: string, sortingDirection?: ''ASC''|''DESC'', filter?: array{subcompanyInclude?: string, subcompanyExclude?: string}}, array given.'
 			identifier: argument.type
 			count: 1

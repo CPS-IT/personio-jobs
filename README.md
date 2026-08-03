@@ -237,7 +237,7 @@ Both `List` and `Show` plugins are converted to content elements.
 
 * Perform the [`personioJobsMigratePluginsToContentElements`](Classes/Updates/MigratePluginsToContentElementsUpgradeWizard.php)
   upgrade wizard to automatically migrate plugins from `list` CType to custom
-  CTypes `personiojobs_list` and `personiojobns_show`.
+  CTypes `personiojobs_list` and `personiojobs_show`.
 
 ### 0.4.x → 0.5.x
 
