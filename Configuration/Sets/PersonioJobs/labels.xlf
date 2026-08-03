@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff xmlns="urn:oasis:names:tc:xliff:document:1.2" version="1.2">
+  <file source-language="en" datatype="plaintext" original="EXT:personio_jobs/Configuration/Sets/PersonioJobs/labels.xlf" date="2026-08-03T10:38:00Z" product-name="personio_jobs">
+    <header/>
+    <body>
+      <trans-unit id="label" resname="label">
+        <source>Personio Jobs</source>
+      </trans-unit>
+
+      <trans-unit id="categories.personio_jobs" resname="categories.personio_jobs">
+        <source>Personio Jobs</source>
+      </trans-unit>
+      <trans-unit id="categories.personio_jobs.templates" resname="categories.personio_jobs.templates">
+        <source>Templates</source>
+      </trans-unit>
+
+      <trans-unit id="settings.plugin.tx_personiojobs.view.templateRootPath" resname="settings.plugin.tx_personiojobs.view.templateRootPath">
+        <source>Path to template root (FE)</source>
+      </trans-unit>
+      <trans-unit id="settings.plugin.tx_personiojobs.view.partialRootPath" resname="settings.plugin.tx_personiojobs.view.partialRootPath">
+        <source>Path to template partials (FE)</source>
+      </trans-unit>
+      <trans-unit id="settings.plugin.tx_personiojobs.view.layoutRootPath" resname="settings.plugin.tx_personiojobs.view.layoutRootPath">
+        <source>Path to template layouts (FE)</source>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

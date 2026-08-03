@@ -14,3 +14,10 @@ plugin.tx_personiojobs {
     }
   }
 }
+
+config.pageTitleProviders {
+  job {
+    provider = CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider
+    before = record
+  }
+}
