@@ -1,7 +1,6 @@
 /.Build
 /config
 /var
-/Resources/Private/Libs/Build/vendor
-/Resources/Private/Libs/vendors.phar
+/Resources/Private/Libs
 /.php-cs-fixer.cache
 /.phpunit.result.cache
