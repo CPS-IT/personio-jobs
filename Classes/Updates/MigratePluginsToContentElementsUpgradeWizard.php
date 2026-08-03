@@ -26,8 +26,10 @@ use TYPO3\CMS\Install\Updates\AbstractListTypeToCTypeUpdate;
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
  */
+// @todo Switch attribute and base class once support for TYPO3 v13 is dropped
+// #[\TYPO3\CMS\Core\Attribute\UpgradeWizard('formConsentMigratePluginToContentElement')]
 #[UpgradeWizard('personioJobsMigratePluginsToContentElements')]
-final class MigratePluginsToContentElementsUpgradeWizard extends AbstractListTypeToCTypeUpdate
+final class MigratePluginsToContentElementsUpgradeWizard extends /* \TYPO3\CMS\Core\Upgrades\AbstractListTypeToCTypeUpdate */ AbstractListTypeToCTypeUpdate
 {
     public function getTitle(): string
     {

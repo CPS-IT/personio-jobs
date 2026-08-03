@@ -151,9 +151,6 @@
       <trans-unit id="tx_personiojobs_domain_model_job_description.bodytext">
         <source>Bodytext</source>
       </trans-unit>
-      <trans-unit id="tx_personiojobs_domain_model_job_description.job">
-        <source>Related job</source>
-      </trans-unit>
     </body>
   </file>
 </xliff>

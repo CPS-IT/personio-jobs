@@ -47,6 +47,8 @@ class Job extends AbstractEntity implements \JsonSerializable
      * @var ObjectStorage<JobDescription>
      */
     #[Extbase\ORM\Cascade(['value' => 'remove'])]
+    // @todo Enable once support for TYPO3 v13 is dropped
+    // #[\TYPO3\CMS\Extbase\Attribute\ORM\Cascade('remove')]
     protected ObjectStorage $jobDescriptions;
     protected string $employmentType = '';
     protected string $seniority = '';

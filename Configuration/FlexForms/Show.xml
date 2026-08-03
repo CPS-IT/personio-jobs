@@ -3,6 +3,8 @@
         <type>array</type>
         <el>
             <settings.listPid>
+                <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                <!-- <label>personio_jobs.be:flexforms.show.settings.listPid</label> -->
                 <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.show.settings.listPid</label>
                 <config>
                     <type>group</type>

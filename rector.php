@@ -29,6 +29,7 @@ return RectorConfig::configure()
     ->withPaths([
         __DIR__ . '/Classes',
         __DIR__ . '/Configuration',
+        __DIR__ . '/Tests',
     ])
     ->withPhpSets(php82: true)
     ->withSets([
