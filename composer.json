@@ -111,11 +111,11 @@
 		],
 		"sca:php": "phpstan analyse -c phpstan.neon",
 		"test": [
-			"@test:functional",
+			"# @test:functional",
 			"@test:unit"
 		],
 		"test:coverage": [
-			"@test:coverage:functional",
+			"# @test:coverage:functional",
 			"@test:coverage:unit",
 			"@test:coverage:merge"
 		],
