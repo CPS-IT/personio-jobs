@@ -229,6 +229,16 @@ are available:
 
 ## 🚧 Migration
 
+### 0.6.x → 0.7.x
+
+#### Convert plugins to content elements
+
+Both `List` and `Show` plugins are converted to content elements.
+
+* Perform the [`personioJobsMigratePluginsToContentElements`](Classes/Updates/MigratePluginsToContentElementsUpgradeWizard.php)
+  upgrade wizard to automatically migrate plugins from `list` CType to custom
+  CTypes `personiojobs_list` and `personiojobns_show`.
+
 ### 0.4.x → 0.5.x
 
 #### Decouple import process
