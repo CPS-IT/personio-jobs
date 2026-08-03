@@ -5,24 +5,26 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
  *
- * Copyright (C) 2023 Elias Häußler <e.haeussler@familie-redlich.de>
+ * It is free software; you can redistribute it and/or modify it under
+ * the terms of the GNU General Public License, either version 2
+ * of the License, or any later version.
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 2 of the License, or
- * (at your option) any later version.
+ * For the full copyright and license information, please read the
+ * LICENSE.txt file that was distributed with this source code.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with this program. If not, see <https://www.gnu.org/licenses/>.
+ * The TYPO3 project - inspiring people to share!
  */
 
-$config = \TYPO3\CodingStandards\CsFixerConfig::create();
-$config->setParallelConfig(\PhpCsFixer\Runner\Parallel\ParallelConfigFactory::detect());
-$config->getFinder()->in(__DIR__);
+use PhpCsFixer\Runner\Parallel\ParallelConfigFactory;
+use TYPO3\CodingStandards\CsFixerConfig;
+
+$config = CsFixerConfig::create();
+$config->setParallelConfig(ParallelConfigFactory::detect());
+$config->setHeader('This file is part of the TYPO3 CMS extension "personio_jobs".');
+$config->getFinder()
+    ->in(__DIR__)
+    ->ignoreDotFiles(false)
+    ->ignoreVCSIgnored(true)
+;
 
 return $config;
