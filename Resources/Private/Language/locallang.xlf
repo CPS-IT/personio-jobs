@@ -1,67 +1,67 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <xliff version="1.0">
-	<file source-language="en">
-		<header/>
-		<body>
-			<trans-unit id="list.header">
-				<source>Jobs</source>
-			</trans-unit>
+  <file source-language="en">
+    <header/>
+    <body>
+      <trans-unit id="list.header">
+        <source>Jobs</source>
+      </trans-unit>
 
-			<trans-unit id="meta.subcompany">
-				<source>Subcompany</source>
-			</trans-unit>
-			<trans-unit id="meta.office">
-				<source>Office</source>
-			</trans-unit>
-			<trans-unit id="meta.department">
-				<source>Department</source>
-			</trans-unit>
-			<trans-unit id="meta.recruitingCategory">
-				<source>Category</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType">
-				<source>Employment type</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.freelance">
-				<source>Freelance</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.intern">
-				<source>Internship</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.permanent">
-				<source>Permanent</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.temporary">
-				<source>Temporary</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.trainee">
-				<source>Trainee</source>
-			</trans-unit>
-			<trans-unit id="meta.employmentType.working_student">
-				<source>Working student</source>
-			</trans-unit>
-			<trans-unit id="meta.schedule">
-				<source>Schedule</source>
-			</trans-unit>
-			<trans-unit id="meta.schedule.full-time">
-				<source>Full time</source>
-			</trans-unit>
-			<trans-unit id="meta.schedule.full-or-part-time">
-				<source>Full- or part time</source>
-			</trans-unit>
-			<trans-unit id="meta.schedule.part-time">
-				<source>Part time</source>
-			</trans-unit>
+      <trans-unit id="meta.subcompany">
+        <source>Subcompany</source>
+      </trans-unit>
+      <trans-unit id="meta.office">
+        <source>Office</source>
+      </trans-unit>
+      <trans-unit id="meta.department">
+        <source>Department</source>
+      </trans-unit>
+      <trans-unit id="meta.recruitingCategory">
+        <source>Category</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType">
+        <source>Employment type</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.freelance">
+        <source>Freelance</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.intern">
+        <source>Internship</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.permanent">
+        <source>Permanent</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.temporary">
+        <source>Temporary</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.trainee">
+        <source>Trainee</source>
+      </trans-unit>
+      <trans-unit id="meta.employmentType.working_student">
+        <source>Working student</source>
+      </trans-unit>
+      <trans-unit id="meta.schedule">
+        <source>Schedule</source>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-time">
+        <source>Full time</source>
+      </trans-unit>
+      <trans-unit id="meta.schedule.full-or-part-time">
+        <source>Full- or part time</source>
+      </trans-unit>
+      <trans-unit id="meta.schedule.part-time">
+        <source>Part time</source>
+      </trans-unit>
 
-			<trans-unit id="link.detail">
-				<source>View job</source>
-			</trans-unit>
-			<trans-unit id="link.list">
-				<source>Back to list</source>
-			</trans-unit>
-			<trans-unit id="link.apply">
-				<source>Apply now</source>
-			</trans-unit>
-		</body>
-	</file>
+      <trans-unit id="link.detail">
+        <source>View job</source>
+      </trans-unit>
+      <trans-unit id="link.list">
+        <source>Back to list</source>
+      </trans-unit>
+      <trans-unit id="link.apply">
+        <source>Apply now</source>
+      </trans-unit>
+    </body>
+  </file>
 </xliff>
