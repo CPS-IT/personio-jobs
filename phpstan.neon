@@ -9,4 +9,4 @@ parameters:
 		- Configuration
 		- Tests
 	featureToggles:
-		explicitMixedForGlobalVariables: false
+		internalTag: false

@@ -1,21 +1,109 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Parameter \\#1 \\$settings \\(array\\{sorting\\?\\: string, sortingDirection\\?\\: 'ASC'\\|'DESC', filter\\?\\: array\\{subcompanyInclude\\?\\: string, subcompanyExclude\\?\\: string\\}\\}\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\ListDemand\\:\\:fromArray\\(\\) should be contravariant with parameter \\$settings \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Domain\\\\Model\\\\Dto\\\\Demand\\:\\:fromArray\\(\\)$#"
+			rawMessage: Cannot access offset 'list' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Configuration/Tca.php
+
+		-
+			rawMessage: Cannot access offset 'subtypes_addlist' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Configuration/Tca.php
+
+		-
+			rawMessage: Cannot access offset 'tt_content' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Configuration/Tca.php
+
+		-
+			rawMessage: Cannot access offset 'types' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Configuration/Tca.php
+
+		-
+			rawMessage: Cannot access offset string on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Configuration/Tca.php
+
+		-
+			rawMessage: 'Parameter #1 $settings of static method CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ListDemand::fromArray() expects array{sorting?: string, sortingDirection?: ''ASC''|''DESC'', filter?: array{subcompanyInclude?: string, subcompanyExclude?: string}}, array given.'
+			identifier: argument.type
+			count: 1
+			path: Classes/Controller/JobController.php
+
+		-
+			rawMessage: 'Parameter #1 $settings (array{sorting?: string, sortingDirection?: ''ASC''|''DESC'', filter?: array{subcompanyInclude?: string, subcompanyExclude?: string}}) of method CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ListDemand::fromArray() should be contravariant with parameter $settings (array<string, mixed>) of method CPSIT\Typo3PersonioJobs\Domain\Model\Dto\Demand::fromArray()'
+			identifier: method.childParameterType
 			count: 1
 			path: Classes/Domain/Model/Dto/ListDemand.php
 
 		-
-			message: "#^Cannot cast mixed to int\\.$#"
-			count: 3
-			path: Classes/Helper/SlugHelper.php
+			rawMessage: Cannot access an offset on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Extension.php
 
 		-
-			message: "#^Cannot cast mixed to string\\.$#"
+			rawMessage: Cannot access offset 'SC_OPTIONS' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Extension.php
+
+		-
+			rawMessage: Cannot access offset 'processDatamapClass' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Extension.php
+
+		-
+			rawMessage: Cannot access offset 't3lib/class.t3lib_tcemain.php' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Extension.php
+
+		-
+			rawMessage: Cannot access offset 'columns' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
 			count: 1
 			path: Classes/Helper/SlugHelper.php
 
 		-
-			message: "#^Parameter \\#3 \\$options \\(array\\<string, mixed\\>\\) of method CPSIT\\\\Typo3PersonioJobs\\\\Tests\\\\Unit\\\\Fixtures\\\\Classes\\\\DummyRequestFactory\\:\\:request\\(\\) should be contravariant with parameter \\$options \\(array\\) of method TYPO3\\\\CMS\\\\Core\\\\Http\\\\RequestFactory\\:\\:request\\(\\)$#"
+			rawMessage: Cannot access offset 'config' on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: Classes/Helper/SlugHelper.php
+
+		-
+			rawMessage: Cannot access offset string on mixed.
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: Classes/Helper/SlugHelper.php
+
+		-
+			rawMessage: Cannot cast mixed to int.
+			identifier: cast.int
+			count: 3
+			path: Classes/Helper/SlugHelper.php
+
+		-
+			rawMessage: Cannot cast mixed to string.
+			identifier: cast.string
+			count: 1
+			path: Classes/Helper/SlugHelper.php
+
+		-
+			rawMessage: Cannot cast mixed to int.
+			identifier: cast.int
+			count: 1
+			path: Classes/Hooks/DataHandlerHook.php
+
+		-
+			rawMessage: 'Parameter #3 $options (array<string, mixed>) of method CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory::request() should be contravariant with parameter $options (array) of method TYPO3\CMS\Core\Http\RequestFactory::request()'
+			identifier: method.childParameterType
 			count: 1
 			path: Tests/Unit/Fixtures/Classes/DummyRequestFactory.php

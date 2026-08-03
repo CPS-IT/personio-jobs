@@ -39,7 +39,7 @@ use TYPO3\CMS\Extbase\Persistence\Repository;
 class JobRepository extends Repository
 {
     /**
-     * @return QueryResultInterface<Job>
+     * @return QueryResultInterface<int, Job>
      */
     public function findByDemand(Demand $demand): QueryResultInterface
     {
@@ -74,7 +74,7 @@ class JobRepository extends Repository
 
     /**
      * @param list<Job> $existingJobs
-     * @return QueryResultInterface<Job>
+     * @return QueryResultInterface<int, Job>
      */
     public function findOrphans(array $existingJobs, ?int $storagePid = null): QueryResultInterface
     {

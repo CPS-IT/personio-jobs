@@ -38,7 +38,7 @@ return RectorConfig::configure()
     ])
     ->withPhpSets(php82: true)
     ->withSets([
-        Typo3LevelSetList::UP_TO_TYPO3_12,
+        Typo3LevelSetList::UP_TO_TYPO3_13,
     ])
     ->withPHPStanConfigs([
         Typo3Option::PHPSTAN_FOR_RECTOR_PATH,

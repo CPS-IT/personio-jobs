@@ -23,10 +23,11 @@ declare(strict_types=1);
 
 namespace CPSIT\Typo3PersonioJobs\Cache;
 
+use CPSIT\Typo3CacheBags\Cache\Bag\CacheBagRegistry;
+use CPSIT\Typo3CacheBags\Cache\Bag\PageCacheBag;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Cache\Frontend\FrontendInterface;
-use TYPO3\CMS\Frontend\Controller\TypoScriptFrontendController;
 
 /**
  * CacheManager
@@ -39,37 +40,31 @@ final readonly class CacheManager
     public function __construct(
         #[Autowire(expression: 'service("TYPO3\\\\CMS\\\\Core\\\\Cache\\\\CacheManager").getCache("pages")')]
         private FrontendInterface $pageCache,
+        private CacheBagRegistry $cacheBagRegistry,
     ) {}
 
     public function addTag(?Job $job = null): void
     {
-        $this->getTypoScriptFrontendController()?->addCacheTags([$this->buildCacheTag($job)]);
+        $this->cacheBagRegistry->add($this->createCacheBag($job));
     }
 
     public function flushTag(?Job $job = null): void
     {
-        $this->pageCache->flushByTag($this->buildCacheTag($job));
+        $cacheBag = $this->createCacheBag($job);
+
+        foreach ($cacheBag->getCacheTags() as $cacheTag) {
+            $this->pageCache->flushByTag($cacheTag);
+        }
     }
 
-    private function buildCacheTag(?Job $job = null): string
+    private function createCacheBag(?Job $job): PageCacheBag
     {
-        $cacheTag = 'tx_personiojobs';
+        $jobId = $job?->getUid();
 
-        if ($job !== null) {
-            $cacheTag .= '_' . $job->getUid();
+        if ($jobId === null) {
+            return PageCacheBag::forTable(Job::TABLE_NAME);
         }
 
-        return $cacheTag;
-    }
-
-    private function getTypoScriptFrontendController(): ?TypoScriptFrontendController
-    {
-        $tsfe = $GLOBALS['TSFE'] ?? null;
-
-        if ($tsfe instanceof TypoScriptFrontendController) {
-            return $tsfe;
-        }
-
-        return null;
+        return PageCacheBag::forRecord(Job::TABLE_NAME, $jobId);
     }
 }
