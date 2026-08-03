@@ -30,6 +30,7 @@ use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
 use CPSIT\Typo3PersonioJobs\Enums\ImportOperation;
 use CPSIT\Typo3PersonioJobs\Event\AfterJobsImportedEvent;
 use CPSIT\Typo3PersonioJobs\Exception\InvalidParametersException;
+use CPSIT\Typo3PersonioJobs\Exception\UnavailableLanguageException;
 use CPSIT\Typo3PersonioJobs\Helper\SlugHelper;
 use EliasHaeussler\ValinorXml\Exception\ArrayPathHasUnexpectedType;
 use EliasHaeussler\ValinorXml\Exception\ArrayPathIsInvalid;
@@ -38,6 +39,8 @@ use Psr\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autoconfigure;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 use TYPO3\CMS\Core\Database\Connection;
+use TYPO3\CMS\Core\Exception\SiteNotFoundException;
+use TYPO3\CMS\Core\Site\SiteFinder;
 use TYPO3\CMS\Extbase\Persistence\PersistenceManagerInterface;
 
 /**
@@ -59,6 +62,7 @@ final class PersonioImportService
         private readonly JobRepository $jobRepository,
         private readonly PersistenceManagerInterface $persistenceManager,
         private readonly PersonioApiService $personioApiService,
+        private readonly SiteFinder $siteFinder,
     ) {
         $this->result = new ImportResult(false);
     }
@@ -68,10 +72,12 @@ final class PersonioImportService
      * @throws ArrayPathHasUnexpectedType
      * @throws ArrayPathIsInvalid
      * @throws InvalidParametersException
+     * @throws UnavailableLanguageException
      * @throws XmlIsMalformed
      */
     public function import(
         int $storagePid,
+        ?string $language = null,
         bool $updateExistingJobs = true,
         bool $deleteOrphans = true,
         bool $forceImport = false,
@@ -84,9 +90,16 @@ final class PersonioImportService
             throw InvalidParametersException::create('$updateExistingJobs', '$forceImport');
         }
 
+        // Resolve language id
+        if ($language !== null) {
+            $languageId = $this->resolveLanguageId($language, $storagePid) ?? throw UnavailableLanguageException::create($language);
+        } else {
+            $languageId = null;
+        }
+
         // Fetch jobs from Personio API
-        $jobs = $this->personioApiService->getJobs();
-        $orphans = $deleteOrphans ? $this->jobRepository->findOrphans($jobs, $storagePid) : [];
+        $jobs = $this->personioApiService->getJobs($language);
+        $orphans = $deleteOrphans ? $this->jobRepository->findOrphans($jobs, $storagePid, $languageId) : [];
 
         // Process imported jobs
         foreach ($jobs as $job) {
@@ -96,7 +109,7 @@ final class PersonioImportService
                 $jobDescription->setPid($storagePid);
             }
 
-            $this->addOrUpdateJob($job, $storagePid, $forceImport, $updateExistingJobs);
+            $this->addOrUpdateJob($job, $storagePid, $languageId, $forceImport, $updateExistingJobs);
         }
 
         // Remove orphaned jobs
@@ -110,9 +123,19 @@ final class PersonioImportService
         return $this->result;
     }
 
-    private function addOrUpdateJob(Job $job, int $storagePid, bool $force = false, bool $update = true): void
-    {
-        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid);
+    /**
+     * @param int<-1, max>|null $languageId
+     */
+    private function addOrUpdateJob(
+        Job $job,
+        int $storagePid,
+        ?int $languageId = null,
+        bool $force = false,
+        bool $update = true,
+    ): void {
+        $job->setLanguageId($languageId ?? -1);
+
+        $existingJob = $this->jobRepository->findOneByPersonioId($job->getPersonioId(), $storagePid, $languageId);
 
         // Add non-existing job
         if ($existingJob === null) {
@@ -244,5 +267,28 @@ final class PersonioImportService
         foreach ($this->result->getRemovedJobs() as $newJob) {
             yield $newJob;
         }
+    }
+
+    /**
+     * @phpstan-return non-negative-int
+     */
+    private function resolveLanguageId(string $language, int $storagePid): ?int
+    {
+        try {
+            $site = $this->siteFinder->getSiteByPageId($storagePid);
+        } catch (SiteNotFoundException) {
+            return null;
+        }
+
+        foreach ($site->getLanguages() as $siteLanguage) {
+            if ($siteLanguage->getLocale()->getLanguageCode() === $language) {
+                /** @var non-negative-int $languageId */
+                $languageId = $siteLanguage->getLanguageId();
+
+                return $languageId;
+            }
+        }
+
+        return null;
     }
 }

@@ -5,7 +5,7 @@ declare(strict_types=1);
 /*
  * This file is part of the TYPO3 CMS extension "personio_jobs".
  *
- * Copyright (C) 2023 Elias Häußler <e.haeussler@familie-redlich.de>
+ * Copyright (C) 2024 Elias Häußler <e.haeussler@familie-redlich.de>
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -21,43 +21,28 @@ declare(strict_types=1);
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-namespace CPSIT\Typo3PersonioJobs\Event;
+namespace CPSIT\Typo3PersonioJobs\Tests\Unit\Exception;
 
-use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
-use TYPO3\CMS\Core\Http\Uri;
+use CPSIT\Typo3PersonioJobs\Exception\UnavailableLanguageException;
+use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
 
 /**
- * AfterJobsMappedEvent
+ * UnavailableLanguageExceptionTest
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
+ * @covers \CPSIT\Typo3PersonioJobs\Exception\UnavailableLanguageException
  */
-final readonly class AfterJobsMappedEvent
+final class UnavailableLanguageExceptionTest extends UnitTestCase
 {
     /**
-     * @param list<Job> $jobs
+     * @test
      */
-    public function __construct(
-        private Uri $requestUri,
-        private array $jobs,
-        private ?string $language = null,
-    ) {}
-
-    public function getRequestUri(): Uri
+    public function createReturnsMalformedXmlException(): void
     {
-        return $this->requestUri;
-    }
+        $actual = UnavailableLanguageException::create('foo');
 
-    /**
-     * @return list<Job>
-     */
-    public function getJobs(): array
-    {
-        return $this->jobs;
-    }
-
-    public function getLanguage(): ?string
-    {
-        return $this->language;
+        self::assertSame('The given language "foo" is not available on this site.', $actual->getMessage());
+        self::assertSame(1704297254, $actual->getCode());
     }
 }
