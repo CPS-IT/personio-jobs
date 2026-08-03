@@ -82,9 +82,8 @@ final class Tca
         );
 
         if ($flexForm !== null) {
-            ExtensionManagementUtility::addPiFlexFormValue($pluginSignature, $flexForm);
-
-            $GLOBALS['TCA']['tt_content']['types']['list']['subtypes_addlist'][$pluginSignature] = 'pi_flexform';
+            ExtensionManagementUtility::addPiFlexFormValue('*', $flexForm, $pluginSignature);
+            ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $pluginSignature, 'after:subheader');
         }
     }
 
