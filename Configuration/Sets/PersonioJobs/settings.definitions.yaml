@@ -1,0 +1,18 @@
+categories:
+  personio_jobs: ~
+  personio_jobs.templates:
+    parent: personio_jobs
+
+settings:
+  plugin.tx_personiojobs.view.templateRootPath:
+    default: ''
+    type: string
+    category: personio_jobs.templates
+  plugin.tx_personiojobs.view.partialRootPath:
+    default: ''
+    type: string
+    category: personio_jobs.templates
+  plugin.tx_personiojobs.view.layoutRootPath:
+    default: ''
+    type: string
+    category: personio_jobs.templates

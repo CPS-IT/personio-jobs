@@ -57,8 +57,8 @@ Alternatively, you can download the extension via the
 
 ### First-step configuration
 
-Once installed, make sure to include the TypoScript setup at
-`EXT:personio_jobs/Configuration/TypoScript` in your root template.
+Once installed, make sure to add the site set `cpsit/typo3-personio-jobs`
+as dependency to your site.
 
 ## ⚡ Usage
 
@@ -230,6 +230,14 @@ are available:
 ## 🚧 Migration
 
 ### 0.6.x → 0.7.x
+
+#### Site set
+
+A site set `cpsit/typo3-personio-jobs` is introduced.
+
+* Add the site set as dependency to your site(s).
+* Remove existing `EXT:personio_jobs/Configuration/TypoScript` imports.
+* Migrate TypoScript constants to site settings.
 
 #### Convert plugins to content elements
 
