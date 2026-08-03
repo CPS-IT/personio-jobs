@@ -76,9 +76,10 @@ final class Tca
         ExtensionUtility::registerPlugin(
             Extension::KEY,
             $name,
-            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name),
+            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.title',
             $icon,
             'personio',
+            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.description',
         );
 
         if ($flexForm !== null) {

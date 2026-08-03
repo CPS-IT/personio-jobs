@@ -3,11 +3,17 @@
   <file source-language="en">
     <header/>
     <body>
-      <trans-unit id="plugins.list">
+      <trans-unit id="plugins.list.title">
         <source>Personio: Job list</source>
       </trans-unit>
-      <trans-unit id="plugins.show">
+      <trans-unit id="plugins.list.description">
+        <source>Inserts a list with all available jobs.</source>
+      </trans-unit>
+      <trans-unit id="plugins.show.title">
         <source>Personio: Job detail</source>
+      </trans-unit>
+      <trans-unit id="plugins.show.description">
+        <source>Shows the detail view of a single job.</source>
       </trans-unit>
 
       <trans-unit id="groups.personio">
