@@ -18,6 +18,7 @@ declare(strict_types=1);
 namespace CPSIT\Typo3PersonioJobs\Configuration;
 
 use CPSIT\Typo3PersonioJobs\Extension;
+use TYPO3\CMS\Core\Information\Typo3Version;
 use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
 use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Utility\ExtensionUtility;
@@ -52,7 +53,10 @@ final class Tca
             }
 
             $items[] = self::resolveItem(
-                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
+                self::label(
+                    'personio_jobs.db:' . $tableName . '.' . $fieldName . '.' . $itemValue,
+                    'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:' . $tableName . '.' . $fieldName . '.' . $itemValue,
+                ),
                 $itemValue,
             );
         }
@@ -67,19 +71,38 @@ final class Tca
     ): void {
         $pluginSignature = self::buildPluginSignature($name);
 
-        ExtensionUtility::registerPlugin(
+        // @todo Simplify once support for TYPO3 v13 is dropped
+        $usesLegacyFlexFormRegistration = self::isLegacyTypo3Version();
+        $registerPluginArguments = [
             Extension::KEY,
             $name,
-            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.title',
+            self::label(
+                'personio_jobs.db:plugins.' . lcfirst($name) . '.title',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.title',
+            ),
             $icon,
             'personio',
-            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.description',
-        );
+            self::label(
+                'personio_jobs.db:plugins.' . lcfirst($name) . '.description',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:plugins.' . lcfirst($name) . '.description',
+            ),
+        ];
 
         if ($flexForm !== null) {
-            ExtensionManagementUtility::addPiFlexFormValue('*', $flexForm, $pluginSignature);
-            ExtensionManagementUtility::addToAllTCAtypes('tt_content', '--div--;Configuration,pi_flexform,', $pluginSignature, 'after:subheader');
+            if ($usesLegacyFlexFormRegistration) {
+                ExtensionManagementUtility::addPiFlexFormValue('*', $flexForm, $pluginSignature);
+                ExtensionManagementUtility::addToAllTCAtypes(
+                    'tt_content',
+                    '--div--;Configuration,pi_flexform,',
+                    $pluginSignature,
+                    'after:subheader',
+                );
+            } else {
+                $registerPluginArguments[] = $flexForm;
+            }
         }
+
+        ExtensionUtility::registerPlugin(...$registerPluginArguments);
     }
 
     /**
@@ -98,5 +121,21 @@ final class Tca
         $extensionName = GeneralUtility::underscoredToUpperCamelCase(Extension::KEY);
 
         return strtolower($extensionName . '_' . $pluginName);
+    }
+
+    /**
+     * @todo Remove once support for TYPO3 v13 is dropped
+     */
+    public static function label(string $new, string $legacy): string
+    {
+        return self::isLegacyTypo3Version() ? $legacy : $new;
+    }
+
+    /**
+     * @todo Remove once support for TYPO3 v13 is dropped
+     */
+    public static function isLegacyTypo3Version(): bool
+    {
+        return (new Typo3Version())->getMajorVersion() === 13;
     }
 }

@@ -2,10 +2,14 @@
     <sheets>
         <sDEF>
             <ROOT>
+                <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                <!-- <sheetTitle>personio_jobs.be:flexforms.tab.settings</sheetTitle> -->
                 <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.settings</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.detailPid>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <label>personio_jobs.be:flexforms.list.settings.detailPid</label> -->
                         <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.detailPid</label>
                         <config>
                             <type>group</type>
@@ -16,6 +20,8 @@
                         </config>
                     </settings.detailPid>
                     <settings.sorting>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <label>personio_jobs.be:flexforms.list.settings.sorting</label> -->
                         <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting</label>
                         <config>
                             <type>select</type>
@@ -26,14 +32,20 @@
                                     <numIndex index="value"></numIndex>
                                 </numIndex>
                                 <numIndex index="1">
+                                    <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                                    <!-- <numIndex index="label">personio_jobs.be:flexforms.list.settings.sorting.sorting</numIndex> -->
                                     <numIndex index="label">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.sorting</numIndex>
                                     <numIndex index="value">sorting</numIndex>
                                 </numIndex>
                                 <numIndex index="2">
+                                    <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                                    <!-- <numIndex index="label">personio_jobs.be:flexforms.list.settings.sorting.name</numIndex> -->
                                     <numIndex index="label">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.name</numIndex>
                                     <numIndex index="value">name</numIndex>
                                 </numIndex>
                                 <numIndex index="3">
+                                    <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                                    <!-- <numIndex index="label">personio_jobs.be:flexforms.list.settings.sorting.create_date</numIndex> -->
                                     <numIndex index="label">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sorting.create_date</numIndex>
                                     <numIndex index="value">create_date</numIndex>
                                 </numIndex>
@@ -41,16 +53,22 @@
                         </config>
                     </settings.sorting>
                     <settings.sortingDirection>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <label>personio_jobs.be:flexforms.list.settings.sortingDirection</label> -->
                         <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection</label>
                         <config>
                             <type>select</type>
                             <renderType>selectSingle</renderType>
                             <items>
                                 <numIndex index="0">
+                                    <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                                    <!-- <numIndex index="label">personio_jobs.be:flexforms.list.settings.sortingDirection.asc</numIndex> -->
                                     <numIndex index="label">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.asc</numIndex>
                                     <numIndex index="value">asc</numIndex>
                                 </numIndex>
                                 <numIndex index="1">
+                                    <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                                    <!-- <numIndex index="label">personio_jobs.be:flexforms.list.settings.sortingDirection.desc</numIndex> -->
                                     <numIndex index="label">LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.sortingDirection.desc</numIndex>
                                     <numIndex index="value">desc</numIndex>
                                 </numIndex>
@@ -62,11 +80,17 @@
         </sDEF>
         <filter>
             <ROOT>
+                <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                <!-- <sheetTitle>personio_jobs.be:flexforms.tab.filter</sheetTitle> -->
                 <sheetTitle>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.tab.filter</sheetTitle>
                 <type>array</type>
                 <el>
                     <settings.filter.subcompanyInclude>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <label>personio_jobs.be:flexforms.list.settings.filter.subcompanyInclude</label> -->
                         <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude</label>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <description>personio_jobs.be:flexforms.list.settings.filter.subcompanyInclude.description</description> -->
                         <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyInclude.description</description>
                         <config>
                             <type>input</type>
@@ -74,7 +98,11 @@
                         </config>
                     </settings.filter.subcompanyInclude>
                     <settings.filter.subcompanyExclude>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <label>personio_jobs.be:flexforms.list.settings.filter.subcompanyExclude</label> -->
                         <label>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude</label>
+                        <!-- @todo Switch label once support for TYPO3 v13 is dropped -->
+                        <!-- <description>personio_jobs.be:flexforms.list.settings.filter.subcompanyExclude.description</description> -->
                         <description>LLL:EXT:personio_jobs/Resources/Private/Language/locallang_be.xlf:flexforms.list.settings.filter.subcompanyExclude.description</description>
                         <config>
                             <type>input</type>

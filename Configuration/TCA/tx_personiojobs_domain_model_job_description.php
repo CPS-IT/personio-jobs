@@ -34,14 +34,17 @@ defined('TYPO3') or die();
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
-use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
+use CPSIT\Typo3PersonioJobs\Configuration\Tca;
 
-return [
+$tca = [
     'ctrl' => [
         'label' => 'header',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'title' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description',
+        'title' => Tca::label(
+            'personio_jobs.db:tx_personiojobs_domain_model_job_description',
+            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description',
+        ),
         'delete' => 'deleted',
         'enablecolumns' => [
             'disabled' => 'hidden',
@@ -49,51 +52,14 @@ return [
             'endtime' => 'endtime',
         ],
         'iconfile' => 'EXT:personio_jobs/Resources/Public/Icons/tx_personiojobs_domain_model_job_description.svg',
-        'searchFields' => 'header',
     ],
     'columns' => [
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'datetime',
-                'format' => 'datetime',
-                'default' => 0,
-            ],
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'datetime',
-                'format' => 'datetime',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-            ],
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-        ],
         'header' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description.header',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job_description.header',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description.header',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -102,30 +68,24 @@ return [
         ],
         'bodytext' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description.bodytext',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job_description.bodytext',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description.bodytext',
+            ),
             'config' => [
                 'type' => 'text',
                 'enableRichtext' => true,
                 'required' => true,
             ],
         ],
-        'job' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job_description.job',
-            'config' => [
-                'type' => 'inline',
-                'foreign_table' => Job::TABLE_NAME,
-                'readOnly' => true,
-            ],
-        ],
     ],
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                --div--;' . Tca::label('core.form.tabs:general', 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general') . ',
                     header,
                     bodytext,
-                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                --div--;' . Tca::label('core.form.tabs:access', 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access') . ',
                     hidden,
                     starttime,
                     endtime,
@@ -133,3 +93,10 @@ return [
         ],
     ],
 ];
+
+// @todo Remove once support for TYPO3 v13 is dropped
+if (Tca::isLegacyTypo3Version()) {
+    $tca['ctrl']['searchFields'] = 'header';
+}
+
+return $tca;

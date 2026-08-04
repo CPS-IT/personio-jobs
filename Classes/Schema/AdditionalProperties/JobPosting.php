@@ -15,26 +15,28 @@ declare(strict_types=1);
  * The TYPO3 project - inspiring people to share!
  */
 
-namespace CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes;
+namespace CPSIT\Typo3PersonioJobs\Schema\AdditionalProperties;
 
-use TYPO3\CMS\Core\Configuration\ExtensionConfiguration;
+use Brotkrueml\Schema\Core\AdditionalPropertiesInterface;
 
 /**
- * DummyExtensionConfiguration
+ * JobPosting
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
- * @internal
  */
-final class DummyExtensionConfiguration extends ExtensionConfiguration
+final class JobPosting implements AdditionalPropertiesInterface
 {
-    /**
-     * @var array<string, mixed>
-     */
-    public array $config = [];
-
-    public function get(string $extension, string $path = ''): mixed
+    public function getType(): string
     {
-        return $this->config[$path] ?? null;
+        return 'JobPosting';
+    }
+
+    public function getAdditionalProperties(): array
+    {
+        return [
+            // https://schema.org/occupationalCategory
+            'occupationalCategory',
+        ];
     }
 }

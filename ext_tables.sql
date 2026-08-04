@@ -13,4 +13,5 @@ CREATE TABLE tx_personiojobs_domain_model_job(
 #
 CREATE TABLE tx_personiojobs_domain_model_job_description(
 	header text,
+	job int(11) unsigned default '0' not null,
 );

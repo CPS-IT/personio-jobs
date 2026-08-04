@@ -38,7 +38,10 @@ defined('TYPO3') or die();
     'tt_content',
     'CType',
     'personio',
-    'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:groups.personio',
+    \CPSIT\Typo3PersonioJobs\Configuration\Tca::label(
+        'personio_jobs.db:groups.personio',
+        'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:groups.personio',
+    ),
 );
 
 \CPSIT\Typo3PersonioJobs\Configuration\Tca::addPlugin(

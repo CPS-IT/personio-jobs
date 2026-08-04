@@ -25,12 +25,15 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
 use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
 use CPSIT\Typo3PersonioJobs\Exception\MalformedApiResponseException;
+use CPSIT\Typo3PersonioJobs\Extension;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
-use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyExtensionConfiguration;
-use CPSIT\Typo3PersonioJobs\Tests\Unit\Fixtures\Classes\DummyRequestFactory;
 use EliasHaeussler\ValinorXml\Exception\XmlIsMalformed;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use PHPUnit\Framework\MockObject\Stub;
 use Symfony\Component\EventDispatcher\EventDispatcher;
+use TYPO3\CMS\Core\Configuration\ExtensionConfiguration as CoreExtensionConfiguration;
+use TYPO3\CMS\Core\Http\RequestFactory;
 use TYPO3\CMS\Core\Http\Response;
 use TYPO3\CMS\Core\Http\StreamFactory;
 use TYPO3\CMS\Extbase\Persistence\ObjectStorage;
@@ -41,12 +44,11 @@ use TYPO3\TestingFramework\Core\Unit\UnitTestCase;
  *
  * @author Elias Häußler <e.haeussler@familie-redlich.de>
  * @license GPL-2.0-or-later
- * @covers \CPSIT\Typo3PersonioJobs\Service\PersonioApiService
  */
+#[CoversClass(PersonioApiService::class)]
 final class PersonioApiServiceTest extends UnitTestCase
 {
-    protected DummyExtensionConfiguration $extensionConfiguration;
-    protected DummyRequestFactory $requestFactory;
+    protected RequestFactory&Stub $requestFactory;
     protected StreamFactory $streamFactory;
     protected PersonioApiService $subject;
 
@@ -54,15 +56,18 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         parent::setUp();
 
-        $this->extensionConfiguration = new DummyExtensionConfiguration();
-        $this->extensionConfiguration->config['apiUrl'] = 'https://testing.jobs.personio.local';
+        $extensionConfiguration = $this->createMock(CoreExtensionConfiguration::class);
+        $extensionConfiguration->method('get')
+            ->with(Extension::KEY, 'apiUrl')
+            ->willReturn('https://testing.jobs.personio.local')
+        ;
 
-        $this->requestFactory = new DummyRequestFactory();
+        $this->requestFactory = self::createStub(RequestFactory::class);
         $this->streamFactory = new StreamFactory();
         $this->subject = new PersonioApiService(
             $this->requestFactory,
             new EventDispatcher(),
-            new ExtensionConfiguration($this->extensionConfiguration),
+            new ExtensionConfiguration($extensionConfiguration),
         );
     }
 
@@ -71,7 +76,7 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-malformed.xml');
 
-        $this->requestFactory->response = new Response($stream);
+        $this->requestFactory->method('request')->willReturn(new Response($stream));
 
         $this->expectException(XmlIsMalformed::class);
         $this->expectExceptionCode(1718372740);
@@ -84,7 +89,7 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-invalid.xml');
 
-        $this->requestFactory->response = new Response($stream);
+        $this->requestFactory->method('request')->willReturn(new Response($stream));
 
         $this->expectException(MalformedApiResponseException::class);
         $this->expectExceptionCode(1677234223);
@@ -97,7 +102,7 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-single-position.xml');
 
-        $this->requestFactory->response = new Response($stream);
+        $this->requestFactory->method('request')->willReturn(new Response($stream));
 
         $actual = $this->subject->getJobs();
 
@@ -110,7 +115,7 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-multiple-positions.xml');
 
-        $this->requestFactory->response = new Response($stream);
+        $this->requestFactory->method('request')->willReturn(new Response($stream));
 
         $actual = $this->subject->getJobs();
 
@@ -124,7 +129,7 @@ final class PersonioApiServiceTest extends UnitTestCase
     {
         $stream = $this->streamFactory->createStreamFromFile(dirname(__DIR__) . '/Fixtures/Files/api-response-no-working-experience.xml');
 
-        $this->requestFactory->response = new Response($stream);
+        $this->requestFactory->method('request')->willReturn(new Response($stream));
 
         $actual = $this->subject->getJobs();
 

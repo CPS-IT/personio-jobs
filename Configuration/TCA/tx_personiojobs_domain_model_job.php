@@ -34,17 +34,23 @@ defined('TYPO3') or die();
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
 
+use CPSIT\Typo3PersonioJobs\Configuration\Tca;
+use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Model\JobDescription;
-use TYPO3\CMS\Core\Information\Typo3Version;
+use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
+use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
+use CPSIT\Typo3PersonioJobs\Enums\Job\Seniority;
+use CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience;
 
-$typo3Version = (new Typo3Version())->getMajorVersion();
-
-return [
+$tca = [
     'ctrl' => [
         'label' => 'name',
         'tstamp' => 'tstamp',
         'crdate' => 'crdate',
-        'title' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job',
+        'title' => Tca::label(
+            'personio_jobs.db:tx_personiojobs_domain_model_job',
+            'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job',
+        ),
         'delete' => 'deleted',
         'sortby' => 'sorting',
         'enablecolumns' => [
@@ -53,51 +59,14 @@ return [
             'endtime' => 'endtime',
         ],
         'iconfile' => 'EXT:personio_jobs/Resources/Public/Icons/tx_personiojobs_domain_model_job.svg',
-        'searchFields' => 'personio_id, name, recruiting_category, slug',
     ],
     'columns' => [
-        'hidden' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.visible',
-            'config' => [
-                'type' => 'check',
-                'renderType' => 'checkboxToggle',
-                'items' => [
-                    [
-                        'label' => '',
-                        'invertStateDisplay' => true,
-                    ],
-                ],
-            ],
-        ],
-        'starttime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.starttime',
-            'config' => [
-                'type' => 'datetime',
-                'format' => 'datetime',
-                'default' => 0,
-            ],
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-        ],
-        'endtime' => [
-            'exclude' => true,
-            'label' => 'LLL:EXT:core/Resources/Private/Language/locallang_general.xlf:LGL.endtime',
-            'config' => [
-                'type' => 'datetime',
-                'format' => 'datetime',
-                'default' => 0,
-                'range' => [
-                    'upper' => mktime(0, 0, 0, 1, 1, 2038),
-                ],
-            ],
-            'l10n_mode' => 'exclude',
-            'l10n_display' => 'defaultAsReadonly',
-        ],
         'personio_id' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.personio_id',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.personio_id',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.personio_id',
+            ),
             'config' => [
                 'type' => 'number',
                 'size' => 30,
@@ -108,7 +77,10 @@ return [
         ],
         'name' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.name',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.name',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.name',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -118,7 +90,10 @@ return [
         ],
         'slug' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.slug',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.slug',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.slug',
+            ),
             'config' => [
                 'type' => 'slug',
                 'size' => 50,
@@ -139,7 +114,10 @@ return [
         ],
         'content_hash' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.content_hash',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.content_hash',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.content_hash',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -151,7 +129,10 @@ return [
         ],
         'subcompany' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.subcompany',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.subcompany',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.subcompany',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -161,7 +142,10 @@ return [
         ],
         'office' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.office',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.office',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.office',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -171,7 +155,10 @@ return [
         ],
         'department' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.department',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.department',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.department',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -181,7 +168,10 @@ return [
         ],
         'recruiting_category' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.recruiting_category',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.recruiting_category',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.recruiting_category',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -191,60 +181,67 @@ return [
         ],
         'employment_type' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.employment_type',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.employment_type',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.employment_type',
+            ),
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => \CPSIT\Typo3PersonioJobs\Configuration\Tca::mapItems(
-                    \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
-                    'employment_type',
-                    \CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType::cases(),
-                ),
+                'items' => Tca::mapItems(Job::TABLE_NAME, 'employment_type', EmploymentType::cases()),
             ],
         ],
         'seniority' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.seniority',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.seniority',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.seniority',
+            ),
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => \CPSIT\Typo3PersonioJobs\Configuration\Tca::mapItems(
-                    \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
+                'items' => Tca::mapItems(
+                    Job::TABLE_NAME,
                     'seniority',
-                    \CPSIT\Typo3PersonioJobs\Enums\Job\Seniority::cases(),
+                    Seniority::cases(),
                 ),
             ],
         ],
         'schedule' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.schedule',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.schedule',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.schedule',
+            ),
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => \CPSIT\Typo3PersonioJobs\Configuration\Tca::mapItems(
-                    \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
-                    'schedule',
-                    \CPSIT\Typo3PersonioJobs\Enums\Job\Schedule::cases(),
-                ),
+                'items' => Tca::mapItems(Job::TABLE_NAME, 'schedule', Schedule::cases()),
             ],
         ],
         'years_of_experience' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.years_of_experience',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.years_of_experience',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.years_of_experience',
+            ),
             'config' => [
                 'type' => 'select',
                 'renderType' => 'selectSingle',
-                'items' => \CPSIT\Typo3PersonioJobs\Configuration\Tca::mapItems(
-                    \CPSIT\Typo3PersonioJobs\Domain\Model\Job::TABLE_NAME,
+                'items' => Tca::mapItems(
+                    Job::TABLE_NAME,
                     'years_of_experience',
-                    \CPSIT\Typo3PersonioJobs\Enums\Job\YearsOfExperience::cases(),
+                    YearsOfExperience::cases(),
                     true,
                 ),
             ],
         ],
         'keywords' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.keywords',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.keywords',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.keywords',
+            ),
             'config' => [
                 'type' => 'text',
                 'eval' => 'trim',
@@ -252,7 +249,10 @@ return [
         ],
         'occupation' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.occupation',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.occupation',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.occupation',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -262,7 +262,10 @@ return [
         ],
         'occupation_category' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.occupation_category',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.occupation_category',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.occupation_category',
+            ),
             'config' => [
                 'type' => 'input',
                 'size' => 30,
@@ -272,7 +275,10 @@ return [
         ],
         'create_date' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.create_date',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.create_date',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.create_date',
+            ),
             'config' => [
                 'type' => 'datetime',
                 'format' => 'datetime',
@@ -281,7 +287,10 @@ return [
         ],
         'job_descriptions' => [
             'exclude' => true,
-            'label' => 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.job_descriptions',
+            'label' => Tca::label(
+                'personio_jobs.db:tx_personiojobs_domain_model_job.job_descriptions',
+                'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tx_personiojobs_domain_model_job.job_descriptions',
+            ),
             'config' => [
                 'type' => 'inline',
                 'foreign_table' => JobDescription::TABLE_NAME,
@@ -292,12 +301,12 @@ return [
     'types' => [
         '0' => [
             'showitem' => '
-                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general,
+                --div--;' . Tca::label('core.form.tabs:general', 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:general') . ',
                     personio_id,
                     name,
                     slug,
                     content_hash,
-                --div--;LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tabs.job,
+                --div--;' . Tca::label('personio_jobs.db:tabs.job', 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tabs.job') . ',
                     subcompany,
                     office,
                     department,
@@ -310,9 +319,9 @@ return [
                     occupation,
                     occupation_category,
                     create_date,
-                --div--;LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tabs.description,
+                --div--;' . Tca::label('personio_jobs.db:tabs.description', 'LLL:EXT:personio_jobs/Resources/Private/Language/locallang_db.xlf:tabs.description') . ',
                     job_descriptions,
-                --div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access,
+                --div--;' . Tca::label('core.form.tabs:access', 'LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:access') . ',
                     hidden,
                     starttime,
                     endtime
@@ -320,3 +329,10 @@ return [
         ],
     ],
 ];
+
+// @todo Remove once support for TYPO3 v13 is dropped
+if (Tca::isLegacyTypo3Version()) {
+    $tca['ctrl']['searchFields'] = 'personio_id, name, recruiting_category, slug';
+}
+
+return $tca;
