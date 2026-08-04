@@ -46,5 +46,6 @@ return [
         'rector.php',
         'renovate.json',
         'typoscript-lint.yml',
+        'version-bumper.yaml',
     ],
 ];
