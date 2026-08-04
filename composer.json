@@ -46,7 +46,7 @@
 		"phpstan/phpstan-strict-rules": "^2.0",
 		"phpunit/phpcov": "^10.0 || ^11.0 || ^13.0",
 		"phpunit/phpunit": "^11.5 || ^12.5 || ^13.2",
-		"saschaegerer/phpstan-typo3": "^2.0",
+		"saschaegerer/phpstan-typo3": "^2.0 || ^3.0",
 		"shipmonk/composer-dependency-analyser": "^1.8",
 		"ssch/typo3-rector": "^3.14",
 		"symfony/event-dispatcher": "^6.4 || ^7.0",
