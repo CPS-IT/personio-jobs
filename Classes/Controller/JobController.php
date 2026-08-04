@@ -23,12 +23,10 @@ use CPSIT\Typo3PersonioJobs\Domain\Factory\SchemaFactory;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Dto\ListDemand;
 use CPSIT\Typo3PersonioJobs\Domain\Model\Job;
 use CPSIT\Typo3PersonioJobs\Domain\Repository\JobRepository;
-use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\PageTitle\JobPageTitleProvider;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use Psr\Http\Message\ResponseInterface;
 use TYPO3\CMS\Core\MetaTag\MetaTagManagerRegistry;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Extbase\Mvc\Controller\ActionController;
 
 /**
@@ -46,6 +44,7 @@ class JobController extends ActionController
         protected readonly CacheManager $cacheManager,
         protected readonly PersonioApiService $personioApiService,
         protected readonly SchemaFactory $schemaFactory,
+        protected readonly SchemaManager $schemaManager,
     ) {}
 
     public function listAction(): ResponseInterface
@@ -121,14 +120,6 @@ class JobController extends ActionController
 
     protected function addSchema(Job $job): void
     {
-        try {
-            $jobPosting = $this->schemaFactory->createJobPosting($job);
-        } catch (ExtensionNotLoadedException) {
-            // Early return if schema extension is not installed
-            return;
-        }
-
-        $schemaManager = GeneralUtility::makeInstance(SchemaManager::class);
-        $schemaManager->addType($jobPosting);
+        $this->schemaManager->addType($this->schemaFactory->createJobPosting($job));
     }
 }

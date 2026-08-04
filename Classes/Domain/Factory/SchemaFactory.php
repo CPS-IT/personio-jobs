@@ -26,12 +26,9 @@ use CPSIT\Typo3PersonioJobs\Enums\Job\EmploymentType;
 use CPSIT\Typo3PersonioJobs\Enums\Job\Schedule;
 use CPSIT\Typo3PersonioJobs\Enums\Schema\EmploymentType as EmploymentTypeSchema;
 use CPSIT\Typo3PersonioJobs\Event\EnrichJobPostingSchemaEvent;
-use CPSIT\Typo3PersonioJobs\Exception\ExtensionNotLoadedException;
 use CPSIT\Typo3PersonioJobs\Service\PersonioApiService;
 use CPSIT\Typo3PersonioJobs\Utility\FrontendUtility;
 use Psr\EventDispatcher\EventDispatcherInterface;
-use TYPO3\CMS\Core\Utility\ExtensionManagementUtility;
-use TYPO3\CMS\Core\Utility\GeneralUtility;
 use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
 
 /**
@@ -42,36 +39,21 @@ use TYPO3\CMS\Frontend\ContentObject\ContentObjectRenderer;
  */
 final readonly class SchemaFactory
 {
-    private ?TypeFactory $typeFactory;
-
     public function __construct(
         private PersonioApiService $personioApiService,
         private ContentObjectRenderer $contentObjectRenderer,
         private EventDispatcherInterface $eventDispatcher,
-    ) {
-        if (class_exists(TypeFactory::class)) {
-            $this->typeFactory = GeneralUtility::makeInstance(TypeFactory::class);
-        } else {
-            $this->typeFactory = null;
-        }
-    }
+        private TypeFactory $typeFactory,
+    ) {}
 
-    /**
-     * @throws ExtensionNotLoadedException
-     */
     public function createJobPosting(Job $job): JobPosting
     {
-        // Throw exception if schema extension is not installed
-        if (!ExtensionManagementUtility::isLoaded('schema')) {
-            throw ExtensionNotLoadedException::create('schema');
-        }
-
         $serverRequest = FrontendUtility::getServerRequest();
         $organizationType = $this->createOrganization($job);
         $placeType = $this->createPlace($job);
 
         /** @var JobPosting $jobPosting */
-        $jobPosting = $this->typeFactory?->create('JobPosting');
+        $jobPosting = $this->typeFactory->create('JobPosting');
         $jobPosting
             ->setProperty('datePosted', ($job->getCreateDate() ?? new \DateTime())->format('Y-m-d'))
             ->setProperty('employmentType', $this->decorateEmploymentType($job))
@@ -92,7 +74,7 @@ final readonly class SchemaFactory
     private function createOrganization(Job $job): Organization
     {
         /** @var Organization $organization */
-        $organization = $this->typeFactory?->create('Organization');
+        $organization = $this->typeFactory->create('Organization');
         $organization
             ->setProperty('name', $job->getSubcompany())
             ->setProperty('address', $job->getOffice())
@@ -104,7 +86,7 @@ final readonly class SchemaFactory
     private function createPlace(Job $job): Place
     {
         /** @var Place $place */
-        $place = $this->typeFactory?->create('Place');
+        $place = $this->typeFactory->create('Place');
         $place->setProperty('address', $job->getOffice());
 
         return $place;
