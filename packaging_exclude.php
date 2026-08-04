@@ -32,7 +32,6 @@ return [
         'DS_Store',
         'CODE_OF_CONDUCT.md',
         'composer.lock',
-        'composer-dependency-analyser.php',
         'CONTRIBUTING.md',
         'crowdin.yaml',
         'editorconfig',

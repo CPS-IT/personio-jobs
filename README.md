@@ -32,7 +32,7 @@ with preconfigured support for Bootstrap v5 components.
 * Console command to import jobs from Personio Recruiting API
 * Usage of modern-typed value objects during the import process
 * Plugins for list and detail view
-* Optional support for JSON Schema on job detail pages using [EXT:schema][1]
+* Support for JSON Schema on job detail pages using [EXT:schema][1]
 * Compatible with TYPO3 13.4 LTS
 
 ## 🔥 Installation
@@ -41,13 +41,6 @@ with preconfigured support for Bootstrap v5 components.
 
 ```bash
 composer require cpsit/typo3-personio-jobs
-```
-
-💡 If you want to use the [JSON schema](#json-schema) feature, you must
-additionally require the `schema` extension:
-
-```bash
-composer require brotkrueml/schema
 ```
 
 ### TER
@@ -162,9 +155,6 @@ foreach ($result->getSkippedJobs() as $skippedJob) {
 In combination with [EXT:schema][1], a JSON schema for a single job is included
 on job detail pages. It is rendered as type [`JobPosting`][3] and includes some
 generic job properties.
-
-**⚠️ The `schema` extension must be installed to use this feature. Read more in
-the [installation](#-installation) section above.**
 
 ## 📂 Configuration
 
