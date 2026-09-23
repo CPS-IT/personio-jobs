@@ -88,21 +88,22 @@ final class Tca
             ),
         ];
 
-        if ($flexForm !== null) {
-            if ($usesLegacyFlexFormRegistration) {
-                ExtensionManagementUtility::addPiFlexFormValue('*', $flexForm, $pluginSignature);
-                ExtensionManagementUtility::addToAllTCAtypes(
-                    'tt_content',
-                    '--div--;Configuration,pi_flexform,',
-                    $pluginSignature,
-                    'after:subheader',
-                );
-            } else {
-                $registerPluginArguments[] = $flexForm;
-            }
+        if ($flexForm !== null && !$usesLegacyFlexFormRegistration) {
+            $registerPluginArguments[] = $flexForm;
         }
 
         ExtensionUtility::registerPlugin(...$registerPluginArguments);
+
+        // @todo Remove once support for TYPO3 v13 is dropped
+        if ($flexForm !== null && $usesLegacyFlexFormRegistration) {
+            ExtensionManagementUtility::addPiFlexFormValue('*', $flexForm, $pluginSignature);
+            ExtensionManagementUtility::addToAllTCAtypes(
+                'tt_content',
+                '--div--;LLL:EXT:core/Resources/Private/Language/Form/locallang_tabs.xlf:plugin,pi_flexform,',
+                $pluginSignature,
+                'after:subheader',
+            );
+        }
     }
 
     /**
