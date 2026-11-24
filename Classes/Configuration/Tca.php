@@ -104,6 +104,10 @@ final class Tca
                 'after:subheader',
             );
         }
+        
+        if ($name === 'List') { 
+            ExtensionManagementUtility::addToAllTCAtypes( 'tt_content', 'pages, recursive', $pluginSignature, 'after:pi_flexform', ); 
+        }        
     }
 
     /**
